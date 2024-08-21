@@ -1,0 +1,30 @@
+#+TITLE: Cloth Shop Website
+#+AUTHOR: VAISHAKH G.K
+
+Website for cloth shop to order dress online.
+
+* Features
+
+- Search functionality
+- Shipping and delivery
+- Online payment  
+
+* Technologies Used
+
+- Go
+- Echo
+- HTMX
+- JS
+- CSS
+- HTML
+
+* Contact
+
+***** Vaishakh G.K
+- Email: [[mailto:vaishakhgk2006@gmail.com][vaishakhgk2006@gmail.com]]
+- Website: [[https://vaishakhgk.com][vaishakhgk]]
+- Github: [[https://github.vaishakhgk.com][VAISHAKH-GK]]
+
+***** Shreyas S K
+- Email: [[mailto:shreyassk.dev+cloth-shop-website@gmail.com][shreayassk.dev@gmail.com]]
+- Github: [[https://github.com/shreyasskdev/][Shreyas S K]]
