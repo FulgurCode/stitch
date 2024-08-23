@@ -1,0 +1,40 @@
+package user
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+css Quote() {
+    padding-inline: var(--padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+templ Index() {
+    @layouts.User() {
+        <style>
+            h1, p{
+                text-align: center;
+            }
+            img{
+                width: 100vh;
+                height: 70vh;
+                
+                background-image: url("https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg");
+                background-size: cover;
+            }
+        </style>
+        <img/>
+        <div class={Quote(), "surface"}>
+            <h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1>
+            <button class="button-secondary" style="width: max-content;">Shop all</button>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. 
+            Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo 
+            condimentum feugiat.
+            </p>
+        </div>
+        hello
+    }
+}
