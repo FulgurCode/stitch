@@ -11,7 +11,9 @@ func Run(port string) {
 	var app = echo.New()
 
 	// echo routes
-  app.GET("/", handler.Home)
+	app.GET("/", handler.Home)
+
+	app.GET("/admin", handler.Admin)
 
 	log.Fatal(app.Start(":" + port))
 }

@@ -1,0 +1,149 @@
+package layouts
+
+templ User() {
+     <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Shop</title> 
+            <meta charset="UTF-8" />
+            // <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+            <style>
+                :root{
+                    --primary: #9A9A9A;
+                    --text-heading: #9A9A9A;
+                    --text: #6A6A6A;
+                    --text-surface-heading: #FFF;
+                    --text-surface: #DDD;
+                    --background: #FFF;
+
+                    --padding: 20px;
+                }
+                * {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 0.9rem;
+                    // font-optical-sizing: auto;
+                    // font-weight: <weight>;
+                    font-style: normal;
+                    line-height: 2.7rem;
+                }
+                html, body {
+                    margin: 0;
+                    width: 100%;
+                    height: 100% !important;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: strech-content;
+
+                    background-color: var(--background);
+                    color: var(--text);
+                }
+                .overflow{
+                    overflow-x: hidden;
+                }              
+                h1, h3 {
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                    color: var(--text-heading);
+                }
+                h3 {
+                    font-size: 1.3rem;
+                }
+
+                .surface h1, .surface h2, .surface h3 {
+                    color: var(--text-surface-heading);
+                }
+                .surface, .button-primary {
+                    background-color: var(--primary);
+                    color: var(--text-surface);
+                    border: none;
+                }
+                .button-secondary{
+                    background-color: var(--text-surface-heading);
+                    color: var(--text);
+                    border: 1px solid var(--primary);
+                }
+                .button-primary, .button-secondary{
+                    padding: 5px;
+                    padding-inline: 25px;
+                    font-size: 1.05rem;
+                }
+                button:hover{
+                    scale: 1.05;
+                }
+
+                header{
+                    display: flex;
+                    flex-direction: column;
+
+                    align-items: center;
+                }
+                header > ul {
+                    list-style-type: none;
+                    padding: 0;
+
+                    display: flex;
+                    flex-direction: row;
+                    // gap: 2rem;
+                    min-width: clamp(10px, 100%, 600px);
+                    justify-content: space-around;
+                }
+
+                main{
+                    flex: 1 0 auto;
+                }
+
+                footer{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                }
+                footer > .policies > ul {
+                    padding: 0;
+                    list-style-type: none;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="overflow">
+            <header class="surface">
+                <div class="logo">
+                    <h1>LOGO</h1>
+                </div>
+                <ul>
+                    <li>Home</li>
+                    <li>All</li>
+                    // <li>Shop</li>
+                    // <li>Acessories</li>
+                    <li>Collections</li>
+                    <li>About us</li>
+                </ul>
+            </header>
+            <main>{ children... }</main>
+            <footer class="surface">
+                <div class="policies">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li>Contact us</li>
+                        <li>Refund Policy</li>
+                        <li>Shipping Policy</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+                <div class="logo">
+                    <h1>LOGO</h1>
+                </div>
+                <div class="contacts">
+                    <h3>Contact us</h3>
+                    +91 8353692784
+                </div>
+            </footer>
+            </div>
+        </body>
+
+    </html> 
+}
