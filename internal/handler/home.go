@@ -9,11 +9,19 @@ import (
 
 // Home handler
 func Home(c echo.Context) error {
-	var component = user.Index()
+	var component = user.Home()
 
 	return utils.Render(c, component)
 }
 
+// Products handler
+func Products(c echo.Context) error {
+	var component = user.Products()
+
+	return utils.Render(c, component)
+}
+
+// Admin handler
 func Admin(c echo.Context) error {
 	var component = admin.Index()
 

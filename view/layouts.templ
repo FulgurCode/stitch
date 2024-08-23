@@ -14,13 +14,13 @@ templ User() {
             <style>
                 :root{
                     --primary: #9A9A9A;
-                    --text-heading: #9A9A9A;
+                    --text-heading: #5F5F5F;
                     --text: #6A6A6A;
                     --text-surface-heading: #FFF;
                     --text-surface: #DDD;
                     --background: #FFF;
 
-                    --padding: 20px;
+                    --padding: 15px;
                 }
                 * {
                     font-family: "Montserrat", sans-serif;
@@ -29,6 +29,8 @@ templ User() {
                     // font-weight: <weight>;
                     font-style: normal;
                     line-height: 2.7rem;
+
+                    outline: none;
                 }
                 html, body {
                     margin: 0;
@@ -45,13 +47,15 @@ templ User() {
                 .overflow{
                     overflow-x: hidden;
                 }              
-                h1, h3 {
-                    font-size: 1.5rem;
+                h1, h2, h3, h4 {
+                    // font-size: 1.5rem;
                     font-weight: 400;
                     color: var(--text-heading);
                 }
-                h3 {
-                    font-size: 1.3rem;
+                h1 {
+                    font-size: 1.5rem;
+                } h4 {
+                    font-size: 1.1rem;
                 }
 
                 .surface h1, .surface h2, .surface h3 {
@@ -95,6 +99,7 @@ templ User() {
 
                 main{
                     flex: 1 0 auto;
+                    display: flex;
                 }
 
                 footer{
@@ -106,6 +111,43 @@ templ User() {
                     padding: 0;
                     list-style-type: none;
                 }
+
+                .product-card {
+                width: minmax(15rem, 250px);
+                aspect-ratio: 2/3;
+
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+
+                margin-bottom: 1rem;
+            }
+            .product-card > img {
+                height: 90%;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+            .product-card > div {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                margin-top: 0.5rem;
+            }
+            .product-card > div > * {
+                line-height: 0;
+            }
+
+            .product-container {
+                display: grid;
+
+                grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+                grid-auto-rows: auto;
+                grid-gap: 5px;
+
+                padding: var(--padding);
+                padding-block: 30px;
+            }
             </style>
         </head>
         <body>
