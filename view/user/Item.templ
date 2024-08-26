@@ -1,0 +1,228 @@
+package user
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+templ Item() {
+    @layouts.User() {
+        <style>
+        .size-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .radio-button {
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .radio-button input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-button label {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 0;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all;
+        }
+
+        .radio-button input[type="radio"]:checked + label {
+            background-color: var(--primary);
+            color: var(--text-surface);
+        }
+
+        .radio-button input[type="radio"]:hover + label {
+            background-color: var(--primary);
+            color: var(--text-surface);
+        }
+
+        .radio-button input[type="radio"]:checked:hover + label {
+            background-color: var(--primary);
+            color: var(--text-surface);
+        }
+        .no-line-height{
+            line-height: 0;
+        }
+        .description-container{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            width: calc(100% - var(--padding-inner));
+        }
+        .description-container span{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        </style>
+        <div class={Container()}>
+
+        @ImageCarousel()
+
+        <div class="description-container">
+            <span style="gap: 0">
+                <p class="no-line-height">Shop name</p>
+                <h1 style="font-weight: 600;" class="no-line-height">Really big Clothe name</h1>
+            </span>
+            <span style="gap: 2px;">
+                <p style="font-weight: 600;" class="no-line-height">&#8360;. 5000.00</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</p>
+                <p class="no-line-height">Size:</p>
+            </span>
+            <div class="size-group">
+                <div class="radio-button">
+                    <input type="radio" id="small-size" name="size" value="S">
+                    <label for="small-size">S</label>
+                </div>
+                <div class="radio-button">
+                    <input type="radio" id="medium-size" name="size" value="M">
+                    <label for="medium-size">M</label>
+                </div>
+                <div class="radio-button">
+                    <input type="radio" id="large-size" name="size" value="L">
+                    <label for="large-size">L</label>
+                </div>
+                <div class="radio-button">
+                    <input type="radio" id="extra-large-size" name="size" value="XL">
+                    <label for="extra-large-size">XL</label>
+                </div>
+            </div>
+            <span>
+                <button class="button-primary">BUY</button>
+                <button class="button-secondary">Add to Cart</button>
+            </span>
+            <br>
+        </div>
+
+        </div>
+    }
+}
+
+templ ImageCarousel() {
+    <style>
+        .carousel-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            margin-bottom: 4rem;
+        }
+        .main-image-container {
+            width: 100%;
+            padding-top: 133.33%; /* 3:4 aspect ratio */
+            position: relative;
+            overflow: hidden;
+        }
+        .main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-panel {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            flex-grow: 1;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        .preview-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */
+        }
+        .preview-image {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            margin: 0 5px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            flex-shrink: 0;
+        }
+        .preview-image:hover, .preview-image.active {
+            opacity: 1;
+        }
+        .arrows {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 10px;
+            color: var(--primary);
+        }
+        @media (max-width: 480px) {
+            .preview-image {
+                width: 45px;
+                height: 60px;
+            }
+        }
+    </style>
+    <div class="carousel-container">
+        <div class="main-image-container">
+            <img src="https://picsum.photos/300/400" alt="Main Image" class="main-image" id="mainImage">
+        </div>
+        <div class="preview-panel">
+            <button class="arrows prev" onclick="changeSlide(-1)">&#10094;</button>
+            <div class="preview-container">
+                <img src="https://picsum.photos/300/400" alt="Preview 1" class="preview-image active" onclick="setMainImage(0)">
+                <img src="https://picsum.photos/301/400" alt="Preview 2" class="preview-image" onclick="setMainImage(1)">
+                <img src="https://picsum.photos/302/400" alt="Preview 3" class="preview-image" onclick="setMainImage(2)">
+                <img src="https://picsum.photos/303/400" alt="Preview 4" class="preview-image" onclick="setMainImage(3)">
+                <img src="https://picsum.photos/304/400" alt="Preview 5" class="preview-image" onclick="setMainImage(4)">
+            </div>
+            <button class="arrows next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        const images = [
+            "https://picsum.photos/300/400",
+            "https://picsum.photos/301/400",
+            "https://picsum.photos/302/400",
+            "https://picsum.photos/303/400",
+            "https://picsum.photos/304/400"
+        ];
+        let currentIndex = 0;
+
+        function setMainImage(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function changeSlide(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = images[currentIndex];
+            const previews = document.querySelectorAll('.preview-image');
+            previews.forEach((preview, index) => {
+                preview.classList.toggle('active', index === currentIndex);
+            });
+        }
+    </script>
+} 

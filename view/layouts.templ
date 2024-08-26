@@ -11,8 +11,10 @@ templ User() {
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+            
+            <link rel="stylesheet" href="css/root.css">
             <style>
-                :root{
+            :root{
                     --primary: #9A9A9A;
                     --text-heading: #5F5F5F;
                     --text: #6A6A6A;
@@ -21,12 +23,13 @@ templ User() {
                     --background: #FFF;
 
                     --padding: 15px;
+                    --padding-inner: 50px;
                 }
                 * {
                     font-family: "Montserrat", sans-serif;
                     font-size: 0.9rem;
-                    // font-optical-sizing: auto;
-                    // font-weight: <weight>;
+                    /* font-optical-sizing: auto; */
+                    /* font-weight: <weight>; */
                     font-style: normal;
                     line-height: 2.7rem;
 
@@ -47,7 +50,7 @@ templ User() {
                     overflow-x: hidden;
                 }            
                 h1, h2, h3, h4 {
-                    // font-size: 1.5rem;
+                    /* font-size: 1.5rem; */
                     font-weight: 400;
                     color: var(--text-heading);
                 }
@@ -76,7 +79,7 @@ templ User() {
                     font-size: 1.05rem;
                 }
                 button:hover{
-                    scale: 1.05;
+                    opacity: .6;
                 }
 
                 header{
@@ -91,7 +94,7 @@ templ User() {
 
                     display: flex;
                     flex-direction: row;
-                    // gap: 2rem;
+                    /* gap: 2rem; */
                     min-width: clamp(10px, 100%, 600px);
                     justify-content: space-around;
                 }
@@ -110,7 +113,6 @@ templ User() {
                     padding: 0;
                     list-style-type: none;
                 }
-
                 .product-card {
                 width: minmax(15rem, 250px);
                 aspect-ratio: 2/3;

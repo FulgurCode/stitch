@@ -7,16 +7,19 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// Home handler
-func Home(c echo.Context) error {
+// User handler
+func Home(c echo.Context) error { // Home
 	var component = user.Home()
 
 	return utils.Render(c, component)
 }
-
-// Products handler
-func Products(c echo.Context) error {
+func Products(c echo.Context) error { // Products
 	var component = user.Products()
+
+	return utils.Render(c, component)
+}
+func Item(c echo.Context) error { // Products
+	var component = user.Item()
 
 	return utils.Render(c, component)
 }
