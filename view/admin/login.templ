@@ -1,0 +1,45 @@
+package admin
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+templ Login() {
+    @layouts.Admin() {
+        <style>
+            .container{
+                justify-content: center;
+                align-items: center;
+            }
+            .login-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: min(95%, 400px);
+                padding-block: 2rem;
+
+                gap: 1rem;
+            }
+            .login-container > * {
+                width: calc(100% - var(--padding-inner));
+                box-sizing: border-box;
+                border: none;
+            }
+            .login-container > input{
+                text-indent: 10px;
+                color: var(--text);
+                font-family: inherit;
+            }
+        </style>
+        <div class={Container(), "container"}>
+            <div class="login-container surface">
+                <h1 style="text-align: center;">Admin</h1>
+                <input type="text" placeholder="Username"/>
+                <input type="text" placeholder="Password"/>
+                <button type="button" class="button-primary" style="margin-top: 1rem;">Login</button>
+            </div>
+        </div>
+ 
+    }
+}

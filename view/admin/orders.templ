@@ -1,0 +1,126 @@
+package admin
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+templ AdminOrders() {
+    <style>
+        .orders{
+            border-bottom: 1px solid var(--primary);
+            display: flex;
+            align-items: start;
+            flex-wrap: wrap;
+            max-width: max-content;
+
+            gap: 5px 20px;
+            padding: var(--padding);
+        }
+        .orders > img {
+            width: 7rem;
+            aspect-ratio: 1 !important;
+            object-fit: cover;
+            content-visibility: auto;
+        }
+
+        .orders div:last-child{
+            display: flex;
+            gap: 1rem;
+        }
+        .orders div:nth-child(3){
+            max-width: 700px;
+            
+        }
+
+        .orders div:nth-child(2){
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .orders-container{
+            border: 1px solid var(--primary);
+            border-bottom: none;
+            max-width: 1300px;
+        }
+
+        /* prevents whole body from overflowing */
+        .overflow, main{
+            overflow: hidden;
+        }
+
+    </style>
+    @layouts.Admin() {
+        @DashBoardSideBar()
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start;">Orders</h1>
+            <div class="orders-container">
+                @OrdersCard("test",
+                    "2000.00",
+                    "abdula",
+                    "cherkkala house",
+                    "641673",
+                    "9463729647",
+                    "cash on delivery",
+                    "https://picsum.photos/100/150",
+                )
+                @OrdersCard("test",
+                    "2000.00",
+                    "abdula",
+                    "cherkkala house",
+                    "641673",
+                    "9463729647",
+                    "cash on delivery",
+                    "https://picsum.photos/100/150",
+                )
+                @OrdersCard("test",
+                    "2000.00",
+                    "abdula",
+                    "cherkkala house",
+                    "641673",
+                    "9463729647",
+                    "cash on delivery",
+                    "https://picsum.photos/100/150",
+                )
+                @OrdersCard("test",
+                    "2000.00",
+                    "abdula",
+                    "cherkkala house",
+                    "641673",
+                    "9463729647",
+                    "cash on delivery",
+                    "https://picsum.photos/100/150",
+                )
+                
+            </div>
+        </div>
+    }
+}
+
+templ OrdersCard(productName string, 
+            price string, 
+            name string, 
+            adress string, 
+            pin string, 
+            phoneNo string, 
+            paymentMethod string, 
+            imageUrl string,
+        ) {
+    <div class="orders">
+        <img src={imageUrl}/>
+        <div>
+            Product name: {productName}<br/>
+            Price: &#8360;. {price}
+        </div>
+        <div class="description">
+            Name: {name}<br/>
+            Adress: {adress}<br/>
+            Pin: {pin}<br/>
+            Phone no: {phoneNo}<br/>
+            Payment method: {paymentMethod}
+        </div>
+        <div>
+            <button class="button-primary">Mark as Shipped</button>
+            <button class="button-secondary">View Product</button>
+        </div>
+    </div>
+}
