@@ -1,0 +1,104 @@
+package admin
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+css innerScroll() {
+    padding: var(--padding);
+    padding-top: var(--padding-inner);
+    overflow-y: auto;
+}
+
+templ AdminProducts() {
+    <style>
+        .products{
+            border-bottom: 1px solid var(--primary);
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: max-content;
+
+            gap: 5px 20px;
+            padding: var(--padding);
+        }
+        .products > img {
+            width: 7rem;
+            aspect-ratio: 1 !important;
+            object-fit: cover;
+            content-visibility: auto;
+        }
+
+        .products div:last-child{
+            display: flex;
+            gap: 1rem;
+        }
+        .products div:nth-child(3){
+            max-width: 700px;
+            
+        }
+
+        .products div:nth-child(2){
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .products-container{
+            border: 1px solid var(--primary);
+            border-bottom: none;
+            max-width: 1300px;
+        }
+
+        /* prevents whole body from overflowing */
+        .overflow, main{
+            overflow: hidden;
+        }
+
+    </style>
+    @layouts.Admin() {
+        @DashBoardSideBar()
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start">Products</h1>
+            <div class="products-container">
+                @ProductsCard("test",
+                    "2000.00",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
+                    "https://picsum.photos/100/150",
+                )
+                @ProductsCard("test",
+                    "2000.00",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
+                    "https://picsum.photos/110/150",
+                )
+                @ProductsCard("test",
+                    "2000.00",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
+                    "https://picsum.photos/110/150",
+                )
+                @ProductsCard("test",
+                    "2000.00",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
+                    "https://picsum.photos/110/150",
+                )
+            </div>
+        </div>
+    }
+}
+
+templ ProductsCard(name string, price string, description string, imageUrl string) {
+    <div class="products">
+        <img src={imageUrl}/>
+        <div>
+            Product name: {name}<br/>
+            Price: &#8360;. {price}
+        </div>
+        <div class="description">
+            <p>{description}</p>
+        </div>
+        <div>
+            <a href="/admin/item"><button class="button-primary">Edit</button></a>
+            <button class="button-secondary">Delete</button>
+        </div>
+    </div>
+}

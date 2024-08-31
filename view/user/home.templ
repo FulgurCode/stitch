@@ -57,7 +57,7 @@ templ Home() {
         <img/>
         <div class={Quote(), "surface"}>
             <h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1>
-            <button class="button-secondary" style="width: max-content;">Shop all</button>
+            <a href="/products"><button class="button-secondary" style="width: max-content;">Shop all</button></a>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. 
             Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo 
@@ -74,7 +74,7 @@ templ Home() {
             @ProductCard("Ipsum", "4,000.00", "https://i.pinimg.com/474x/d2/20/52/d22052bb9c7cb502a0307c40cefb7603.jpg")
             @ProductCard("Yaaaa", "1,500.00", "https://i.pinimg.com/736x/06/86/83/0686839d7510a3934c637a9cc844c246.jpg")
         </div>
-        <button class="button-primary" style="margin-bottom: 5rem; width: max-content;">View all ></button>
+        <a href="/products"><button class="button-primary" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
         <div class="present-container">
             @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com")
             @presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com")
@@ -84,13 +84,15 @@ templ Home() {
 }
 
 templ ProductCard(name string, price string, imageurl string) {
-    <div class="product-card">
-        <img src={imageurl}>
-        <div>
-            <p class="name">{name}</p>
-            <h3 class="price">&#8360;. {price}</h3>
+    <a href="/item" style="color: inherit; text-decoration: none">
+        <div class="product-card">
+            <img src={imageurl}>
+            <div>
+                <p class="name">{name}</p>
+                <h3 class="price">&#8360;. {price}</h3>
+            </div>
         </div>
-    </div>
+    </a>
 }
 
 templ presentCard(imageUrl string, title string, description string, productUrl string) {

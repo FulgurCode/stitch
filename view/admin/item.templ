@@ -1,0 +1,184 @@
+package admin
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+templ AdminItem() {
+    <style>
+        .item-container{
+            padding: var(--padding);
+            width: 100%;
+        }
+        .item-container > .image{
+            width: 100%;
+            display: flex;
+            gap: 10px;
+
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+        .item-container > .image > *{
+            width: 150px;
+            aspect-ratio: 3/4;
+            border: 1px solid #ccc;
+        }
+        .item-container > .image > span > span{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            font-size: 70px;
+            cursor: pointer;
+        }
+        .item-container > .image > span > span:hover{
+            background: #f0f0f0;
+        }
+
+        /* item stylesheet */
+        .size-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .checkbox-button {
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .checkbox-button input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-button label {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 0;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all;
+        }
+
+        .checkbox-button input[type="checkbox"]:checked + label {
+            background-color: var(--primary);
+            color: var(--text-surface);
+        }
+
+        .checkbox-button input[type="checkbox"]:checked:hover + label {
+            background-color: var(--primary);
+            color: var(--text-surface);
+        }
+        .no-line-height{
+            line-height: 0;
+            margin-top: var(--padding-inner);
+        }
+        .description-container{
+            display: flex;
+            flex-direction: column;
+            // gap: 1rem;
+
+            width: 100%;
+        }
+        .description-container span{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        textarea, input {
+            resize: none;
+            overflow: hidden;
+
+            border: 1px solid var(--primary);
+            text-indent: 1rem;
+
+            color: inherit;
+        }
+
+        /* Hide spin buttons for input type number */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }input[type=number]{
+            -moz-appearance: textfield;
+        }
+
+        /* prevents whole body from overflowing */
+        .overflow, main{
+            overflow: hidden;
+        }
+
+    </style>
+    @layouts.Admin() {
+        @DashBoardSideBar()
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start;">Item</h1>
+            <div class="item-container">
+                <p style="line-height: 0">Images:</p>
+                <div class="image">
+                    <img src="https://picsum.photos/60/100"/>
+                    <img src="https://picsum.photos/60/110"/>
+                    <span onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" accept="image/*" style="display: none">
+                        <span>+</span>
+                    </span>
+                </div>
+
+                <div class="description-container">
+                    <p class="no-line-height">Title:</p>
+                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" value="Title" placeholder="Title" name="title"/>
+                    <span style="gap: 2px;">
+                        <p class="no-line-height">Price:</p>
+                        <p style="margin: 0;"><input type="number" value="0.00" placeholder="price"/> &#8360;.</p>
+                        <p class="no-line-height">Description:</p>
+                        <textarea name="description" placeholder="Description" id="auto-expand-textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</textarea>
+                        <p class="no-line-height">Include Size:</p>
+                    </span>
+                    <div class="size-group">
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="small-size" name="size" value="S">
+                            <label for="small-size">S</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="medium-size" name="size" value="M">
+                            <label for="medium-size">M</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="large-size" name="size" value="L">
+                            <label for="large-size">L</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="extra-large-size" name="size" value="XL">
+                            <label for="extra-large-size">XL</label>
+                        </div>
+                    </div>
+                    <button class="button-primary" style="margin-top: var(--padding-inner)">Save</button>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const textarea = document.getElementById('auto-expand-textarea');
+
+            const adjustHeight = () => {
+                textarea.style.height = 'auto'; // Reset height to auto to shrink if needed
+                textarea.style.height = `${textarea.scrollHeight}px`; // Set height to the scrollHeight
+            };
+
+            textarea.addEventListener('input', adjustHeight);
+
+            // Initial adjustment to handle pre-filled content
+            adjustHeight();
+        });
+        </script>
+    }
+}
