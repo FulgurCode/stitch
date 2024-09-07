@@ -21,39 +21,8 @@ css Container() {
 
 templ Home() {
     @layouts.User() {
+				<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
-        <style>
-            h1, p{
-                text-align: center;
-            }
-            img{
-                width: 100%;
-                height: 70vh;
-                
-                background-image: url("https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg");
-                background-size: cover;
-            }
-
-            .present-card{
-                position: relative;
-                padding: var(--padding);
-            }
-            .present-card > div{
-                position: relative;
-                margin: 20px;
-                padding: var(--padding);
-                top: -80px;
-
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .present-card > img {
-                height: 100%;
-                width: 100%;
-            }
-
-        </style>
         <img/>
         <div class={Quote(), "surface"}>
             <h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1>
