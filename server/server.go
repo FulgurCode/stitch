@@ -10,6 +10,9 @@ import (
 func Run(port string) {
 	var app = echo.New()
 
+	// add static files
+	app.Static("/static", "assets")
+
 	// echo routes
 	app.GET("/", handler.Home)
 	app.GET("/products", handler.Products)

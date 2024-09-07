@@ -7,14 +7,14 @@ tmp_dir = "tmp"
   bin = "./bin/cloth-shop-website"
   cmd = "make build"
   delay = 1000
-  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_dir = ["tmp", "vendor", "testdata"]
   exclude_file = []
   exclude_regex = ["_test.go",".*_templ.go"]
   exclude_unchanged = false
   follow_symlink = false
   full_bin = ""
   include_dir = []
-  include_ext = ["go", "tpl", "templ", "html"]
+  include_ext = ["go", "tpl", "templ", "html", "css", "js"]
   include_file = []
   kill_delay = "0s"
   log = "build-errors.log"
@@ -42,9 +42,9 @@ tmp_dir = "tmp"
   clean_on_exit = false
 
 [proxy]
-  app_port = 0
-  enabled = false
-  proxy_port = 0
+  enabled = true
+  proxy_port = 8090
+  app_port = 8000
 
 [screen]
   clear_on_rebuild = false
