@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/VAISHAKH-GK/cloth-shop-website/utils"
+	layouts "github.com/VAISHAKH-GK/cloth-shop-website/view"
 	"github.com/VAISHAKH-GK/cloth-shop-website/view/admin"
 	"github.com/VAISHAKH-GK/cloth-shop-website/view/user"
 	"github.com/labstack/echo/v4"
@@ -45,8 +46,20 @@ func AdminItem(c echo.Context) error { // Admin Item
 
 	return utils.Render(c, component)
 }
-func AdminOrders(c echo.Context) error { // Admin Item
+func AdminOrders(c echo.Context) error { // Admin Orders
 	var component = admin.AdminOrders()
+
+	return utils.Render(c, component)
+}
+func AdminSettings(c echo.Context) error { // Admin Settings
+	var component = admin.AdminSettings()
+
+	return utils.Render(c, component)
+}
+
+// Not Found
+func NotFound(c echo.Context) error {
+	var component = layouts.NotFound()
 
 	return utils.Render(c, component)
 }

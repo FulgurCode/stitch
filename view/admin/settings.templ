@@ -1,0 +1,35 @@
+package admin
+
+import (
+    "github.com/VAISHAKH-GK/cloth-shop-website/view"
+)
+
+templ AdminSettings() {
+        @layouts.Admin() {
+            <link rel="stylesheet" href="/static/styles/admin/settings.css"/>
+            @DashBoardSideBar()
+            <div class={Container(), innerScroll()}>
+                <div class="settings-container">
+                    <div>
+                        <img src="https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg"/>
+                        <span>
+                            <p>Homepage banner image</p>
+                            <button class="button-primary">Change image</button>
+                        </span>
+                    </div>
+                    <div>
+                        <p>Test setting</p>
+                        <button class="button-primary">toggle setting</button>
+                    </div>
+                    <div>
+                        <p>another setting</p>
+                        <button class="button-primary">Change</button>
+                    </div>
+                    <div>
+                        <p>another setting really long very very long test setting, another setting really long very very long test setting</p>
+                        <button class="button-primary">Change</button>
+                    </div>
+                </div>
+            </div>
+        }
+}
