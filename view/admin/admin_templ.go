@@ -118,7 +118,7 @@ func DashBoardSideBar() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style>\n        .dashboardsidebar{\n            background-color: var(--background);\n            z-index: 9;\n            display: block;\n            position: relative;\n            left: 0;\n            top: 0;\n            height: 100%;\n            width: 150px;\n\n            border-right: 1px solid var(--primary);\n\n            padding-inline: var(--padding);\n        }\n        .dashboardsidebar ul {\n            list-style-type: none;\n            padding: 0;\n        }\n        // .dashboardsidebar li {\n        //     list-style-type: none;\n        //     padding: 0;\n        // }\n        a {\n            color: inherit;\n        }\n\n        @media screen and (max-width: 800px){\n            .dashboardsidebar{\n                display: none;\n                position: absolute;\n                box-shadow: -15px 0 50px -5px var(--primary);\n            }\n        }\n    </style><div class=\"dashboardsidebar\" id=\"sidebar\"><div class=\"places\"><ul><li><a href=\"/admin/products\">Products</a></li><li><a href=\"/admin/orders\">Orders</a></li></ul></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/components/dashboardsidebar.css\"><div class=\"dashboardsidebar\" id=\"sidebar\"><div class=\"places\"><ul><li><a href=\"/admin/products\">Products</a></li><li><a href=\"/admin/orders\">Orders</a></li></ul></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

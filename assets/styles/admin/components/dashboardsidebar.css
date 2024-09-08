@@ -1,0 +1,33 @@
+.dashboardsidebar{
+    background-color: var(--background);
+    z-index: 9;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 150px;
+
+    border-right: 1px solid var(--primary);
+
+    padding-inline: var(--padding);
+}
+.dashboardsidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+/* .dashboardsidebar li {
+    list-style-type: none;
+    padding: 0;
+} */
+a {
+    color: inherit;
+}
+
+@media screen and (max-width: 800px){
+    .dashboardsidebar{
+        display: none;
+        position: absolute;
+        box-shadow: -15px 0 50px -5px var(--primary);
+    }
+}

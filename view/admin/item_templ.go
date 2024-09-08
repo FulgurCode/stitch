@@ -30,10 +30,6 @@ func AdminItem() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style>\n        .item-container{\n            padding: var(--padding);\n            width: 100%;\n        }\n        .item-container > .image{\n            width: 100%;\n            display: flex;\n            gap: 10px;\n\n            overflow-y: hidden;\n            overflow-x: auto;\n        }\n        .item-container > .image > *{\n            width: 150px;\n            aspect-ratio: 3/4;\n            border: 1px solid #ccc;\n        }\n        .item-container > .image > span > span{\n            height: 100%;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            position: relative;\n\n            font-size: 70px;\n            cursor: pointer;\n        }\n        .item-container > .image > span > span:hover{\n            background: #f0f0f0;\n        }\n\n        /* item stylesheet */\n        .size-group {\n            display: flex;\n            gap: 1rem;\n        }\n\n        .checkbox-button {\n            display: inline-block;\n            position: relative;\n\n        }\n\n        .checkbox-button input[type=\"checkbox\"] {\n            position: absolute;\n            opacity: 0;\n            cursor: pointer;\n        }\n\n        .checkbox-button label {\n            display: inline-block;\n            padding: 10px 20px;\n            border: 1px solid var(--primary);\n            border-radius: 0;\n            background-color: #fff;\n            color: #333;\n            cursor: pointer;\n            transition: all;\n        }\n\n        .checkbox-button input[type=\"checkbox\"]:checked + label {\n            background-color: var(--primary);\n            color: var(--text-surface);\n        }\n\n        .checkbox-button input[type=\"checkbox\"]:checked:hover + label {\n            background-color: var(--primary);\n            color: var(--text-surface);\n        }\n        .no-line-height{\n            line-height: 0;\n            margin-top: var(--padding-inner);\n        }\n        .description-container{\n            display: flex;\n            flex-direction: column;\n            // gap: 1rem;\n\n            width: 100%;\n        }\n        .description-container span{\n            display: flex;\n            flex-direction: column;\n            gap: 0.5rem;\n        }\n\n        textarea, input {\n            resize: none;\n            overflow: hidden;\n\n            border: 1px solid var(--primary);\n            text-indent: 1rem;\n\n            color: inherit;\n        }\n\n        /* Hide spin buttons for input type number */\n        input::-webkit-outer-spin-button,\n        input::-webkit-inner-spin-button {\n            -webkit-appearance: none;\n            margin: 0;\n        }input[type=number]{\n            -moz-appearance: textfield;\n        }\n\n        /* prevents whole body from overflowing */\n        .overflow, main{\n            overflow: hidden;\n        }\n\n    </style>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
 		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -46,6 +42,10 @@ func AdminItem() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/item.css\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			templ_7745c5c3_Err = DashBoardSideBar().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err

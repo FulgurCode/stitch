@@ -42,7 +42,7 @@ func Login() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style>\n            .container{\n                justify-content: center;\n                align-items: center;\n            }\n            .login-container{\n                display: flex;\n                justify-content: center;\n                align-items: center;\n                flex-direction: column;\n                width: min(95%, 400px);\n                padding-block: 2rem;\n\n                gap: 1rem;\n            }\n            .login-container > * {\n                width: calc(100% - var(--padding-inner));\n                box-sizing: border-box;\n                border: none;\n            }\n            .login-container > input{\n                text-indent: 10px;\n                color: var(--text);\n                font-family: inherit;\n            }\n        </style> ")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/login.css\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
