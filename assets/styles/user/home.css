@@ -4,9 +4,7 @@ h1, p{
 img{
     width: 100%;
     height: 70vh;
-
-    background-image: url("https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg");
-    background-size: cover;
+    object-fit: cover;
 }
 
 .present-card{

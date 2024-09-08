@@ -91,7 +91,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img src=\"https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
