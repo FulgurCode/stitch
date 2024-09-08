@@ -23,6 +23,9 @@ func Run(port string) {
 	app.GET("/admin/products", handler.AdminProducts)
 	app.GET("/admin/item", handler.AdminItem)
 	app.GET("/admin/orders", handler.AdminOrders)
+	app.GET("/admin/settings", handler.AdminSettings)
+
+	app.GET("/*", handler.NotFound)
 
 	log.Fatal(app.Start(":" + port))
 }
