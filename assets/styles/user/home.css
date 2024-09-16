@@ -10,6 +10,11 @@ img{
 .present-card{
     position: relative;
     padding: var(--padding);
+
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .present-card > div{
     position: relative;
@@ -24,4 +29,35 @@ img{
 .present-card > img {
     height: 100%;
     width: 100%;
+
+    max-width: 500px;
+}
+
+
+@media screen and (min-width: 800px) {
+    .present-card{
+        flex-direction: row;
+        max-width: unset;
+    }
+    .present-card > div{
+        top: 0;
+    }
+    .present-card > img {
+        min-width: 500px;
+    }
+
+    .present-card:nth-child(2){
+        flex-direction: row-reverse;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .present-card{
+        max-width: 1000px;
+    }
+    .present-card:first-child{
+        transform: translate(-5%, 0);
+    }
+    .present-card:nth-child(2){
+        transform: translate(5%, 0);
+    }
 }

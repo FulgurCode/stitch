@@ -9,25 +9,31 @@ css Quote() {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+    
 css Container() {
     flex: 1;
     display: flex;
     flex-direction: column;
 
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: scroll;
+    width: 100%;
+
 }
 
 templ Home() {
     @layouts.User() {
 		<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
-        <img src="https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg"/>
+        <img src="https://media.istockphoto.com/id/1174119261/photo/street-fashion-style-beautiful-sexy-woman-wearing-fashionable-spring-or-fall-clothes-outdoors.jpg?s=612x612&w=0&k=20&c=2F9YRSP6Tim1xPIPCPCoaOs7TNGBkL7Hu1Z_mPg4T1I="/>
         <div class={Quote(), "surface"}>
             <h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1>
             <a href="/products"><button class="button-secondary" style="width: max-content;">Shop all</button></a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <p style="max-width: 800px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. 
             Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo 
             condimentum feugiat.

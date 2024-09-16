@@ -32,7 +32,9 @@ html, body, .overflow {
     color: var(--text);
 
     overflow-x: hidden;
-}            
+}
+.overflow{ background-color: var(--primary);}         
+main{ background-color: var(--background);}         
 h1, h2, h3, h4 {
     font-weight: 400;
     color: var(--text-heading);
@@ -85,14 +87,27 @@ header > ul {
 main{
     flex: 1 0 auto;
     display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    overflow-x: scroll;
+    width: 100%;
 }
 
 footer{
     display: flex;
+    justify-content: center;
+}
+footer > div {
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    max-width: 1000px;
+    width: 100%;
 }
-footer > .policies > ul {
+footer > div > .policies > ul {
     padding: 0;
     list-style-type: none;
 }
@@ -105,6 +120,7 @@ footer > .policies > ul {
     gap: 0;
 
     margin-bottom: 1rem;
+    box-sizing: border-box;
 }
 .product-card > img {
     height: 90%;
@@ -131,4 +147,8 @@ footer > .policies > ul {
 
     padding: var(--padding);
     padding-block: 30px;
+
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
 }
