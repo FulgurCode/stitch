@@ -4,7 +4,7 @@ tmp_dir = "tmp"
 
 [build]
   args_bin = []
-  bin = "./bin/cloth-shop-website"
+  bin = "./bin/benster-website"
   cmd = "make build"
   delay = 1000
   exclude_dir = ["tmp", "vendor", "testdata"]

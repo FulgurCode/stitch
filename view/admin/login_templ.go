@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"github.com/VAISHAKH-GK/cloth-shop-website/view"
+	"github.com/VAISHAKH-GK/benster-website/view"
 )
 
 func Login() templ.Component {

@@ -1,4 +1,4 @@
-module github.com/VAISHAKH-GK/cloth-shop-website
+module github.com/VAISHAKH-GK/benster-website
 
 go 1.23.0
 

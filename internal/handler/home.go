@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/VAISHAKH-GK/cloth-shop-website/utils"
-	layouts "github.com/VAISHAKH-GK/cloth-shop-website/view"
-	"github.com/VAISHAKH-GK/cloth-shop-website/view/admin"
-	"github.com/VAISHAKH-GK/cloth-shop-website/view/user"
+	"github.com/VAISHAKH-GK/benster-website/utils"
+	layouts "github.com/VAISHAKH-GK/benster-website/view"
+	"github.com/VAISHAKH-GK/benster-website/view/admin"
+	"github.com/VAISHAKH-GK/benster-website/view/user"
 	"github.com/labstack/echo/v4"
 )
 

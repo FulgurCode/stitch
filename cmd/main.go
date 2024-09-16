@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/VAISHAKH-GK/cloth-shop-website/server"
+	"github.com/VAISHAKH-GK/benster-website/server"
 	"github.com/joho/godotenv"
 )
 

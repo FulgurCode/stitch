@@ -1,6 +1,6 @@
 build:
 	@templ generate
-	@go build -o ./bin/cloth-shop-website ./cmd/main.go
+	@go build -o ./bin/benster-website ./cmd/main.go
 
 run: build
-	@./bin/cloth-shop-website
+	@./bin/benster-website

@@ -3,7 +3,7 @@ package server
 import (
 	"log"
 
-	"github.com/VAISHAKH-GK/cloth-shop-website/internal/handler"
+	"github.com/VAISHAKH-GK/benster-website/internal/handler"
 	"github.com/labstack/echo/v4"
 )
 
