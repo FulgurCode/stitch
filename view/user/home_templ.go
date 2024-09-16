@@ -33,7 +33,7 @@ func Container() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder.WriteString(`display:flex;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`flex-direction:column;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`align-items:center;`)
-	templ_7745c5c3_CSSBuilder.WriteString(`overflow-x:scroll;`)
+	templ_7745c5c3_CSSBuilder.WriteString(`overflow-x:hidden;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`width:100%;`)
 	templ_7745c5c3_CSSID := templ.CSSID(`Container`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{

@@ -49,9 +49,25 @@
     gap: 1rem;
 
     width: calc(100% - var(--padding-inner));
+    max-width: 500px;
 }
 .description-container span{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+
+@media screen and (min-width: 800px) {
+    main > div{
+        display: space-between;
+        flex-direction: row !important;
+        gap: 2rem;
+    
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding: var(--padding);
+        padding-top: var(--padding-inner);
+        box-sizing: border-box;
+    }
 }
