@@ -1,11 +1,11 @@
 package admin
 
 import (
-    "github.com/VAISHAKH-GK/benster-website/view"
+    "github.com/VAISHAKH-GK/benster-website/view/layout"
 )
 
 templ AdminSettings() {
-        @layouts.Admin() {
+        @layout.Admin() {
             <link rel="stylesheet" href="/static/styles/admin/settings.css"/>
             @DashBoardSideBar()
             <div class={Container(), innerScroll()}>

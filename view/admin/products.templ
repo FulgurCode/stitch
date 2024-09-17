@@ -1,7 +1,7 @@
 package admin
 
 import (
-    "github.com/VAISHAKH-GK/benster-website/view"
+    "github.com/VAISHAKH-GK/benster-website/view/layout"
 )
 
 css innerScroll() {
@@ -11,7 +11,7 @@ css innerScroll() {
 }
 
 templ AdminProducts() {
-    @layouts.Admin() {
+    @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/products.css"/>
         @DashBoardSideBar()
         <div class={Container(), innerScroll()}>

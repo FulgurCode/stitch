@@ -1,11 +1,11 @@
 package user
 
 import (
-    "github.com/VAISHAKH-GK/benster-website/view"
+    "github.com/VAISHAKH-GK/benster-website/view/layout"
 )
 
 templ Products() {
-    @layouts.User() {
+    @layout.User() {
         <div class={Container()}>
         <div class="product-container">
             @ProductCard("hola", "2,000.00", "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg")

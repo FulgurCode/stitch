@@ -1,11 +1,11 @@
 package admin
 
 import (
-    "github.com/VAISHAKH-GK/benster-website/view"
+    "github.com/VAISHAKH-GK/benster-website/view/layout"
 )
 
 templ Login() {
-    @layouts.Admin() {
+    @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/login.css"/>
         <div class={Container(), "container"}>
             <div class="login-container surface">
