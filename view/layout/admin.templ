@@ -1,45 +1,33 @@
 package layout
 
 templ Admin(params ...string) {
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Shop</title> 
-            <meta charset="UTF-8" />
-            // <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-            
-            <link rel="stylesheet" href="/static/styles/admin/template.css" />
-        </head>
-        
-        <body>
-            <div class="overflow">
-            <header class="surface">
-                <button class="sidebar-btn" onclick="toggleSidebar()">
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="logo">
-                    <h1>LOGO</h1>
-                </div>
-            </header>
-            <main>{ children... }</main>
+  @Layout() {
+    <body>
+        <link rel="stylesheet" href="/static/styles/admin/template.css" />
+        <div class="overflow">
+        <header class="surface">
+            <button class="sidebar-btn" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo">
+                <h1>LOGO</h1>
             </div>
-        </body>
-        <script>
-            function toggleSidebar() {
-                let sidebar = document.getElementById("sidebar");
-                let computedStyle = window.getComputedStyle(sidebar);
-                
-                if (computedStyle.display === "none") {
-                    sidebar.style.display = "block";
-                } else {
-                    sidebar.style.display = "none";
-                }
+        </header>
+        <main>{ children... }</main>
+        </div>
+    </body>
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            let computedStyle = window.getComputedStyle(sidebar);
+
+            if (computedStyle.display === "none") {
+                sidebar.style.display = "block";
+            } else {
+                sidebar.style.display = "none";
             }
-        </script>
-    </html> 
+        }
+    </script>
+  }
 }
