@@ -30,10 +30,109 @@ img{
     aspect-ratio: 1;
     height: 70px;
     max-height: 100%;
-    object-fit: scale-down;
+    object-fit: contain;
 }
 
 button{
     min-width: fit-content;
     margin-left: auto;
+}
+
+dialog{
+    border: none;
+    width: calc(100vw - 30px * 2);
+    max-width: 700px;
+}
+dialog[open]{
+    display: flex;
+    padding: calc(var(--padding-inner)/2);
+    min-height: max-content;
+    gap: 1rem;
+
+}
+dialog > div,
+dialog > div > span{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    min-height: max-content;
+    gap: 1rem;
+}
+
+dialog > div > div{
+    max-width: min-content;
+    display: flex;
+    /* padding-right: calc(var(--padding) * 1.7); */
+    align-items: flex-end;
+}
+dialog button {
+    max-height: 4rem;
+}
+
+dialog > div > div > img{
+    max-height: 100px;
+    max-width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    object-fit: contain;
+    aspect-ratio: 1;
+
+}
+dialog > button{
+    position: absolute;
+    right: calc(var(--padding-inner)/2);
+    top: calc(var(--padding-inner)/2);
+    
+    aspect-ratio: 1;
+    border: none;
+    width: 20px;
+    cursor: pointer;
+    background-color: var(--primary);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+dialog > button::before,
+dialog > button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 2px;
+    background-color: var(--background);
+    transform-origin: center;
+}
+
+dialog > button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+dialog > button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+textarea{
+    resize: none;
+
+    border: 1px solid var(--primary);
+    text-indent: 1rem;
+
+    color: inherit;
+    
+    height: auto;
+    min-height: 200px; /* Adjust as needed */
+    max-height: 500px; /* Optional */
+
+    padding-inline: var(--padding);
+}
+
+dialog input[type="text"]{
+    font-weight: 600;
+    font-size: 23px;
+    color: var(--text);
+
+    padding-inline: var(--padding);
 }
