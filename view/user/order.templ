@@ -1,0 +1,38 @@
+package user
+
+import (
+    "github.com/VAISHAKH-GK/benster-website/view/layout"
+)
+
+
+templ Order() {
+    @layout.User() {
+        <link rel="stylesheet" href="/static/styles/user/order.css">
+        <div class={Container()}>
+            <h1>Place Order</h1>
+            <div class="order-container">
+                <div class="product-card">
+                    <img src="https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg">
+                    <div>
+                        <p class="name">hola</p>
+                        <h3 class="price">&#8360;. 2,000.00</h3>
+                    </div>
+                </div>
+                <form>
+                    <input type="text" name="name" placeholder="Name"/>
+                    <input type="text" name="last-name" placeholder="Last name"/>
+                    <textarea name="adress" placeholder="Adress"></textarea>
+                    <input type="text" name="house-no" placeholder="House no. or House name"/>
+                    <input type="text" name="pin-code" placeholder="Pin code"/>
+                    <input type="text" name="city" placeholder="City"/>
+                    <input type="tel" name="number" placeholder="Phone no."/>
+                    <select name="delivery-method" placeholder="Delivery method">
+                        <option value="cash-on-delivery">Cash on delivery</option>
+                        <option value="credit-card">Credit card</option>
+                    </select>
+                    <input type="submit" value="Place Order" class="button-primary" style="margin-top: 2rem;"/>
+                </form>
+            </div>
+        </div>
+    }
+}

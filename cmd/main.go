@@ -17,6 +17,6 @@ func main() {
 	}
 
 	mysql.Connect()
-	
+
 	server.Run(port)
 }

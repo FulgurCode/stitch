@@ -64,8 +64,20 @@ h1 {
     font-size: 1.05rem;
 }
 
-button:hover{
+button:hover, input[type="submit"]:hover {
     opacity: .6;
+}
+
+select{
+    border: 1px solid var(--primary);
+    background: none;
+    color: inherit;
+    padding: var(--padding);
+
+}
+
+input[type="text"], input[type="tel"], textarea {
+    text-indent: 1rem;;
 }
 
 header{
@@ -151,4 +163,9 @@ footer > div > .policies > ul {
     width: 100%;
     max-width: 1000px;
     box-sizing: border-box;
+}
+
+dialog[open] {
+    display: flex;
+    border: none;
 }

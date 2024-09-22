@@ -28,6 +28,7 @@ func Run(port string) {
 	app.GET("/", handler.Home)
 	app.GET("/products", handler.Products)
 	app.GET("/item", handler.Item)
+	app.GET("/order", handler.Order)
 
 	app.GET("/admin", handler.Admin)
 

@@ -1,0 +1,51 @@
+form {
+    padding-bottom: var(--padding-inner);
+    box-sizing: border-box;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    max-width: 600px;
+
+    gap: 1rem;
+}
+
+form > input, form > textarea {
+    border: 1px solid var(--primary);
+    padding: 0.5rem;
+    resize: none;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: var(--padding);
+    padding-bottom: var(--padding-inner);
+    box-sizing: border-box;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card {
+    width: 100%;
+    max-width: 550px;
+}
+.product-card > div{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+    .order-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .order-container > * {
+        flex: 1;
+    }
+}
