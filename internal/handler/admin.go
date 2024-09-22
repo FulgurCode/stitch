@@ -51,6 +51,13 @@ func AdminLoginPost(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin")
 }
 
+// Admin Logout
+func AdminLogout(c echo.Context) error {
+	utils.DeleteSession(c, "auth")
+
+	return c.Redirect(http.StatusSeeOther, "/admin/login")
+}
+
 // Admin Products Handler
 func AdminProducts(c echo.Context) error {
 	var component = admin.AdminProducts()

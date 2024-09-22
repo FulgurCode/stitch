@@ -30,8 +30,11 @@ func Run(port string) {
 	app.GET("/item", handler.Item)
 
 	app.GET("/admin", handler.Admin)
-	app.POST("/admin/login", handler.AdminLoginPost)
+
 	app.GET("/admin/login", handler.AdminLogin)
+	app.POST("/admin/login", handler.AdminLoginPost)
+	app.GET("/admin/logout", handler.AdminLogout)
+
 	app.GET("/admin/products", handler.AdminProducts)
 	app.GET("/admin/item", handler.AdminItem)
 	app.GET("/admin/orders", handler.AdminOrders)
