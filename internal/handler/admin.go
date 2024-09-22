@@ -23,7 +23,7 @@ func AdminLogin(c echo.Context) error {
 	var component = admin.Login()
 	var loggedIn = utils.GetSessionValue(c, "auth", "isLoggedIn")
 	if loggedIn != nil && loggedIn.(bool) {
-		return c.Redirect(http.StatusPermanentRedirect, "/admin")
+		return c.Redirect(http.StatusSeeOther, "/admin")
 	}
 
 	return utils.Render(c, component)
@@ -48,7 +48,7 @@ func AdminLoginPost(c echo.Context) error {
 	utils.AddSessionValue(c, "auth", "username", user.Username)
 	utils.AddSessionValue(c, "auth", "isLoggedIn", true)
 
-	return c.Redirect(http.StatusMovedPermanently, "/admin")
+	return c.Redirect(http.StatusSeeOther, "/admin")
 }
 
 // Admin Products Handler

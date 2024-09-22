@@ -1,8 +1,6 @@
 package utils
 
 import (
-	"time"
-
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
@@ -19,7 +17,7 @@ func CreateSession(c echo.Context, name string) {
 			Path:     "/",
 			HttpOnly: true,
 			Secure:   true,
-			MaxAge:   int(time.Hour) * 24 * 365,
+			MaxAge:   60 * 60 * 24 * 365,
 		}
 	}
 }
