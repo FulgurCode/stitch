@@ -21,6 +21,10 @@ func Admin(c echo.Context) error {
 // Admin Login Handler
 func AdminLogin(c echo.Context) error {
 	var component = admin.Login()
+	var loggedIn = utils.GetSessionValue(c, "auth", "isLoggedIn")
+	if loggedIn != nil && loggedIn.(bool) {
+		return c.Redirect(http.StatusPermanentRedirect, "/admin")
+	}
 
 	return utils.Render(c, component)
 }
@@ -33,14 +37,18 @@ func AdminLoginPost(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	err, user := mysql.GetAdminUser(body.Username)
+	user, err := mysql.GetAdminUser(body.Username)
 	var correct = utils.BcryptCompare(body.Password, user.Password)
 
-	if correct {
-		return c.Redirect(http.StatusMovedPermanently, "/admin")
+	if !correct {
+		return utils.Render(c, admin.Login())
 	}
 
-	return utils.Render(c, admin.Login())
+	utils.CreateSession(c, "auth")
+	utils.AddSessionValue(c, "auth", "username", user.Username)
+	utils.AddSessionValue(c, "auth", "isLoggedIn", true)
+
+	return c.Redirect(http.StatusMovedPermanently, "/admin")
 }
 
 // Admin Products Handler
