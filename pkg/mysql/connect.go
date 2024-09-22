@@ -3,7 +3,6 @@ package mysql
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -19,9 +18,11 @@ func Connect() {
 	// Creating connection uri and making connection to database
 	var connectionUri = fmt.Sprintf("%s:%s@/%s",DB_USER, DB_PASS, DB_NAME)
 	var db, err = sql.Open("mysql", connectionUri)
+	err = db.Ping()
 
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("FAILED MYSQL CONNECTION:"  + err.Error())
+		return
 	}
 
 	Db = db
