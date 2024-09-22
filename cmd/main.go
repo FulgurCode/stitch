@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/VAISHAKH-GK/benster-website/pkg/mysql"
-	"github.com/VAISHAKH-GK/benster-website/server"
+	"github.com/FulgurCode/stitch/pkg/mysql"
+	"github.com/FulgurCode/stitch/server"
 	"github.com/joho/godotenv"
 )
 

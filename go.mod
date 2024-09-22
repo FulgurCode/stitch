@@ -1,4 +1,4 @@
-module github.com/VAISHAKH-GK/benster-website
+module github.com/FulgurCode/stitch
 
 go 1.23.0
 

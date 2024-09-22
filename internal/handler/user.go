@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/VAISHAKH-GK/benster-website/utils"
-	"github.com/VAISHAKH-GK/benster-website/view/layout"
-	"github.com/VAISHAKH-GK/benster-website/view/user"
+	"github.com/FulgurCode/stitch/utils"
+	"github.com/FulgurCode/stitch/view/layout"
+	"github.com/FulgurCode/stitch/view/user"
 	"github.com/labstack/echo/v4"
 )
 

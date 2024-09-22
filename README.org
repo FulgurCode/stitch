@@ -26,5 +26,5 @@ Website for cloth shop to order dress online.
 - Github: [[https://github.vaishakhgk.com][VAISHAKH-GK]]
 
 ***** Shreyas S K
-- Email: [[mailto:shreyassk.dev+benster-website@gmail.com][shreayassk.dev@gmail.com]]
+- Email: [[mailto:shreyassk.dev+stitch@gmail.com][shreayassk.dev@gmail.com]]
 - Github: [[https://github.com/shreyasskdev/][Shreyas S K]]

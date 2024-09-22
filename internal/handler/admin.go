@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/VAISHAKH-GK/benster-website/models"
-	"github.com/VAISHAKH-GK/benster-website/pkg/mysql"
-	"github.com/VAISHAKH-GK/benster-website/utils"
-	"github.com/VAISHAKH-GK/benster-website/view/admin"
+	"github.com/FulgurCode/stitch/models"
+	"github.com/FulgurCode/stitch/pkg/mysql"
+	"github.com/FulgurCode/stitch/utils"
+	"github.com/FulgurCode/stitch/view/admin"
 	"github.com/labstack/echo/v4"
 )
 

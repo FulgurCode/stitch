@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/VAISHAKH-GK/benster-website/internal/handler"
+	"github.com/FulgurCode/stitch/internal/handler"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"

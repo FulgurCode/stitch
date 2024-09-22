@@ -3,7 +3,7 @@ package mysql
 import (
 	"fmt"
 
-	"github.com/VAISHAKH-GK/benster-website/models"
+	"github.com/FulgurCode/stitch/models"
 )
 
 // Getting admin user with username
