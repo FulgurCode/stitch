@@ -2,8 +2,8 @@ package handler
 
 import (
 	"github.com/VAISHAKH-GK/benster-website/utils"
-	"github.com/VAISHAKH-GK/benster-website/view/user"
 	"github.com/VAISHAKH-GK/benster-website/view/layout"
+	"github.com/VAISHAKH-GK/benster-website/view/user"
 	"github.com/labstack/echo/v4"
 )
 
@@ -24,6 +24,13 @@ func Products(c echo.Context) error {
 // Item page handler
 func Item(c echo.Context) error {
 	var component = user.Item()
+
+	return utils.Render(c, component)
+}
+
+// Item page handler
+func Order(c echo.Context) error {
+	var component = user.Order()
 
 	return utils.Render(c, component)
 }

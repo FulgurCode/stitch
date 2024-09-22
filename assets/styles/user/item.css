@@ -57,6 +57,21 @@
     gap: 0.5rem;
 }
 
+dialog[open] {
+    min-width: 90%;
+    max-width: 600px;
+
+    height: 300px;
+    
+    /* justify-content: center;
+    align-items: center; */
+    position: relative;
+}
+dialog > img{
+    max-width: 100%;
+    min-width: 100%;
+}
+
 
 @media screen and (min-width: 800px) {
     main > div{

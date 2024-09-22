@@ -10,7 +10,6 @@ templ Item() {
         <div class={Container()}>
 
         @ImageCarousel()
-
         <div class="description-container">
             <span style="gap: 0">
                 <p class="no-line-height">Shop name</p>
@@ -19,7 +18,10 @@ templ Item() {
             <span style="gap: 2px;">
                 <p style="font-weight: 600;" class="no-line-height">&#8360;. 5000.00</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</p>
-                <p class="no-line-height">Size:</p>
+                <p class="no-line-height" onclick={clothingSizeDialog()}>
+                    Size: 
+                    // <button>help</button>
+                </p>
             </span>
             <div class="size-group">
                 <div class="radio-button">
@@ -45,9 +47,23 @@ templ Item() {
             </span>
             <br>
         </div>
-
         </div>
+        <dialog id="clothingSizeDialog">
+            <table>
+                <tr> <th>AREA</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th> </tr>
+                <tr> <td>A - Chest</td><td>45.0</td><td>48.0</td><td>51.0</td><td>54.0</td><td>57.0</td> </tr>
+                <tr> <td>A - Front length</td><td>63.0</td><td>64.5</td><td>66.0</td><td>67.5</td><td>69.0</td> </tr>
+                <tr> <td>A - Sleeve length</td><td>21.0</td><td>22.0</td><td>23.0</td><td>24.0</td><td>25.0</td> </tr>
+                <tr> <td>A - Back width</td><td>37.5</td><td>40.0</td><td>42.5</td><td>45.0</td><td>47.5</td> </tr>
+                <tr> <td>A - Arm width</td><td>45.0</td><td>48.0</td><td>51.0</td><td>54.0</td><td>57.0</td> </tr>
+            </table>
+        </dialog>
     }
+}
+
+script clothingSizeDialog() {
+    let dialog = document.getElementById("clothingSizeDialog");
+    dialog.showModal();
 }
 
 templ ImageCarousel() {
