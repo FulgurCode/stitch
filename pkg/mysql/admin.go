@@ -22,3 +22,12 @@ func GetAdminUser(username string) (models.Admin, error) {
 
 	return admin, err
 }
+
+// Update admin password
+func UpdateAdminPassword(admin models.Admin) error {
+	var query = fmt.Sprintf("UPDATE admin set password = '%s' WHERE username = '%s';", admin.Password, admin.Username)
+
+	var _, err = Db.Exec(query)
+
+	return err
+}

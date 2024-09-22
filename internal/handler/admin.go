@@ -58,6 +58,24 @@ func AdminLogout(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/login")
 }
 
+func AdminChangePassword(c echo.Context) error {
+	var admin models.Admin
+	var err = c.Bind(&admin)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	admin.Username = utils.GetSessionValue(c,"auth","username").(string)
+	admin.Password= utils.BcryptGenerateHash(admin.Password)
+
+	err = mysql.UpdateAdminPassword(admin)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin")
+}
+
 // Admin Products Handler
 func AdminProducts(c echo.Context) error {
 	var component = admin.AdminProducts()
