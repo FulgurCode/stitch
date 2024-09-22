@@ -48,6 +48,11 @@ func AdminLoginPost(c echo.Context) error {
 	utils.AddSessionValue(c, "auth", "username", user.Username)
 	utils.AddSessionValue(c, "auth", "isLoggedIn", true)
 
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin")
+		return c.NoContent(200)
+	}
+
 	return c.Redirect(http.StatusSeeOther, "/admin")
 }
 
@@ -65,8 +70,8 @@ func AdminChangePassword(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	admin.Username = utils.GetSessionValue(c,"auth","username").(string)
-	admin.Password= utils.BcryptGenerateHash(admin.Password)
+	admin.Username = utils.GetSessionValue(c, "auth", "username").(string)
+	admin.Password = utils.BcryptGenerateHash(admin.Password)
 
 	err = mysql.UpdateAdminPassword(admin)
 	if err != nil {
