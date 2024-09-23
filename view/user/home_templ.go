@@ -116,7 +116,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1><a href=\"/products\"><button class=\"button-secondary\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor.  Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo  condimentum feugiat.</p></div><div class=\"product-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1><a href=\"/products\" hx-boost=\"true\"><button class=\"button-secondary\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor.  Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo  condimentum feugiat.</p></div><div class=\"product-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -152,7 +152,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><a href=\"/products\"><button class=\"button-primary\" style=\"margin-bottom: 5rem; width: max-content;\">View all ></button></a><div class=\"present-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><a href=\"/products\" hx-boost=\"true\"><button class=\"button-primary\" style=\"margin-bottom: 5rem; width: max-content;\">View all ></button></a><div class=\"present-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -196,7 +196,7 @@ func ProductCard(name string, price string, imageurl string) templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"/item\" style=\"color: inherit; text-decoration: none\"><div class=\"product-card\"><img src=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"/item\" hx-boost=\"true\" style=\"color: inherit; text-decoration: none\"><div class=\"product-card\"><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -309,7 +309,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><button class=\"button-secondary\" style=\"margin: 1rem;\">Explore</button></a></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-boost=\"true\"><button class=\"button-secondary\" style=\"margin: 1rem;\">Explore</button></a></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

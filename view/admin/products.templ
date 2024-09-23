@@ -53,7 +53,7 @@ templ ProductsCard(name string, price string, description string, imageUrl strin
             <p>{description}</p>
         </div>
         <div>
-            <a href="/admin/item"><button class="button-primary">Edit</button></a>
+            <a href="/admin/item" hx-boost="true"><button class="button-primary">Edit</button></a>
             <button class="button-secondary">Delete</button>
         </div>
     </div>

@@ -204,7 +204,7 @@ func ProductsCard(name string, price string, description string, imageUrl string
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div><div><a href=\"/admin/item\"><button class=\"button-primary\">Edit</button></a> <button class=\"button-secondary\">Delete</button></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div><div><a href=\"/admin/item\" hx-boost=\"true\"><button class=\"button-primary\">Edit</button></a> <button class=\"button-secondary\">Delete</button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
