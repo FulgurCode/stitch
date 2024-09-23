@@ -23,12 +23,18 @@ func CreateAdminUser() {
 
 // Create tables if not exist already
 func createTables() {
-	var _, err = Db.Exec("CREATE TABLE IF NOT EXISTS admin(id uuid, username VARCHAR(20),password CHAR(60));")
-
+	var _, err = Db.Exec("CREATE TABLE IF NOT EXISTS admin(id uuid PRIMARY KEY, username VARCHAR(20),password CHAR(60));")
 	if err != nil {
 		log.Fatal(err)
 	} else {
-		fmt.Println("Table creation success")
+		fmt.Println("Admin Table creation success")
+	}
+
+	_, err = Db.Exec("CREATE TABLE IF NOT EXISTS product(id uuid PRIMARY KEY, name VARCHAR(100), category CHAR(100), price INT,description text );")
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Product Table creation success")
 	}
 
 	// Get current number of admin users

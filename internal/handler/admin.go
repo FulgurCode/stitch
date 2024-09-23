@@ -88,6 +88,24 @@ func AdminProducts(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+// Add Product POST
+func AddProduct(c echo.Context) error {
+	var product models.Product
+	c.Bind(&product)
+
+	var err = mysql.AddProduct(product)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/products")
+		return c.NoContent(200)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin/products")
+}
+
 // Admin Item Handler
 func AdminItem(c echo.Context) error {
 	var component = admin.AdminItem()
