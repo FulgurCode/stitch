@@ -9,10 +9,13 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"strconv"
+
+	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
-func Products() templ.Component {
+func Products(products []models.Product) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -64,69 +67,11 @@ func Products() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = ProductCard("hola", "2,000.00", "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("big clothes", "5,000.00", "https://i.pinimg.com/736x/ab/be/f9/abbef9006110279c7a0d65f27c16d95f.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("small clothes", "6,000.00", "https://assets.vogue.com/photos/5891f3b77edfa70512d68046/master/w_1600%2Cc_limit/50-shades-grey-outfits_01.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("average clothes", "3,000.00", "https://m.media-amazon.com/images/I/51SWtvNOHDL._AC_UY1100_.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("nope", "2,000.00", "https://i.pinimg.com/236x/00/b5/7f/00b57f3167d4461e407bb1153e37684a.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Lorem", "2,000.00", "https://i.pinimg.com/474x/1d/bd/b9/1dbdb9ac262bdad527d0c1c6d4733616.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Ipsum", "4,000.00", "https://i.pinimg.com/474x/d2/20/52/d22052bb9c7cb502a0307c40cefb7603.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Yaaaa", "1,500.00", "https://i.pinimg.com/736x/06/86/83/0686839d7510a3934c637a9cc844c246.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("hola", "2,000.00", "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("big clothes", "5,000.00", "https://i.pinimg.com/736x/ab/be/f9/abbef9006110279c7a0d65f27c16d95f.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("small clothes", "6,000.00", "https://assets.vogue.com/photos/5891f3b77edfa70512d68046/master/w_1600%2Cc_limit/50-shades-grey-outfits_01.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("average clothes", "3,000.00", "https://m.media-amazon.com/images/I/51SWtvNOHDL._AC_UY1100_.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("nope", "2,000.00", "https://i.pinimg.com/236x/00/b5/7f/00b57f3167d4461e407bb1153e37684a.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Lorem", "2,000.00", "https://i.pinimg.com/474x/1d/bd/b9/1dbdb9ac262bdad527d0c1c6d4733616.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Ipsum", "4,000.00", "https://i.pinimg.com/474x/d2/20/52/d22052bb9c7cb502a0307c40cefb7603.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductCard("Yaaaa", "1,500.00", "https://i.pinimg.com/736x/06/86/83/0686839d7510a3934c637a9cc844c246.jpg").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			for _, product := range products {
+				templ_7745c5c3_Err = ProductCard(product.Name, strconv.Itoa(product.Price), "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg").Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
 			if templ_7745c5c3_Err != nil {

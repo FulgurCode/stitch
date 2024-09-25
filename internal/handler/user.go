@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/FulgurCode/stitch/pkg/mysql"
 	"github.com/FulgurCode/stitch/utils"
 	"github.com/FulgurCode/stitch/view/layout"
 	"github.com/FulgurCode/stitch/view/user"
@@ -16,7 +17,8 @@ func Home(c echo.Context) error {
 
 // Product page handler
 func Products(c echo.Context) error {
-	var component = user.Products()
+	var products, _ = mysql.GetProducts()
+	var component = user.Products(products)
 
 	return utils.Render(c, component)
 }
