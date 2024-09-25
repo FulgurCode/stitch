@@ -1,7 +1,10 @@
 package admin
 
 import (
+    "strconv"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
 css innerScroll() {
@@ -10,44 +13,31 @@ css innerScroll() {
     overflow-y: auto;
 }
 
-templ AdminProducts() {
+templ AdminProducts(products []models.Product) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/products.css"/>
         @DashBoardSideBar()
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start">Products</h1>
             <div class="products-container">
-                @ProductsCard("test",
-                    "2000.00",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-                    "https://picsum.photos/100/150",
-                )
-                @ProductsCard("test",
-                    "2000.00",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-                    "https://picsum.photos/110/150",
-                )
-                @ProductsCard("test",
-                    "2000.00",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-                    "https://picsum.photos/110/150",
-                )
-                @ProductsCard("test",
-                    "2000.00",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-                    "https://picsum.photos/110/150",
-                )
+                for _, product := range products {
+                    @ProductsCard(product.Name,
+                        product.Price,
+                        product.Description,
+                        "https://picsum.photos/100/150",
+                    )
+                }
             </div>
         </div>
     }
 }
 
-templ ProductsCard(name string, price string, description string, imageUrl string) {
+templ ProductsCard(name string, price int, description string, imageUrl string) {
     <div class="products">
         <img src={imageUrl}/>
         <div>
             Product name: {name}<br/>
-            Price: &#8360;. {price}
+            Price: &#8360;. {strconv.Itoa(price)}
         </div>
         <div class="description">
             <p>{description}</p>

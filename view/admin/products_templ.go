@@ -9,6 +9,9 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"strconv"
+
+	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
@@ -24,7 +27,7 @@ func innerScroll() templ.CSSClass {
 	}
 }
 
-func AdminProducts() templ.Component {
+func AdminProducts(products []models.Product) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -88,37 +91,15 @@ func AdminProducts() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = ProductsCard("test",
-				"2000.00",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-				"https://picsum.photos/100/150",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductsCard("test",
-				"2000.00",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-				"https://picsum.photos/110/150",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductsCard("test",
-				"2000.00",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-				"https://picsum.photos/110/150",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = ProductsCard("test",
-				"2000.00",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. asfjh djfn aksdb. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl.",
-				"https://picsum.photos/110/150",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
+			for _, product := range products {
+				templ_7745c5c3_Err = ProductsCard(product.Name,
+					product.Price,
+					product.Description,
+					"https://picsum.photos/100/150",
+				).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
 			if templ_7745c5c3_Err != nil {
@@ -134,7 +115,7 @@ func AdminProducts() templ.Component {
 	})
 }
 
-func ProductsCard(name string, price string, description string, imageUrl string) templ.Component {
+func ProductsCard(name string, price int, description string, imageUrl string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -159,7 +140,7 @@ func ProductsCard(name string, price string, description string, imageUrl string
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 47, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 37, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -172,7 +153,7 @@ func ProductsCard(name string, price string, description string, imageUrl string
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 49, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 39, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -183,9 +164,9 @@ func ProductsCard(name string, price string, description string, imageUrl string
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(price)
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 50, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 40, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -198,7 +179,7 @@ func ProductsCard(name string, price string, description string, imageUrl string
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 53, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 43, Col: 27}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {

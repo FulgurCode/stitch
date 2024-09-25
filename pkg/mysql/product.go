@@ -13,3 +13,22 @@ func AddProduct(product models.Product) error {
 
 	return err
 }
+
+func GetProducts() ([]models.Product, error) {
+	var products []models.Product
+	var query = fmt.Sprintf("SELECT name,category,price,description FROM product;")
+
+	var result, err = Db.Query(query)
+	if err != nil {
+		return products, err
+	}
+
+	for result.Next() {
+		var p models.Product
+		result.Scan(&p.Name, &p.Category, &p.Price, &p.Description)
+
+		products = append(products, p)
+	}
+
+	return products, err
+}

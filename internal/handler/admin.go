@@ -83,7 +83,14 @@ func AdminChangePassword(c echo.Context) error {
 
 // Admin Products Handler
 func AdminProducts(c echo.Context) error {
-	var component = admin.AdminProducts()
+	var products, err = mysql.GetProducts()
+	if err != nil {
+		var component = admin.AdminProducts([]models.Product{})
+
+		return utils.Render(c, component)
+	}
+
+	var component = admin.AdminProducts(products)
 
 	return utils.Render(c, component)
 }
