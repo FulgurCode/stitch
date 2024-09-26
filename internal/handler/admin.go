@@ -63,6 +63,11 @@ func AdminLogout(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/login")
 }
 
+func AdminChangePasswordGet(c echo.Context) error {
+	var component = admin.AdminChangePassword()
+
+	return utils.Render(c, component)
+}
 func AdminChangePassword(c echo.Context) error {
 	var admin models.Admin
 	var err = c.Bind(&admin)
