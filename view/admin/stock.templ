@@ -1,0 +1,65 @@
+package admin
+
+import (
+    "strconv"
+
+    "github.com/FulgurCode/stitch/view/layout"
+    // "github.com/FulgurCode/stitch/models"
+)
+
+templ AdminStock() {
+    @layout.Admin() {
+        <link rel="stylesheet" href="/static/styles/admin/products.css"/>
+        <link rel="stylesheet" href="/static/styles/admin/stock.css"/>
+        @DashBoardSideBar()
+        <dialog>
+            <form name="form">
+            <input name="stock" type="number" min="0"/>
+            <div>
+                <button class="button-primary" onclick={closeDialogStock()}>Save</button>
+                <button class="button-secondary" onclick={closeDialogStock()}>Cancel</button>
+            </div>
+            </form>
+        </dialog>
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start">Products</h1>
+            <div class="products-container" style="max-width: 700px;">
+                @ProductsCardStock("product.Name",
+                    2000,
+                    "product.Description",
+                    "https://picsum.photos/100/150",
+                )
+                @ProductsCardStock("product.Name",
+                    2000,
+                    "product.Description",
+                    "https://picsum.photos/101/150",
+                )
+            </div>
+        </div>
+    }
+}
+
+templ ProductsCardStock(name string, price int, description string, imageUrl string) {
+    <div class="products">
+        <img src={imageUrl} style="width: 120px; max-width: none; flex: none;"/>
+        <div style="flex: 0 0 220px;">
+            Product name: {name}<br/>
+            Price: &#8360;. {strconv.Itoa(price)}<br/>
+            <b style="font-size: 1rem; border: 1px solid var(--primary); padding: .5rem">Stock: 80</b>
+        </div>
+        <div style="flex: 1; min-width: max-content">
+            <button class="button-primary" onclick={showDialogStock("80")}>Edit Stock</button>
+            <button class="button-secondary">View Product</button>
+        </div>
+    </div>
+}
+
+script showDialogStock(productStock string){
+    dialog = document.querySelector("dialog");
+    form.stock.value = productStock;
+    dialog.showModal();
+}
+script closeDialogStock(){
+    dialog = document.querySelector("dialog");
+    dialog.close();
+}

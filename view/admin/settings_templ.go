@@ -84,7 +84,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialog("1"))
+			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("1"))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -92,7 +92,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var5 templ.ComponentScript = showDialog("1")
+			var templ_7745c5c3_Var5 templ.ComponentScript = showDialogSettings("1")
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5.Call)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -109,7 +109,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialog("2"))
+			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("2"))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -117,7 +117,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var6 templ.ComponentScript = showDialog("2")
+			var templ_7745c5c3_Var6 templ.ComponentScript = showDialogSettings("2")
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var6.Call)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -171,7 +171,7 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, closeDialog(id))
+		templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, closeDialogSettings(id))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -179,7 +179,7 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var9 templ.ComponentScript = closeDialog(id)
+		var templ_7745c5c3_Var9 templ.ComponentScript = closeDialogSettings(id)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var9.Call)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -231,25 +231,25 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 	})
 }
 
-func closeDialog(id string) templ.ComponentScript {
+func closeDialogSettings(id string) templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_closeDialog_8d59`,
-		Function: `function __templ_closeDialog_8d59(id){let dialog = document.getElementById(id);
+		Name: `__templ_closeDialogSettings_8d59`,
+		Function: `function __templ_closeDialogSettings_8d59(id){let dialog = document.getElementById(id);
     dialog.close();
     console.log("hello");
 }`,
-		Call:       templ.SafeScript(`__templ_closeDialog_8d59`, id),
-		CallInline: templ.SafeScriptInline(`__templ_closeDialog_8d59`, id),
+		Call:       templ.SafeScript(`__templ_closeDialogSettings_8d59`, id),
+		CallInline: templ.SafeScriptInline(`__templ_closeDialogSettings_8d59`, id),
 	}
 }
 
-func showDialog(id string) templ.ComponentScript {
+func showDialogSettings(id string) templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_showDialog_096b`,
-		Function: `function __templ_showDialog_096b(id){let dialog = document.getElementById(id);
+		Name: `__templ_showDialogSettings_096b`,
+		Function: `function __templ_showDialogSettings_096b(id){let dialog = document.getElementById(id);
     dialog.showModal();
 }`,
-		Call:       templ.SafeScript(`__templ_showDialog_096b`, id),
-		CallInline: templ.SafeScriptInline(`__templ_showDialog_096b`, id),
+		Call:       templ.SafeScript(`__templ_showDialogSettings_096b`, id),
+		CallInline: templ.SafeScriptInline(`__templ_showDialogSettings_096b`, id),
 	}
 }

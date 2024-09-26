@@ -132,9 +132,16 @@ func AdminItem(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
-// Admin Item Handler
+// Admin Orders Handler
 func AdminOrders(c echo.Context) error {
 	var component = admin.AdminOrders()
+
+	return utils.Render(c, component)
+}
+
+// Admin Stock Handler
+func AdminStock(c echo.Context) error {
+	var component = admin.AdminStock()
 
 	return utils.Render(c, component)
 }
