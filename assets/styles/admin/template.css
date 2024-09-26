@@ -16,6 +16,7 @@
     line-height: 2.7rem;
 
     outline: none;
+    box-sizing: border-box;
 }
 html, body, .overflow {
     margin: 0;
@@ -69,6 +70,11 @@ button:hover, input[type="submit"]:hover {
     opacity: .6;
 }
 
+input[type="text"], input[type="number"], input[type="tel"] {
+    border: 1px solid var(--primary);
+    padding-inline: var(--padding);
+}
+
 
 .sidebar-btn{
     position: absolute;
@@ -103,4 +109,14 @@ main{
     display: flex;
 
     position: relative;
+}
+
+dialog{
+    border: none;
+}
+dialog[open]{
+    display: flex;
+    padding: calc(var(--padding-inner)/2);
+    min-height: max-content;
+    gap: 1rem;
 }

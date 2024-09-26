@@ -23,7 +23,7 @@ templ AdminSettings() {
                         <img src="https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85"/>
                         <span>
                             <p>Hero banner image (1)</p>
-                            <button class="button-primary" onclick={showDialog("1")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("1")}>Edit</button>
                         </span>
                     </div>
                     <div>
@@ -31,7 +31,7 @@ templ AdminSettings() {
                         <img src="https://www.refinery29.com/images/11663360.jpeg"/>
                         <span>
                             <p>Hero banner image (2)</p>
-                            <button class="button-primary" onclick={showDialog("2")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("2")}>Edit</button>
                         </span>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ templ AdminSettings() {
 
 templ dialog(id string, imgUrl string, title string, description string) {
     <dialog id={id}>
-        <button onclick={ closeDialog(id) }></button>
+        <button onclick={ closeDialogSettings(id) }></button>
         <div>
             <div>
                 <img src={imgUrl}/>
@@ -56,12 +56,12 @@ templ dialog(id string, imgUrl string, title string, description string) {
     
 }
 
-script closeDialog(id string) {
+script closeDialogSettings(id string) {
 	let dialog = document.getElementById(id);
     dialog.close();
     console.log("hello");
 }
-script showDialog(id string) {
+script showDialogSettings(id string) {
     let dialog = document.getElementById(id);
     dialog.showModal();
 }
