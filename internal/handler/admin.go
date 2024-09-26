@@ -95,6 +95,13 @@ func AdminProducts(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+// Add Product GET
+func AddProductGet(c echo.Context) error {
+	var component = admin.AdminAddProduct()
+
+	return utils.Render(c, component)
+}
+
 // Add Product POST
 func AddProduct(c echo.Context) error {
 	var product models.Product

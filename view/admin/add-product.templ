@@ -1,0 +1,88 @@
+package admin
+
+import (
+    "github.com/FulgurCode/stitch/view/layout"
+)
+
+templ AdminAddProduct() {
+    @layout.Admin() {
+        <link rel="stylesheet" href="/static/styles/admin/item.css"/>
+        @DashBoardSideBar()
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start;">Add Product</h1>
+            <div class="item-container">
+                <div class="image">
+                    <img src="https://picsum.photos/60/100"/>
+                    <img src="https://picsum.photos/60/110"/>
+                    <span onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" accept="image/*" style="display: none">
+                        <span>+</span>
+                    </span>
+                </div>
+
+                <form class="description-container">
+                    <p class="no-line-height">Title:</p>
+                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" value="Title" placeholder="Title" name="name" required/>
+                    <span style="gap: 2px;">
+                        <p class="no-line-height">Price:</p>
+                        <p style="margin: 0;"><input type="number" value="0.00" placeholder="price" name="price" required/> &#8360;.</p>
+                        <p class="no-line-height">Description:</p>
+                        <textarea name="description" placeholder="Description" id="auto-expand-textarea" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</textarea>
+                        <p class="no-line-height">Include Size:</p>
+                    </span>
+                    <div class="size-group">
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="small-size" name="size" value="S">
+                            <label for="small-size">S</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="medium-size" name="size" value="M">
+                            <label for="medium-size">M</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="large-size" name="size" value="L">
+                            <label for="large-size">L</label>
+                        </div>
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="extra-large-size" name="size" value="XL">
+                            <label for="extra-large-size">XL</label>
+                        </div>
+                    </div>
+
+                    <p class="no-line-height">Category:</p>
+                    <div class="category-group">
+                        <div class="radio-button">
+                            <input type="radio" id="shirt" name="category" value="shirt">
+                            <label for="shirt">shirt</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="t-shirt" name="category" value="t-shirt">
+                            <label for="t-shirt">t-shirt</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="pants" name="category" value="pants">
+                            <label for="pants">pants</label>
+                        </div>
+                    </div>
+                    <input type="submit" class="button-primary" style="margin-top: var(--padding-inner)" value="Add Product">
+                </form>
+
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const textarea = document.getElementById('auto-expand-textarea');
+
+            const adjustHeight = () => {
+                textarea.style.height = 'auto'; // Reset height to auto to shrink if needed
+                textarea.style.height = `${textarea.scrollHeight}px`; // Set height to the scrollHeight
+            };
+
+            textarea.addEventListener('input', adjustHeight);
+
+            // Initial adjustment to handle pre-filled content
+            adjustHeight();
+        });
+        </script>
+    }
+}
