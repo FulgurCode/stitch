@@ -12,8 +12,14 @@ templ AdminStock() {
         <link rel="stylesheet" href="/static/styles/admin/stock.css"/>
         @DashBoardSideBar()
         <dialog>
+            <h2 style="font-size: 1.2rem; line-height: 0; text-align: center">Product name</h2>
             <form name="form">
-            <input name="stock" type="number" min="0"/>
+                <span><font>S:</font><input name="stock" type="number" min="0"/></span>
+                <span><font>M:</font><input name="stock" type="number" min="0"/></span>
+                <span><font>L:</font><input name="stock" type="number" min="0"/></span>
+                <span><font>XL:</font><input name="stock" type="number" min="0"/></span>
+
+                <span><font>Total:</font><input name="stock" type="text" min="0" disabled value="80"/></span>
             <div>
                 <button class="button-primary" onclick={closeDialogStock()}>Save</button>
                 <button class="button-secondary" onclick={closeDialogStock()}>Cancel</button>
@@ -41,21 +47,31 @@ templ AdminStock() {
 templ ProductsCardStock(name string, price int, description string, imageUrl string) {
     <div class="products">
         <img src={imageUrl} style="width: 120px; max-width: none; flex: none;"/>
-        <div style="flex: 0 0 220px;">
-            Product name: {name}<br/>
-            Price: &#8360;. {strconv.Itoa(price)}<br/>
-            <b style="font-size: 1rem; border: 1px solid var(--primary); padding: .5rem">Stock: 80</b>
-        </div>
-        <div style="flex: 1; min-width: max-content">
-            <button class="button-primary" onclick={showDialogStock("80")}>Edit Stock</button>
-            <button class="button-secondary">View Product</button>
-        </div>
+        <section>
+            <div id="details">
+                <span>Name: {name}<br/></span>
+                <span>Price: &#8360;. {strconv.Itoa(price)}<br/></span>
+            </div>
+            <div id="buttons">
+                <button class="button-primary" onclick={showDialogStock("80")}>Edit Stock</button>
+                <button class="button-secondary">View Product</button>
+            </div>
+            <div id="stock">
+                <b>S: 80</b>
+                <b>M: 80</b>
+                <b>L: 80</b>
+                <b>X: 80</b>
+                <b style="margin-right: auto">XL: 80</b>
+
+                <b style="border-width: 2px">Total: 80</b>
+            </div>
+        </section>
     </div>
 }
 
 script showDialogStock(productStock string){
     dialog = document.querySelector("dialog");
-    form.stock.value = productStock;
+    // form.stock.value = productStock;
     dialog.showModal();
 }
 script closeDialogStock(){
