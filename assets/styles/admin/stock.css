@@ -10,3 +10,97 @@ dialog > form > *{
 dialog > form > * > *{
     flex: 1;
 }
+
+/* Global styles */
+.overflow, main {
+    overflow: hidden;
+}
+
+/* Products container */
+.products-container {
+    border: 1px solid var(--primary);
+    border-bottom: none;
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Individual product card */
+.products {
+    border-bottom: 1px solid var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: var(--padding);
+    align-items: flex-start;
+}
+
+/* Product image */
+.products > img {
+    width: 100%;
+    max-width: 7rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    content-visibility: auto;
+}
+
+/* Product name and price */
+.products div:nth-child(2) {
+    font-weight: 500;
+    font-size: 1rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Product description */
+.products div:nth-child(3) {
+    flex: 1 0 100%;
+    max-width: 100%;
+}
+
+/* Button container */
+.products div:last-child {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .products {
+        flex-wrap: nowrap;
+    }
+
+    .products > img {
+        flex: 0 0 7rem;
+    }
+
+    .products div:nth-child(2) {
+        flex: 0 0 150px;
+    }
+
+    .products div:nth-child(3) {
+        flex: 1;
+        max-width: calc(100% - 7rem - 150px - 200px - 30px); /* Adjusting for image, name/price, buttons, and gaps */
+    }
+
+    .products div:last-child {
+        flex: 0 0 200px;
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 400px) {
+    /* Product description */
+    .products {
+        flex-wrap: wrap;
+    }
+.products div:nth-child(3) {
+    flex: 1 0 300px;
+    max-width: 100%;
+}
+
+}

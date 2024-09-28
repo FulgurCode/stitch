@@ -19,7 +19,8 @@ templ AdminProducts(products []models.Product) {
         @DashBoardSideBar()
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start">Products</h1>
-            <div class="products-container">
+            <table>
+                <tr> <th> </th> <th>Name</th> <th>Price</th> <th>Description</th> <th> </th> </tr>
                 for _, product := range products {
                     @ProductsCard(product.Name,
                         product.Price,
@@ -27,24 +28,22 @@ templ AdminProducts(products []models.Product) {
                         "https://picsum.photos/100/150",
                     )
                 }
-            </div>
+            </table>
         </div>
     }
 }
 
 templ ProductsCard(name string, price int, description string, imageUrl string) {
-    <div class="products">
-        <img src={imageUrl}/>
-        <div>
-            Product name: {name}<br/>
-            Price: &#8360;. {strconv.Itoa(price)}
-        </div>
-        <div class="description">
-            <p>{description}</p>
-        </div>
-        <div>
-            <a href="/admin/item" hx-boost="true"><button class="button-primary">Edit</button></a>
-            <button class="button-secondary">Delete</button>
-        </div>
-    </div>
+    <tr>
+        <td><span><img src={imageUrl}/></span></td>
+        <td data-cell="Name:">{name}</td>
+        <td data-cell="Price:">{strconv.Itoa(price)}&nbsp;&#8360;</td>
+        <td data-cell="Description:"><p>{description}</p></td>
+        <td>
+            <div>
+                <a href="/admin/item" hx-boost="true"><button class="button-primary">Edit</button></a>
+                <button class="button-secondary">Delete</button>
+            </div>
+        </td>
+    </tr>
 }
