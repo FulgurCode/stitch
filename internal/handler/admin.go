@@ -70,12 +70,7 @@ func AdminChangePassword(c echo.Context) error {
 }
 
 func AdminChangePasswordPost(c echo.Context) error {
-	var body = struct {
-		Username    string `json:"username" form:"username"`
-		OldPassword string `json:"old-password" form:"old-password"`
-		NewPassword string `json:"new-password" form:"new-password"`
-	}{}
-
+	var body models.AdminPass
 	var err = c.Bind(&body)
 	if err != nil {
 		fmt.Println(err)
