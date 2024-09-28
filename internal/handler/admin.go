@@ -63,22 +63,42 @@ func AdminLogout(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/login")
 }
 
-func AdminChangePasswordGet(c echo.Context) error {
+func AdminChangePassword(c echo.Context) error {
 	var component = admin.AdminChangePassword()
 
 	return utils.Render(c, component)
 }
-func AdminChangePassword(c echo.Context) error {
-	var admin models.Admin
-	var err = c.Bind(&admin)
+
+func AdminChangePasswordPost(c echo.Context) error {
+	var body = struct {
+		Username    string `json:"username" form:"username"`
+		OldPassword string `json:"old-password" form:"old-password"`
+		NewPassword string `json:"new-password" form:"new-password"`
+	}{}
+
+	var err = c.Bind(&body)
 	if err != nil {
 		fmt.Println(err)
+		return c.Redirect(http.StatusSeeOther, "/admin")
 	}
 
-	admin.Username = utils.GetSessionValue(c, "auth", "username").(string)
-	admin.Password = utils.BcryptGenerateHash(admin.Password)
+	body.Username = utils.GetSessionValue(c, "auth", "username").(string)
 
-	err = mysql.UpdateAdminPassword(admin)
+	a, err := mysql.GetAdminUser(body.Username)
+	if err != nil {
+		fmt.Println(err)
+		return c.Redirect(http.StatusSeeOther, "/admin")
+	}
+
+	if !utils.BcryptCompare(body.OldPassword, a.Password) {
+		var component = admin.AdminChangePassword()
+
+		return utils.Render(c, component)
+	}
+
+	a.Password = utils.BcryptGenerateHash(body.NewPassword)
+
+	err = mysql.UpdateAdminPassword(a)
 	if err != nil {
 		fmt.Println(err)
 	}
