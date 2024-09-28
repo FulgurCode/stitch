@@ -18,7 +18,10 @@ templ AdminProducts(products []models.Product) {
         <link rel="stylesheet" href="/static/styles/admin/products.css"/>
         @DashBoardSideBar()
         <div class={Container(), innerScroll()}>
-            <h1 style="align-self: start">Products</h1>
+            <div class="header">
+                <h1 style="align-self: start">Products</h1>
+                <a href="/admin/add-product" hx-boost="true"><button class="button-primary">Add New Product</button></a>
+            </div>
             <table>
                 <tr> <th> </th> <th>Name</th> <th>Price</th> <th>Description</th> <th> </th> </tr>
                 for _, product := range products {
