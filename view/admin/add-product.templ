@@ -20,15 +20,15 @@ templ AdminAddProduct() {
                     </span>
                 </div>
 
-                <form class="description-container">
+                <form class="description-container" hx-post="/admin/add-product" hx-target="body">
                     <p class="no-line-height">Title:</p>
-                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" value="Title" placeholder="Title" name="name" required/>
+                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" placeholder="Title" name="name" required/>
                     <span style="gap: 2px;">
                         <p class="no-line-height">Price:</p>
-                        <p style="margin: 0;"><input type="number" value="0.00" placeholder="price" name="price" required/> &#8360;.</p>
+                        <p style="margin: 0;"><input type="number" placeholder="price" name="price" required/> &#8360;.</p>
                         <p class="no-line-height">Description:</p>
-                        <textarea name="description" placeholder="Description" id="auto-expand-textarea" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</textarea>
                         <p class="no-line-height">Include Size:</p>
+                        <textarea name="description" placeholder="Description" id="auto-expand-textarea" required></textarea>
                     </span>
                     <div class="size-group">
                         <div class="checkbox-button">
