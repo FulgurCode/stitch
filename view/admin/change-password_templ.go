@@ -64,7 +64,7 @@ func AdminChangePassword() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"login-container surface\"><h1 style=\"text-align: center;\">Change Password</h1><form><input type=\"text\" name=\"old-password\" placeholder=\"Old Password\"> <input type=\"text\" name=\"new-password\" placeholder=\"New Password\"> <button type=\"submit\" class=\"button-primary\" style=\"margin-top: 1rem;\">Continue</button></form></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"login-container surface\"><h1 style=\"text-align: center;\">Change Password</h1><form hx-post=\"/admin/change-password\" hx-target=\"body\"><input type=\"text\" name=\"old-password\" placeholder=\"Old Password\"> <input type=\"text\" name=\"new-password\" placeholder=\"New Password\"> <button type=\"submit\" class=\"button-primary\" style=\"margin-top: 1rem;\">Continue</button></form></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
