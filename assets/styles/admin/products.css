@@ -13,81 +13,76 @@
     width: 100%;
 }
 
-/* Individual product card */
-.products {
-    border-bottom: 1px solid var(--primary);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+table, th, td {
+    border: 1px solid var(--primary);
+    border-collapse: collapse;
     padding: var(--padding);
-    align-items: flex-start;
 }
 
-/* Product image */
-.products > img {
-    width: 100%;
-    max-width: 7rem;
+th, td{
+    border-inline: 1px solid hsl( from var(--primary) h s l / .3);
+}
+th:first-child, td:first-child {
+    border-left: none;
+}
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+table p {
+    margin: 0;
+    margin-left: var(--padding);
+}
+
+tr img {
+    width: 100px;
+    max-width: 100px;
     aspect-ratio: 1;
     object-fit: cover;
-    content-visibility: auto;
+    /* content-visibility: auto; */
+}
+td:first-child span {
+    display: flex;
 }
 
-/* Product name and price */
-.products div:nth-child(2) {
-    font-weight: 500;
-    font-size: 1rem;
-    flex: 1;
-    min-width: 150px;
-}
-
-/* Product description */
-.products div:nth-child(3) {
-    flex: 1 0 100%;
-    max-width: 100%;
-}
-
-/* Button container */
-.products div:last-child {
+tr td div {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
+    align-items: center;
+}
+
+tr:nth-child(even){
+    background-color: #22222211;
 }
 
 /* Responsive adjustments */
-@media (min-width: 768px) {
-    .products {
-        flex-wrap: nowrap;
+@media (max-width: 700px) {
+
+    tr:first-child {/* hide heading */
+        display: none;
+    }
+    tr {
+        display: block;
+        padding: var(--padding);
     }
 
-    .products > img {
-        flex: 0 0 7rem;
+    td{/* resposive */
+        display: block;
+        border: none;
+        padding: 0.2rem;
+    }
+    td::before{/* attribute */
+        content: attr(data-cell);
+        margin-right: 0.7rem;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+    tr td:first-child::before{
+        display: none;
     }
 
-    .products div:nth-child(2) {
-        flex: 0 0 150px;
-    }
 
-    .products div:nth-child(3) {
-        flex: 1;
-        max-width: calc(100% - 7rem - 150px - 200px - 30px); /* Adjusting for image, name/price, buttons, and gaps */
+    tr:nth-child(even){
+        background-color: #00000011;
     }
-
-    .products div:last-child {
-        flex: 0 0 200px;
-        justify-content: flex-end;
-    }
-}
-
-@media (min-width: 400px) {
-    /* Product description */
-    .products {
-        flex-wrap: wrap;
-    }
-.products div:nth-child(3) {
-    flex: 1 0 300px;
-    max-width: 100%;
-}
-
 }
