@@ -53,7 +53,7 @@ func AdminStock() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <dialog><form name=\"form\"><input name=\"stock\" type=\"number\" min=\"0\"><div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <dialog><h2 style=\"font-size: 1.2rem; line-height: 0; text-align: center\">Product name</h2><form name=\"form\"><span><font>S:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>M:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>L:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>XL:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>Total:</font><input name=\"stock\" type=\"text\" min=\"0\" disabled value=\"80\"></span><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -168,39 +168,39 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 43, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 49, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" style=\"width: 120px; max-width: none; flex: none;\"><div style=\"flex: 0 0 220px;\">Product name: ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" style=\"width: 120px; max-width: none; flex: none;\"><section><div id=\"details\"><span>Name: ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 45, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 52, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br>Price: &#8360;. ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br></span> <span>Price: &#8360;. ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 46, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 53, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br><b style=\"font-size: 1rem; border: 1px solid var(--primary); padding: .5rem\">Stock: 80</b></div><div style=\"flex: 1; min-width: max-content\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br></span></div><div id=\"buttons\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -217,7 +217,7 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">Edit Stock</button> <button class=\"button-secondary\">View Product</button></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">Edit Stock</button> <button class=\"button-secondary\">View Product</button></div><div id=\"stock\"><b>S: 80</b> <b>M: 80</b> <b>L: 80</b> <b>X: 80</b> <b style=\"margin-right: auto\">XL: 80</b> <b style=\"border-width: 2px\">Total: 80</b></div></section></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -227,13 +227,13 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 
 func showDialogStock(productStock string) templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_showDialogStock_c011`,
-		Function: `function __templ_showDialogStock_c011(productStock){dialog = document.querySelector("dialog");
-    form.stock.value = productStock;
+		Name: `__templ_showDialogStock_5826`,
+		Function: `function __templ_showDialogStock_5826(productStock){dialog = document.querySelector("dialog");
+    // form.stock.value = productStock;
     dialog.showModal();
 }`,
-		Call:       templ.SafeScript(`__templ_showDialogStock_c011`, productStock),
-		CallInline: templ.SafeScriptInline(`__templ_showDialogStock_c011`, productStock),
+		Call:       templ.SafeScript(`__templ_showDialogStock_5826`, productStock),
+		CallInline: templ.SafeScriptInline(`__templ_showDialogStock_5826`, productStock),
 	}
 }
 

@@ -1,3 +1,8 @@
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
 dialog > form{
     display: flex;
     flex-direction: column;
@@ -8,6 +13,10 @@ dialog > form > *{
     gap: 1rem;
 }
 dialog > form > * > *{
+    flex: 1;
+}
+
+dialog > form > span > input{
     flex: 1;
 }
 
@@ -30,7 +39,6 @@ dialog > form > * > *{
 .products {
     border-bottom: 1px solid var(--primary);
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     padding: var(--padding);
     align-items: flex-start;
@@ -45,62 +53,63 @@ dialog > form > * > *{
     content-visibility: auto;
 }
 
-/* Product name and price */
-.products div:nth-child(2) {
-    font-weight: 500;
-    font-size: 1rem;
-    flex: 1;
-    min-width: 150px;
+.products section{
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-template-columns: 1fr 1fr;
 }
 
-/* Product description */
-.products div:nth-child(3) {
-    flex: 1 0 100%;
-    max-width: 100%;
-}
-
-/* Button container */
-.products div:last-child {
+/* .products #details{} */
+.products #buttons{
     display: flex;
     gap: 1rem;
+}
+.products #stock{
+    grid-column: 1 / span 2;
+
+    gap: 1rem;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
 }
 
-/* Responsive adjustments */
-@media (min-width: 768px) {
-    .products {
-        flex-wrap: nowrap;
-    }
+.products #details > span{
+    margin: 0;
+    line-height: 1rem;
+}
+.products #buttons > button{
+    min-width: max-content;
+    height: max-content;
 
-    .products > img {
-        flex: 0 0 7rem;
-    }
+    flex: 1;
+}
+.products #stock > b{
+    font-size: 1rem;
+    border: 1px solid var(--primary);
+    padding: .5rem;
+    line-height: 1.5rem;
 
-    .products div:nth-child(2) {
-        flex: 0 0 150px;
-    }
-
-    .products div:nth-child(3) {
-        flex: 1;
-        max-width: calc(100% - 7rem - 150px - 200px - 30px); /* Adjusting for image, name/price, buttons, and gaps */
-    }
-
-    .products div:last-child {
-        flex: 0 0 200px;
-        justify-content: flex-end;
-    }
+    min-width: max-content;
 }
 
-@media (min-width: 400px) {
-    /* Product description */
-    .products {
+@media screen and (max-width: 600px) {
+    .products{
         flex-wrap: wrap;
     }
-.products div:nth-child(3) {
-    flex: 1 0 300px;
-    max-width: 100%;
-}
+    .products section{
+        grid-template-rows: 1fr max-content max-content;
+        grid-template-columns: 1fr;
 
+        gap: 1rem;
+
+        width: 100%;
+    }
+
+    /* .products #details{} */
+    .products #buttons{
+        grid-row: 3;
+    }
+    .products #stock{
+        grid-column: 1;
+        grid-row: 2;
+    }
 }

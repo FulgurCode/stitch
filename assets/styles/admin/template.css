@@ -48,8 +48,8 @@ h1 {
 }
 .surface, .button-primary {
     background-color: var(--primary);
+    border: 1px solid var(--primary);
     color: var(--text-surface);
-    border: none;
 }
 .button-secondary{
     background-color: var(--text-surface-heading);
