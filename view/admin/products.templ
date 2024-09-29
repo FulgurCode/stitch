@@ -16,7 +16,6 @@ css innerScroll() {
 templ AdminProducts(products []models.Product) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/products.css"/>
-        @DashBoardSideBar()
         <div class={Container(), innerScroll()}>
             <div class="header">
                 <h1 style="align-self: start">Products</h1>

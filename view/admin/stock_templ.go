@@ -45,15 +45,7 @@ func AdminStock() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/stock.css\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = DashBoardSideBar().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <dialog><h2 style=\"font-size: 1.2rem; line-height: 0; text-align: center\">Product name</h2><form name=\"form\"><span><font>S:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>M:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>L:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>XL:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>Total:</font><input name=\"stock\" type=\"text\" min=\"0\" disabled value=\"80\"></span><div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/stock.css\"><dialog><h2 style=\"font-size: 1.2rem; line-height: 0; text-align: center\">Product name</h2><form name=\"form\"><span><font>S:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>M:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>L:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>XL:</font><input name=\"stock\" type=\"number\" min=\"0\"></span> <span><font>Total:</font><input name=\"stock\" type=\"text\" min=\"0\" disabled value=\"80\"></span><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -168,7 +160,7 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 49, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 48, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -181,7 +173,7 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 52, Col: 33}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 51, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -194,7 +186,7 @@ func ProductsCardStock(name string, price int, description string, imageUrl stri
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 53, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/stock.templ`, Line: 52, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {

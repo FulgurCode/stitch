@@ -14,7 +14,10 @@ templ Admin(params ...string) {
                 <h1>LOGO</h1>
             </div>
         </header>
-        <main>{ children... }</main>
+        <main>
+          @AdminSideBar()
+          { children... }
+        </main>
         </div>
     </body>
     <script>
@@ -30,4 +33,33 @@ templ Admin(params ...string) {
         }
     </script>
   }
+}
+
+templ AdminAuth(params ...string) {
+  @Layout() {
+    <body>
+        <link rel="stylesheet" href="/static/styles/admin/template.css" />
+        <div class="overflow">
+        <header class="surface">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+        </header>
+        <main>{ children... }</main>
+        </div>
+    </body>
+  }
+}
+
+templ AdminSideBar() {
+    <link rel="stylesheet" href="/static/styles/admin/components/dashboardsidebar.css" />
+    <div class="dashboardsidebar" id="sidebar">
+        <div class="places">
+            <ul>
+                <li><a href="/admin/products" hx-boost="true" hx-target="body" >Products</a></li>
+                <li><a href="/admin/orders" hx-boost="true" >Orders</a></li>
+                <li><a href="/admin/settings" hx-boost="true" >Settings</a></li>
+            </ul>
+        </div>
+    </div>
 }
