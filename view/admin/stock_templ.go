@@ -101,7 +101,7 @@ func AdminStock() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1 style=\"align-self: start\">Products</h1><div class=\"products-container\" style=\"max-width: 700px;\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1 style=\"align-self: start\">Stock</h1><div class=\"products-container\" style=\"max-width: 700px;\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
