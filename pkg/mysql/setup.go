@@ -37,6 +37,13 @@ func createTables() {
 		fmt.Println("Product Table creation success")
 	}
 
+	_, err = Db.Exec("CREATE TABLE IF NOT EXISTS stock(product_id uuid, s int, m int, l int, xl int, xxl int, xxxl int, total int, FOREIGN KEY(product_id) REFERENCES product(id));")
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Stock Table creation success")
+	}
+
 	// Get current number of admin users
 	result, err := Db.Query("SELECT COUNT(*) FROM admin;")
 	if err != nil {

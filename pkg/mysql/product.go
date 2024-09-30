@@ -7,7 +7,7 @@ import (
 )
 
 func AddProduct(product models.Product) error {
-	var query = fmt.Sprintf("INSERT INTO product(id,name,category,price,description) VALUES(UUID(),'%s','%s',%d,'%s');", product.Name, product.Category, product.Price, product.Description)
+	var query = fmt.Sprintf("INSERT INTO product(id,name,category,price,description) VALUES('%s','%s','%s',%d,'%s');", product.Id, product.Name, product.Category, product.Price, product.Description)
 
 	var _, err = Db.Exec(query)
 

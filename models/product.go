@@ -7,3 +7,13 @@ type Product struct {
 	Description string `json:"description" form:"description"`
 	Price       int    `json:"price" form:"price"`
 }
+
+type Stock struct {
+	ProductId string `json:"productId" form:"productId"`
+	S         int    `json:"S" form:"S"`
+	M         int    `json:"M" form:"M"`
+	L         int    `json:"L" form:"L"`
+	XL        int    `json:"XL" form:"XL"`
+	XXL       int    `json:"XXL" form:"XXL"`
+	XXXL      int    `json:"XXXL" form:"XXXL"`
+}

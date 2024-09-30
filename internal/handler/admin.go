@@ -8,6 +8,7 @@ import (
 	"github.com/FulgurCode/stitch/pkg/mysql"
 	"github.com/FulgurCode/stitch/utils"
 	"github.com/FulgurCode/stitch/view/admin"
+	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 )
 
@@ -127,7 +128,24 @@ func AddProduct(c echo.Context) error {
 	var product models.Product
 	c.Bind(&product)
 
+	product.Id = uuid.NewString()
+
 	var err = mysql.AddProduct(product)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var stock models.Stock = models.Stock{
+		ProductId: product.Id,
+		S:         0,
+		M:         0,
+		L:         0,
+		XL:        0,
+		XXL:       0,
+		XXXL:      0,
+	}
+
+	err = mysql.AddStock(stock)
 	if err != nil {
 		fmt.Println(err)
 	}
