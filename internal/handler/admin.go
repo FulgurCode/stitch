@@ -158,6 +158,18 @@ func AddProduct(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/products")
 }
 
+func AdminUpdateStockPost(c echo.Context) error {
+	var stock models.Stock
+	c.Bind(&stock)
+
+	var err = mysql.UpdateStock(stock)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return c.JSON(200, "UPDATE STOCK SUCCESSFULLY")
+}
+
 // Admin Item Handler
 func AdminItem(c echo.Context) error {
 	var component = admin.AdminItem()
