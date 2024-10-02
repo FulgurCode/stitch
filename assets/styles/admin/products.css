@@ -11,6 +11,21 @@
     align-items: center;
 }
 
+.shrink {
+    max-width: min-content;
+    flex: 0 0 0;
+}
+
+input[type="text"] {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+table{
+    width: 100%;
+    /* table-layout: auto; */
+}
+
 table, th, td {
     border: 1px solid var(--primary);
     border-collapse: collapse;

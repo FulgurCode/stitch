@@ -79,21 +79,28 @@ func AdminProducts(products []models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"header\"><h1 style=\"align-self: start\">Products</h1><a href=\"/admin/add-product\" hx-boost=\"true\"><button class=\"button-primary\">Add New Product</button></a></div><table><tr><th></th><th>Name</th><th>Price</th><th>Description</th><th></th></tr>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"header\"><h1 style=\"align-self: start\">Products</h1><a href=\"/admin/add-product\" hx-boost=\"true\"><button class=\"button-primary\">Add New Product</button></a></div><input type=\"text\" id=\"searchInput\" placeholder=\"Search...\"><table id=\"myTable\"><tr><th></th><th>Name</th><th>Price</th><th>Description</th><th></th></tr>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, product := range products {
-				templ_7745c5c3_Err = ProductsCard(product.Name,
-					product.Price,
-					product.Description,
-					"https://picsum.photos/100/150",
-				).Render(ctx, templ_7745c5c3_Buffer)
+			if len(products) == 0 {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<tr><td colspan=\"5\" style=\"text-align: center; font-style: italic;\">Empty</td></tr>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
+			} else {
+				for _, product := range products {
+					templ_7745c5c3_Err = ProductsCard(product.Name,
+						product.Price,
+						product.Description,
+						"https://picsum.photos/100/150",
+					).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</table></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</table><div id=\"noResults\" style=\"display: none; font-style: italic;\">No matching results found.</div></div><script>\n            function searchTable() {\n                var input, filter, table, tr, td, i, j, txtValue;\n                input = document.getElementById(\"searchInput\");\n                filter = input.value.toUpperCase();\n                table = document.getElementById(\"myTable\");\n                tr = table.getElementsByTagName(\"tr\");\n                var noResults = document.getElementById(\"noResults\");\n                var visibleCount = 0;\n\n                for (i = 1; i < tr.length; i++) {\n                    var visible = false;\n                    td = tr[i].getElementsByTagName(\"td\");\n                    for (j = 1; j < td.length - 1; j++) {\n                        if (td[j]) {\n                            txtValue = td[j].textContent || td[j].innerText;\n                            if (txtValue.toUpperCase().indexOf(filter) > -1) {\n                                visible = true;\n                                break;\n                            }\n                        }\n                    }\n                    if (visible) {\n                        tr[i].style.display = \"\";\n                        visibleCount++;\n                    } else {\n                        tr[i].style.display = \"none\";\n                    }\n                }\n\n                if (visibleCount === 0) {\n                    noResults.style.display = \"block\";\n                    table.style.display = \"none\";\n                } else {\n                    noResults.style.display = \"none\";\n                    table.style.display = \"table\";\n                }\n            }\n\n            document.getElementById(\"searchInput\").addEventListener(\"keyup\", searchTable);\n        </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -132,7 +139,7 @@ func ProductsCard(name string, price int, description string, imageUrl string) t
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 40, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 87, Col: 38}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -145,7 +152,7 @@ func ProductsCard(name string, price int, description string, imageUrl string) t
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 41, Col: 35}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 88, Col: 35}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -158,20 +165,20 @@ func ProductsCard(name string, price int, description string, imageUrl string) t
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 42, Col: 51}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 89, Col: 51}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("&nbsp;&#8360;</td><td data-cell=\"Description:\"><p>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("&nbsp;&#8360;</td><td data-cell=\"Description:\" style=\"width: 100%\"><p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 43, Col: 52}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/products.templ`, Line: 90, Col: 72}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
