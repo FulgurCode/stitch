@@ -167,7 +167,9 @@ func AdminUpdateStockPost(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	return c.JSON(200, "UPDATE STOCK SUCCESSFULLY")
+	var component = admin.AdminStock()
+
+	return utils.Render(c, component)
 }
 
 // Admin Item Handler
