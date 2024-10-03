@@ -43,6 +43,8 @@ func Run(port string) {
 	app.POST("/admin/add-product", handler.AddProduct)
 
 	app.GET("/admin/stock", handler.AdminStock)
+	app.POST("/admin/update-stock", handler.AdminUpdateStockPost)
+
 	app.GET("/admin/item", handler.AdminItem)
 	app.GET("/admin/orders", handler.AdminOrders)
 	app.GET("/admin/settings", handler.AdminSettings)
