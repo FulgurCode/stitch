@@ -171,6 +171,29 @@ func AddProduct(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/products")
 }
 
+func EditProduct(c echo.Context) error {
+	var productId = c.Param("productId")
+	var product models.Product
+
+	c.Bind(&product)
+	product.Id = productId
+
+	var err = mysql.EditProduct(product)
+	if err != nil {
+		fmt.Println(err)
+
+		var component = admin.AdminItem()
+		return utils.Render(c, component)
+	}
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/products")
+		return c.NoContent(200)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin/products")
+}
+
 func AdminUpdateStockPost(c echo.Context) error {
 	var stock models.Stock
 	c.Bind(&stock)
