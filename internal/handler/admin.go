@@ -123,6 +123,19 @@ func AddProductGet(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+func DeleteProduct(c echo.Context) error {
+	var id = c.Param("productId")
+
+	var err = mysql.DeleteProduct(id)
+	if err != nil {
+		fmt.Print(err.Error())
+	}
+
+	var component = admin.AdminProducts([]models.Product{})
+
+	return utils.Render(c, component)
+}
+
 // Add Product POST
 func AddProduct(c echo.Context) error {
 	var product models.Product
