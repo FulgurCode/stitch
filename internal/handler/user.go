@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"fmt"
+
 	"github.com/FulgurCode/stitch/pkg/mysql"
 	"github.com/FulgurCode/stitch/utils"
 	"github.com/FulgurCode/stitch/view/layout"
@@ -25,8 +27,13 @@ func Products(c echo.Context) error {
 
 // Item page handler
 func Item(c echo.Context) error {
-	var component = user.Item()
+	var productId = c.Param("productId")
+	var product, err = mysql.GetProductById(productId)
+	if err != nil {
+		fmt.Println(err)
+	}
 
+	var component = user.Item(product)
 	return utils.Render(c, component)
 }
 

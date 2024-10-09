@@ -1,10 +1,13 @@
 package user
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
-templ Item() {
+templ Item(product models.Product) {
     @layout.User() {
         <link rel="stylesheet" href="/static/styles/user/item.css">
         <div class={Container()}>
@@ -13,11 +16,11 @@ templ Item() {
         <div class="description-container">
             <span style="gap: 0">
                 <p class="no-line-height">Shop name</p>
-                <h1 style="font-weight: 600;" class="no-line-height">Really big Clothe name</h1>
+                <h1 style="font-weight: 600;" class="no-line-height">{product.Name}</h1>
             </span>
             <span style="gap: 2px;">
-                <p style="font-weight: 600;" class="no-line-height">&#8360;. 5000.00</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</p>
+                <p style="font-weight: 600;" class="no-line-height">&#8360;. {fmt.Sprintf("%d",product.Price)}</p>
+                <p>{product.Description}</p>
                 <p class="no-line-height" onclick={clothingSizeDialog()}>
                     Size: 
                     // <button>help</button>
