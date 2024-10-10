@@ -97,7 +97,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img src=\"https://media.istockphoto.com/id/1174119261/photo/street-fashion-style-beautiful-sexy-woman-wearing-fashionable-spring-or-fall-clothes-outdoors.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=2F9YRSP6Tim1xPIPCPCoaOs7TNGBkL7Hu1Z_mPg4T1I=\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img src=\"https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -119,7 +119,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1><a href=\"/products\" hx-boost=\"true\"><button class=\"button-secondary\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor.  Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo  condimentum feugiat.</p></div><div class=\"product-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1><a href=\"/products\" hx-boost=\"true\"><button class=\"button-secondary hidden-swipe\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\" class=\"hidden\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor.  Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo  condimentum feugiat.</p></div><div class=\"product-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -155,7 +155,7 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><a href=\"/products\" hx-boost=\"true\"><button class=\"button-primary\" style=\"margin-bottom: 5rem; width: max-content;\">View all ></button></a><div class=\"present-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><a href=\"/products\" hx-boost=\"true\"><button class=\"button-primary hidden-swipe\" style=\"margin-bottom: 5rem; width: max-content;\">View all ></button></a><div class=\"present-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -202,7 +202,7 @@ func ProductCard(name string, price string, imageurl string) templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"/item\" hx-boost=\"true\" style=\"color: inherit; text-decoration: none\"><div class=\"product-card\"><img src=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"/item\" hx-boost=\"true\" style=\"color: inherit; text-decoration: none\" class=\"hidden\"><div class=\"product-card\"><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -283,27 +283,27 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><div class=\"surface\"><h1>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"hidden\"><div class=\"surface\"><h1 class=\"hidden-swipe\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 77, Col: 22}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 77, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><p>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><p class=\"hidden\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 78, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 78, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -318,7 +318,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-boost=\"true\"><button class=\"button-secondary\" style=\"margin: 1rem;\">Explore</button></a></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-boost=\"true\"><button class=\"button-secondary hidden-swipe\" style=\"margin: 1rem;\">Explore</button></a></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
