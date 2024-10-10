@@ -125,6 +125,7 @@ footer > div > .policies > ul {
 }
 .product-card {
     width: minmax(15rem, 250px);
+    max-width: 250px;
     aspect-ratio: 2/3;
 
     display: flex;
