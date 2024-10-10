@@ -29,11 +29,11 @@ templ Home() {
     @layout.User() {
 		<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
-        <img src="https://media.istockphoto.com/id/1174119261/photo/street-fashion-style-beautiful-sexy-woman-wearing-fashionable-spring-or-fall-clothes-outdoors.jpg?s=612x612&w=0&k=20&c=2F9YRSP6Tim1xPIPCPCoaOs7TNGBkL7Hu1Z_mPg4T1I="/>
+        <img src="https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg"/>
         <div class={Quote(), "surface"}>
             <h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1>
-            <a href="/products" hx-boost="true"><button class="button-secondary" style="width: max-content;">Shop all</button></a>
-            <p style="max-width: 800px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <a href="/products" hx-boost="true"><button class="button-secondary hidden-swipe" style="width: max-content;">Shop all</button></a>
+            <p style="max-width: 800px" class="hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. 
             Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo 
             condimentum feugiat.
@@ -49,7 +49,7 @@ templ Home() {
             @ProductCard("Ipsum", "4,000.00", "https://i.pinimg.com/474x/d2/20/52/d22052bb9c7cb502a0307c40cefb7603.jpg")
             @ProductCard("Yaaaa", "1,500.00", "https://i.pinimg.com/736x/06/86/83/0686839d7510a3934c637a9cc844c246.jpg")
         </div>
-        <a href="/products" hx-boost="true"><button class="button-primary" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
+        <a href="/products" hx-boost="true"><button class="button-primary hidden-swipe" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
         <div class="present-container">
             @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com")
             @presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com")
@@ -59,7 +59,7 @@ templ Home() {
 }
 
 templ ProductCard(name string, price string, imageurl string) {
-    <a href="/item" hx-boost="true" style="color: inherit; text-decoration: none">
+    <a href="/item" hx-boost="true" style="color: inherit; text-decoration: none"  class="hidden">
         <div class="product-card">
             <img src={imageurl}>
             <div>
@@ -72,11 +72,11 @@ templ ProductCard(name string, price string, imageurl string) {
 
 templ presentCard(imageUrl string, title string, description string, productUrl string) {
     <div class="present-card">
-        <img src={imageUrl}/>
+        <img src={imageUrl} class="hidden"/>
         <div class="surface">
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <a href={templ.SafeURL(productUrl)} hx-boost="true"><button class="button-secondary" style="margin: 1rem;">Explore</button></a>
+            <h1 class="hidden-swipe">{title}</h1>
+            <p class="hidden">{description}</p>
+            <a href={templ.SafeURL(productUrl)} hx-boost="true"><button class="button-secondary hidden-swipe" style="margin: 1rem;">Explore</button></a>
         </div>
     </div>
 }

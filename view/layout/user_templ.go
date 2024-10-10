@@ -41,7 +41,7 @@ func User() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>LOGO</h1></div><ul><li>Home</li><li>All</li><li>Collections</li><li>About us</li></ul></header><main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><script src=\"/static/scripts/scroll_animation.js\" defer></script><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>LOGO</h1></div><ul><li>Home</li><li>All</li><li>Collections</li><li>About us</li></ul></header><main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
