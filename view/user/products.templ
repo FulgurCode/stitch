@@ -1,8 +1,6 @@
 package user
 
 import (
-    "strconv"
-
     "github.com/FulgurCode/stitch/view/layout"
     "github.com/FulgurCode/stitch/models"
 )
@@ -12,7 +10,7 @@ templ Products(products []models.Product) {
         <div class={Container()}>
         <div class="product-container">
             for _,product := range products {
-                @ProductCard(product.Name, strconv.Itoa(product.Price), "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg")
+                @ProductCard(product)
             }
         </div>
         </div>

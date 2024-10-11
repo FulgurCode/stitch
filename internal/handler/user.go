@@ -12,7 +12,12 @@ import (
 
 // Home page handler
 func Home(c echo.Context) error {
-	var component = user.Home()
+	var products,err = mysql.GetProducts()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var component = user.Home(products)
 
 	return utils.Render(c, component)
 }

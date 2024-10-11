@@ -9,8 +9,6 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"strconv"
-
 	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/view/layout"
 )
@@ -71,7 +69,7 @@ func Products(products []models.Product) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, product := range products {
-				templ_7745c5c3_Err = ProductCard(product.Name, strconv.Itoa(product.Price), "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ProductCard(product).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

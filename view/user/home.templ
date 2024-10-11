@@ -1,7 +1,10 @@
 package user
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
 css Quote() {
@@ -25,7 +28,7 @@ css Container() {
 
 }
 
-templ Home() {
+templ Home(products []models.Product) {
     @layout.User() {
 		<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
@@ -40,14 +43,9 @@ templ Home() {
             </p>
         </div>
         <div class="product-container">
-            @ProductCard("hola", "2,000.00", "https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg")
-            @ProductCard("big clothes", "5,000.00", "https://i.pinimg.com/736x/ab/be/f9/abbef9006110279c7a0d65f27c16d95f.jpg")
-            @ProductCard("small clothes", "6,000.00", "https://assets.vogue.com/photos/5891f3b77edfa70512d68046/master/w_1600%2Cc_limit/50-shades-grey-outfits_01.jpg")
-            @ProductCard("average clothes", "3,000.00", "https://m.media-amazon.com/images/I/51SWtvNOHDL._AC_UY1100_.jpg")
-            @ProductCard("nope", "2,000.00", "https://i.pinimg.com/236x/00/b5/7f/00b57f3167d4461e407bb1153e37684a.jpg")
-            @ProductCard("Lorem", "2,000.00", "https://i.pinimg.com/474x/1d/bd/b9/1dbdb9ac262bdad527d0c1c6d4733616.jpg")
-            @ProductCard("Ipsum", "4,000.00", "https://i.pinimg.com/474x/d2/20/52/d22052bb9c7cb502a0307c40cefb7603.jpg")
-            @ProductCard("Yaaaa", "1,500.00", "https://i.pinimg.com/736x/06/86/83/0686839d7510a3934c637a9cc844c246.jpg")
+            for i := 0; i < len(products) && i < 9;i++ {
+              @ProductCard(products[i])
+            }
         </div>
         <a href="/products" hx-boost="true"><button class="button-primary hidden-swipe" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
         <div class="present-container">
@@ -58,13 +56,13 @@ templ Home() {
     }
 }
 
-templ ProductCard(name string, price string, imageurl string) {
-    <a href="/item" hx-boost="true" style="color: inherit; text-decoration: none"  class="hidden">
+templ ProductCard(product models.Product) {
+    <a href={templ.URL(fmt.Sprintf("/item/%s",product.Id))} hx-boost="true" style="color: inherit; text-decoration: none"  class="hidden">
         <div class="product-card">
-            <img src={imageurl}>
+            <img src="https://www.refinery29.com/images/11663360.jpeg">
             <div>
-                <p class="name">{name}</p>
-                <h3 class="price">&#8360;. {price}</h3>
+                <p class="name">{product.Name}</p>
+                <h3 class="price">&#8360;. {fmt.Sprintf("%d",product.Price)}</h3>
             </div>
         </div>
     </a>
