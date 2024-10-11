@@ -122,7 +122,7 @@ func Home(products []models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>A CELEBRATION OF THE SLOW LIFE, A REVERIE OF NOSTALGIA</h1><a href=\"/products\" hx-boost=\"true\"><button class=\"button-secondary hidden-swipe\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\" class=\"hidden\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor.  Nulla aliquet  tempor nisl. Curabitur dignissim ligula eget justo  condimentum feugiat.</p></div><div class=\"product-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>UNLEASH YOUR INDIVIDUALITY WITH FASHION THAT’S HANDMADE, JUST FOR YOU.</h1><a href=\"/products\" hx-boost=\"true\"><button class=\"button-secondary hidden-swipe\" style=\"width: max-content;\">Shop all</button></a><p style=\"max-width: 800px\" class=\"hidden\">Discover the charm of our handcrafted clothing,  where every piece tells a story. Made with love and attention to detail,  our unique garments celebrate individuality and style.  Embrace the beauty of sustainable fashion and elevate your wardrobe with designs that stand out.  Shop now and wear your story!</p></div><div class=\"product-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -195,7 +195,7 @@ func ProductCard(product models.Product) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 64, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 66, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -208,7 +208,7 @@ func ProductCard(product models.Product) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 65, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 67, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -250,7 +250,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 73, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 75, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -263,7 +263,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 75, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 77, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -276,7 +276,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 76, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 78, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
