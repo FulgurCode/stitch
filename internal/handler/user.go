@@ -24,9 +24,12 @@ func Home(c echo.Context) error {
 
 // Product page handler
 func Products(c echo.Context) error {
-	var products, _ = mysql.GetProducts()
-	var component = user.Products(products)
+	var products, err = mysql.GetProducts()
+	if err != nil {
+		fmt.Println(err)
+	}
 
+	var component = user.Products(products)
 	return utils.Render(c, component)
 }
 
