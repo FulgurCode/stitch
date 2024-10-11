@@ -41,8 +41,18 @@ h1, h2, h3, h4 {
 }
 h1 {
     font-size: 1.5rem;
+}h2 {
+    font-size: 1.2rem;
 } h4 {
     font-size: 1.1rem;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover, a:focus{
+    text-decoration: underline;
 }
 
 .surface h1, .surface h2, .surface h3 {
