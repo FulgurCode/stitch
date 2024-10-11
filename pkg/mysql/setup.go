@@ -22,27 +22,14 @@ func CreateAdminUser() {
 }
 
 // Create tables if not exist already
-func createTables() {
-	var _, err = Db.Exec("CREATE TABLE IF NOT EXISTS admin(id uuid PRIMARY KEY, username VARCHAR(20),password CHAR(60));")
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		fmt.Println("Admin Table creation success")
-	}
+func setUpTables() {
+	createTable("CREATE TABLE IF NOT EXISTS admin(id uuid PRIMARY KEY, username VARCHAR(20),password CHAR(60));", "admin")
 
-	_, err = Db.Exec("CREATE TABLE IF NOT EXISTS product(id uuid PRIMARY KEY, name VARCHAR(100), category CHAR(100), price INT,description text );")
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		fmt.Println("Product Table creation success")
-	}
+	createTable("CREATE TABLE IF NOT EXISTS product(id uuid PRIMARY KEY, name VARCHAR(100), category CHAR(100), price INT,description text );", "product")
 
-	_, err = Db.Exec("CREATE TABLE IF NOT EXISTS stock(product_id uuid, s int, m int, l int, xl int, xxl int, xxxl int, total int, FOREIGN KEY(product_id) REFERENCES product(id));")
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		fmt.Println("Stock Table creation success")
-	}
+	createTable("CREATE TABLE IF NOT EXISTS stock(product_id uuid, s int, m int, l int, xl int, xxl int, xxxl int, total int, FOREIGN KEY(product_id) REFERENCES product(id));", "stock")
+
+	createTable("CREATE TABLE IF NOT EXISTS orders(id uuid, product_id uuid, name text, address text, house_name text, pin int, city text, phone int, payment text, total int, FOREIGN KEY(product_id) REFERENCES product(id));","order")
 
 	// Get current number of admin users
 	result, err := Db.Query("SELECT COUNT(*) FROM admin;")

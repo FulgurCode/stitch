@@ -26,5 +26,5 @@ func Connect() {
 	}
 
 	Db = db
-	createTables()
+	setUpTables()
 }
