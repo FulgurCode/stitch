@@ -49,7 +49,7 @@ func User() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"surface\"><div><div class=\"policies\"><h3>Policies</h3><ul><li>Contact us</li><li>Refund Policy</li><li>Shipping Policy</li><li>Privacy Policy</li></ul></div><div class=\"logo\"><h1>LOGO</h1></div><div class=\"contacts\"><h3>Contact us</h3>+91 8353692784</div></div></footer></div></body>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"surface\"><div><div class=\"policies\"><h3>Policies</h3><ul><li><a href=\"mailto:mail@gmail.com\">Contact us</a></li></ul></div><div class=\"logo\"><h1>LOGO</h1></div><div class=\"contacts\"><h3>Contact us</h3><ul><li>+91 8353692784</li></ul></div></div></footer></div></body>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
