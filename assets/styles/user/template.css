@@ -129,7 +129,7 @@ footer > div {
     max-width: 1000px;
     width: 100%;
 }
-footer > div > .policies > ul {
+footer > div > .policies > ul, footer > div > .contacts > ul {
     padding: 0;
     list-style-type: none;
 }
