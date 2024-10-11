@@ -41,7 +41,7 @@ func User() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><script src=\"/static/scripts/scroll_animation.js\" defer></script><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>LOGO</h1></div><ul><li><a href=\"/\" hx-boost=\"true\">Home</a></li><li><a href=\"/all\" hx-boost=\"true\">All</a></li><li><a href=\"/collections\" hx-boost=\"true\">Collections</a></li><li><a href=\"/about\" hx-boost=\"true\">About us</a></li></ul></header><main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><script src=\"/static/scripts/scroll_animation.js\" defer></script><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>LOGO</h1></div><ul><li><a href=\"/\" hx-boost=\"true\">Home</a></li><li><a href=\"/products\" hx-boost=\"true\">All</a></li><li><a href=\"/collections\" hx-boost=\"true\">Collections</a></li><li><a href=\"/about\" hx-boost=\"true\">About us</a></li></ul></header><main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

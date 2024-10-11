@@ -31,6 +31,7 @@ func Run(port string) {
 	app.GET("/item/:productId", handler.Item)
 	app.GET("/order/:productId", handler.Order)
 	app.GET("/about", handler.About)
+	app.GET("/collections", handler.CommingSoon)
 
 	app.GET("/admin", utils.CheckLogin(handler.Admin))
 
@@ -53,7 +54,6 @@ func Run(port string) {
 	app.GET("/admin/orders", utils.CheckLogin(handler.AdminOrders))
 	app.GET("/admin/settings", utils.CheckLogin(handler.AdminSettings))
 
-	app.GET("/comming-soon", handler.CommingSoon)
 	app.GET("/*", handler.NotFound)
 
 	log.Fatal(app.Start(":" + port))
