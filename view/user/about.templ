@@ -1,0 +1,40 @@
+package user
+
+import (
+    "github.com/FulgurCode/stitch/view/layout"
+)
+
+css aboutContainer() {
+    max-width: 800px; 
+    padding: var(--padding); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+
+    margin-top: 2rem;
+}
+
+templ About() {
+    @layout.User() {
+        <div class={Container()}>
+        <div class={aboutContainer()}>
+            <p>Welcome to <strong>Stitch</strong>, where fashion meets craftsmanship! We believe that true style is more than just clothing—it’s an expression of individuality, a reflection of who you are. That’s why every piece in our collection is handmade with love, care, and attention to detail.</p>
+
+            <p>At <strong>Stitch</strong>, we pride ourselves on offering unique, high-quality garments that stand out from the crowd. Our skilled artisans work tirelessly to create each piece, using premium materials to ensure comfort, durability, and timeless appeal. Every stitch, every fold, every detail is thoughtfully designed to make you feel confident and empowered in your own skin.</p>
+
+            <p>We are passionate about slow fashion, which means our pieces aren’t mass-produced. Instead, we focus on creating timeless designs that you’ll cherish for years to come. Each garment tells a story—your story—and we’re here to help you bring that story to life with clothes that feel just as unique as you are.</p>
+
+            <h2>Our Mission</h2>
+            <p>To craft beautiful, one-of-a-kind garments that empower you to express your individuality and embrace slow, sustainable fashion.</p>
+
+            <h2>Why Choose Us?</h2>
+            <ul style="padding: 0;">
+                <li>Handcrafted with care and precision</li>
+                <li>Made from high-quality, sustainable materials</li>
+                <li>Timeless designs with a focus on individuality</li>
+                <li>Passionate about supporting slow fashion</li>
+            </ul>
+        </div>
+        </div>
+    }
+}

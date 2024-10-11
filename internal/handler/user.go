@@ -12,7 +12,7 @@ import (
 
 // Home page handler
 func Home(c echo.Context) error {
-	var products,err = mysql.GetProducts()
+	var products, err = mysql.GetProducts()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -42,9 +42,16 @@ func Item(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
-// Item page handler
+// Order page handler
 func Order(c echo.Context) error {
 	var component = user.Order()
+
+	return utils.Render(c, component)
+}
+
+// About page handler
+func About(c echo.Context) error {
+	var component = user.About()
 
 	return utils.Render(c, component)
 }
