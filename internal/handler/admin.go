@@ -137,7 +137,7 @@ func DeleteProduct(c echo.Context) error {
 }
 
 // Add Product POST
-func AddProduct(c echo.Context) error {
+func AddProductPost(c echo.Context) error {
 	var product models.Product
 	c.Bind(&product)
 

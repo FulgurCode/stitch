@@ -40,7 +40,7 @@ func Run(port string) {
 
 	app.GET("/admin/products", handler.AdminProducts)
 	app.GET("/admin/add-product", handler.AddProductGet)
-	app.POST("/admin/product", handler.AddProduct)
+	app.POST("/admin/product", handler.AddProductPost)
 	app.DELETE("/admin/product", handler.DeleteProduct)
 	app.PUT("/admin/product/:productId", handler.EditProduct)
 
