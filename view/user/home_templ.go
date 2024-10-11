@@ -136,11 +136,11 @@ func Home(products []models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "https://gohere.com").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
