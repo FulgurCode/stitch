@@ -9,10 +9,13 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"fmt"
+
+	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
-func Order() templ.Component {
+func Order(product models.Product) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -67,7 +70,33 @@ func Order() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>Place Order</h1><div class=\"order-container\"><div class=\"product-card\"><img src=\"https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg\"><div><p class=\"name\">hola</p><h3 class=\"price\">&#8360;. 2,000.00</h3></div></div><form><input type=\"text\" name=\"name\" placeholder=\"Name\"> <input type=\"text\" name=\"last-name\" placeholder=\"Last name\"> <textarea name=\"adress\" placeholder=\"Adress\"></textarea> <input type=\"text\" name=\"house-no\" placeholder=\"House no. or House name\"> <input type=\"text\" name=\"pin-code\" placeholder=\"Pin code\"> <input type=\"text\" name=\"city\" placeholder=\"City\"> <input type=\"tel\" name=\"number\" placeholder=\"Phone no.\"> <select name=\"delivery-method\" placeholder=\"Delivery method\"><option value=\"cash-on-delivery\">Cash on delivery</option> <option value=\"credit-card\">Credit card</option></select> <input type=\"submit\" value=\"Place Order\" class=\"button-primary\" style=\"margin-top: 2rem;\"></form></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1>Place Order</h1><div class=\"order-container\"><div class=\"product-card\"><img src=\"https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg\"><div><p class=\"name\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/order.templ`, Line: 20, Col: 53}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><h3 class=\"price\">&#8360;. ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/order.templ`, Line: 21, Col: 83}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3></div></div><form><input type=\"text\" name=\"name\" placeholder=\"Name\"> <input type=\"text\" name=\"last-name\" placeholder=\"Last name\"> <textarea name=\"adress\" placeholder=\"Adress\"></textarea> <input type=\"text\" name=\"house-no\" placeholder=\"House no. or House name\"> <input type=\"text\" name=\"pin-code\" placeholder=\"Pin code\"> <input type=\"text\" name=\"city\" placeholder=\"City\"> <input type=\"tel\" name=\"number\" placeholder=\"Phone no.\"> <select name=\"delivery-method\" placeholder=\"Delivery method\"><option value=\"cash-on-delivery\">Cash on delivery</option> <option value=\"credit-card\">Credit card</option></select> <input type=\"submit\" value=\"Place Order\" class=\"button-primary\" style=\"margin-top: 2rem;\"></form></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

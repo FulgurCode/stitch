@@ -45,7 +45,7 @@ templ Item(product models.Product) {
                 </div>
             </div>
             <span>
-                <button class="button-primary">BUY</button>
+                <button class="button-primary" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
                 <button class="button-secondary">Add to Cart</button>
             </span>
             <br>

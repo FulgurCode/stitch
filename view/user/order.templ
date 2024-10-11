@@ -1,11 +1,14 @@
 package user
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
 
-templ Order() {
+templ Order(product models.Product) {
     @layout.User() {
         <link rel="stylesheet" href="/static/styles/user/order.css">
         <div class={Container()}>
@@ -14,8 +17,8 @@ templ Order() {
                 <div class="product-card">
                     <img src="https://assets.vogue.com/photos/5891f3b9dec09b184145514f/master/w_1600%2Cc_limit/50-shades-grey-outfits_03.jpg">
                     <div>
-                        <p class="name">hola</p>
-                        <h3 class="price">&#8360;. 2,000.00</h3>
+                        <p class="name">{product.Name}</p>
+                        <h3 class="price">&#8360;. {fmt.Sprintf("%d",product.Price)}</h3>
                     </div>
                 </div>
                 <form>

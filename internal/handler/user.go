@@ -47,8 +47,13 @@ func Item(c echo.Context) error {
 
 // Order page handler
 func Order(c echo.Context) error {
-	var component = user.Order()
+	var productId = c.Param("productId")
+	var product, err = mysql.GetProductById(productId)
+	if err != nil {
+		fmt.Println(err)
+	}
 
+	var component = user.Order(product)
 	return utils.Render(c, component)
 }
 
