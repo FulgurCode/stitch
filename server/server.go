@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/FulgurCode/stitch/internal/handler"
+	"github.com/FulgurCode/stitch/utils"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
@@ -31,26 +32,26 @@ func Run(port string) {
 	app.GET("/order/:productId", handler.Order)
 	app.GET("/about", handler.About)
 
-	app.GET("/admin", handler.Admin)
+	app.GET("/admin", utils.CheckLogin(handler.Admin))
 
 	app.GET("/admin/login", handler.AdminLogin)
 	app.POST("/admin/login", handler.AdminLoginPost)
-	app.GET("/admin/logout", handler.AdminLogout)
-	app.POST("/admin/change-password", handler.AdminChangePasswordPost)
-	app.GET("/admin/change-password", handler.AdminChangePassword)
+	app.GET("/admin/logout", utils.CheckLogin(handler.AdminLogout))
+	app.POST("/admin/change-password", utils.CheckLogin(handler.AdminChangePasswordPost))
+	app.GET("/admin/change-password", utils.CheckLogin(handler.AdminChangePassword))
 
-	app.GET("/admin/products", handler.AdminProducts)
-	app.GET("/admin/add-product", handler.AddProductGet)
-	app.POST("/admin/product", handler.AddProductPost)
-	app.DELETE("/admin/product", handler.DeleteProduct)
-	app.PUT("/admin/product/:productId", handler.EditProduct)
+	app.GET("/admin/products", utils.CheckLogin(handler.AdminProducts))
+	app.GET("/admin/add-product", utils.CheckLogin(handler.AddProductGet))
+	app.POST("/admin/product", utils.CheckLogin(handler.AddProductPost))
+	app.DELETE("/admin/product", utils.CheckLogin(handler.DeleteProduct))
+	app.PUT("/admin/product/:productId", utils.CheckLogin(handler.EditProduct))
 
-	app.GET("/admin/stock", handler.AdminStock)
-	app.POST("/admin/update-stock", handler.AdminUpdateStockPost)
+	app.GET("/admin/stock", utils.CheckLogin(handler.AdminStock))
+	app.POST("/admin/update-stock", utils.CheckLogin(handler.AdminUpdateStockPost))
 
-	app.GET("/admin/item", handler.AdminItem)
-	app.GET("/admin/orders", handler.AdminOrders)
-	app.GET("/admin/settings", handler.AdminSettings)
+	app.GET("/admin/item", utils.CheckLogin(handler.AdminItem))
+	app.GET("/admin/orders", utils.CheckLogin(handler.AdminOrders))
+	app.GET("/admin/settings", utils.CheckLogin(handler.AdminSettings))
 
 	app.GET("/comming-soon", handler.CommingSoon)
 	app.GET("/*", handler.NotFound)

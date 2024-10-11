@@ -61,6 +61,11 @@ func AdminLoginPost(c echo.Context) error {
 func AdminLogout(c echo.Context) error {
 	utils.DeleteSession(c, "auth")
 
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/login")
+		return c.NoContent(200)
+	}
+
 	return c.Redirect(http.StatusSeeOther, "/admin/login")
 }
 
