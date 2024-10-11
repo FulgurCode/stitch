@@ -143,7 +143,7 @@ func AdminSideBar() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/components/dashboardsidebar.css\"><div class=\"dashboardsidebar\" id=\"sidebar\"><div class=\"places\"><ul><li><a href=\"/admin/products\" hx-boost=\"true\" hx-target=\"body\">Products</a></li><li><a href=\"/admin/stock\" hx-boost=\"true\">Stock</a></li><li><a href=\"/admin/orders\" hx-boost=\"true\">Orders</a></li><li><a href=\"/admin/settings\" hx-boost=\"true\">Settings</a></li></ul></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/components/dashboardsidebar.css\"><div class=\"dashboardsidebar\" id=\"sidebar\"><div class=\"places\"><ul><li><a href=\"/admin/products\" hx-boost=\"true\" hx-target=\"body\">Products</a></li><li><a href=\"/admin/stock\" hx-boost=\"true\">Stock</a></li><li><a href=\"/admin/orders\" hx-boost=\"true\">Orders</a></li><li><a href=\"/admin/settings\" hx-boost=\"true\">Settings</a></li></ul><span style=\"margin-top: auto\"><a href=\"/admin/logout\">Logout</a></span></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
