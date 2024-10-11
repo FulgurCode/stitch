@@ -11,12 +11,12 @@ templ User() {
                 <h1>LOGO</h1>
             </div>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/all">All</a></li>
+                <li><a href="/" hx-boost="true">Home</a></li>
+                <li><a href="/all" hx-boost="true">All</a></li>
                 // <li>Shop</li>
                 // <li>Acessories</li>
-                <li><a href="/collections">Collections</a></li>
-                <li><a href="/about">About us</a></li>
+                <li><a href="/collections" hx-boost="true">Collections</a></li>
+                <li><a href="/about" hx-boost="true">About us</a></li>
             </ul>
         </header>
         <main>{ children... }</main>
