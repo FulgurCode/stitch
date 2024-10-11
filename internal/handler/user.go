@@ -64,6 +64,13 @@ func About(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+// Comming Soon handler
+func CommingSoon(c echo.Context) error {
+	var component = layout.CommmingSoon()
+
+	return utils.Render(c, component)
+}
+
 // Not Found handler
 func NotFound(c echo.Context) error {
 	var component = layout.NotFound()
