@@ -1,5 +1,18 @@
 package layout
 
+css notFoundContainer() {
+    margin-top: 35vh;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 templ NotFound() {
-    <h1>404 NotFound</h1>
+    @User() {
+        <div class={notFoundContainer()}>
+            <h1>404 NotFound</h1>
+            <p>Oops! The page you're looking for doesn't exist.</p>
+        </div>
+    }
 }
