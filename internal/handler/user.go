@@ -99,6 +99,13 @@ func Search(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+// Cart page handler
+func Cart(c echo.Context) error {
+	var component = user.Cart()
+
+	return utils.Render(c, component)
+}
+
 // About page handler
 func About(c echo.Context) error {
 	var component = user.About()
