@@ -67,7 +67,7 @@ func Search() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><form><input type=\"text\" placeholder=\"Search...\" list=\"queries\" name=\"query\"> <datalist id=\"queries\"><option value=\"PHP\"></option> <option value=\"C++\"></option> <option value=\"Java\"></option> <option value=\"Ruby\"></option> <option value=\"Python\"></option> <option value=\"Go\"></option> <option value=\"Perl\"></option> <option value=\"Erlang\"></option></datalist> <input type=\"submit\" class=\"button-primary\"></form></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><form><input type=\"text\" placeholder=\"Search...\" list=\"queries\" name=\"query\"> <datalist id=\"queries\"><option value=\"PHP\"></option> <option value=\"C++\"></option> <option value=\"Java\"></option> <option value=\"Ruby\"></option> <option value=\"Python\"></option> <option value=\"Go\"></option> <option value=\"Perl\"></option> <option value=\"Erlang\"></option></datalist> <input type=\"submit\" class=\"button-primary\" value=\"Search\"></form></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
