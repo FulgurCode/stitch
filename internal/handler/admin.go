@@ -222,8 +222,12 @@ func AdminItem(c echo.Context) error {
 
 // Admin Orders Handler
 func AdminOrders(c echo.Context) error {
-	var component = admin.AdminOrders()
+	var orders,err = mysql.GetOrders()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 
+	var component = admin.AdminOrders(orders)
 	return utils.Render(c, component)
 }
 

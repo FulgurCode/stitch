@@ -19,15 +19,17 @@ type Stock struct {
 }
 
 type Order struct {
-	Id        string `json:"id" form:"id"`
-	ProductId string `json:"productId" form:"productId"`
-	Name      string `json:"name" form:"name"`
-	Address   string `json:"address" form:"address"`
-	House     string `json:"house" form:"house"`
-	Pin       int    `json:"pin" form:"pin"`
-	City      string `json:"city" form:"city"`
-	Phone     string `json:"phone" form:"phone"`
-	Payment   string `json:"payment" form:"payment"`
-	Total     int    `json:"total" form:"total"`
-	Status    string `json:"status" form:"status"`
+	Id           string `json:"id" form:"id"`
+	ProductId    string `json:"productId" form:"productId"`
+	ProductName  string `json:"productName" form:"productName"`
+	ProductPrice int    `json:"productPrice" form:"productPrice"`
+	Name         string `json:"name" form:"name"`
+	Address      string `json:"address" form:"address"`
+	House        string `json:"house" form:"house"`
+	Pin          int    `json:"pin" form:"pin"`
+	City         string `json:"city" form:"city"`
+	Phone        string `json:"phone" form:"phone"`
+	Payment      string `json:"payment" form:"payment"`
+	Total        int    `json:"total" form:"total"`
+	Status       string `json:"status" form:"status"`
 }

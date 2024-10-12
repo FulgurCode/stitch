@@ -1,78 +1,39 @@
 package admin
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
-templ AdminOrders() {
+templ AdminOrders(orders []models.Order) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/orders.css"/>
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start;">Orders</h1>
             <div class="orders-container">
-                @OrdersCard("test",
-                    "2000.00",
-                    "abdula",
-                    "cherkkala house",
-                    "641673",
-                    "9463729647",
-                    "cash on delivery",
-                    "https://picsum.photos/100/150",
-                )
-                @OrdersCard("test",
-                    "2000.00",
-                    "abdula",
-                    "cherkkala house",
-                    "641673",
-                    "9463729647",
-                    "cash on delivery",
-                    "https://picsum.photos/100/150",
-                )
-                @OrdersCard("test",
-                    "2000.00",
-                    "abdula",
-                    "cherkkala house",
-                    "641673",
-                    "9463729647",
-                    "cash on delivery",
-                    "https://picsum.photos/100/150",
-                )
-                @OrdersCard("test",
-                    "2000.00",
-                    "abdula",
-                    "cherkkala house",
-                    "641673",
-                    "9463729647",
-                    "cash on delivery",
-                    "https://picsum.photos/100/150",
-                )
-                
+                for _,order := range orders {
+                    @OrdersCard(order)
+                }
             </div>
         </div>
     }
 }
 
-templ OrdersCard(productName string, 
-            price string, 
-            name string, 
-            adress string, 
-            pin string, 
-            phoneNo string, 
-            paymentMethod string, 
-            imageUrl string,
-        ) {
+templ OrdersCard(order models.Order) {
     <div class="orders">
-        <img src={imageUrl}/>
+        <img src="https://picsum.photos/100/150"/>
         <div>
-            Product name: {productName}<br/>
-            Price: &#8360;. {price}
+            Product name: {order.ProductName}<br/>
+            Price: &#8360;. {fmt.Sprintf("%d",order.ProductPrice)}
         </div>
         <div class="description">
-            Name: {name}<br/>
-            Adress: {adress}<br/>
-            Pin: {pin}<br/>
-            Phone no: {phoneNo}<br/>
-            Payment method: {paymentMethod}
+            Name: {order.Name}<br/>
+            Adress: {order.Address}<br/>
+            Pin: {fmt.Sprintf("%d",order.Pin)}<br/>
+            Phone no: {order.Phone}<br/>
+            Payment method: {order.Payment}
         </div>
         <div>
             <button class="button-primary">Mark as Shipped</button>
