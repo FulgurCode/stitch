@@ -92,6 +92,13 @@ func OrderPost(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, fmt.Sprintf("/item/%s", productId))
 }
 
+// Search page handler
+func Search(c echo.Context) error {
+	var component = user.Search()
+
+	return utils.Render(c, component)
+}
+
 // About page handler
 func About(c echo.Context) error {
 	var component = user.About()

@@ -1,0 +1,27 @@
+package user
+
+import (
+    "github.com/FulgurCode/stitch/view/layout"
+)
+
+templ Search() {
+    @layout.User() {
+        <link rel="stylesheet" href="/static/styles/user/search.css">
+        <div class={Container()}>
+            <form>
+                <input type="text" placeholder="Search..." list="queries" name="query"/>
+                <datalist id="queries"> // Insert all your queries from db here
+                    <option value="PHP" />
+                    <option value="C++" />
+                    <option value="Java" />
+                    <option value="Ruby" />
+                    <option value="Python" />
+                    <option value="Go" />
+                    <option value="Perl" />
+                    <option value="Erlang" />
+                </datalist>
+                <input type="submit" class="button-primary"/>
+            </form>
+        </div>
+    }
+}

@@ -1,0 +1,12 @@
+form{
+    margin-top: 3rem;
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 700px;
+}
+
+form > input[type="text"]{
+    flex: 1;
+    border: 1px solid var(--primary);
+}
