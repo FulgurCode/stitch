@@ -41,7 +41,7 @@ func Admin(params ...string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body><link rel=\"stylesheet\" href=\"/static/styles/admin/template.css\"><div class=\"overflow\"><header class=\"surface\"><button class=\"sidebar-btn\" onclick=\"toggleSidebar()\"><span></span> <span></span></button><div class=\"logo\"><h1>LOGO</h1></div></header><main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body><link rel=\"stylesheet\" href=\"/static/styles/admin/template.css\"><div class=\"overflow\"><header class=\"surface\"><button class=\"sidebar-btn\" onclick=\"toggleSidebar()\"><span></span> <span></span></button><div class=\"logo\"><h1>STICTH</h1></div></header><main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -100,7 +100,7 @@ func AdminAuth(params ...string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body><link rel=\"stylesheet\" href=\"/static/styles/admin/template.css\"><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>LOGO</h1></div></header><main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body><link rel=\"stylesheet\" href=\"/static/styles/admin/template.css\"><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><h1>STICTH</h1></div></header><main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
