@@ -29,4 +29,5 @@ type Order struct {
 	Phone     string `json:"phone" form:"phone"`
 	Payment   string `json:"payment" form:"payment"`
 	Total     int    `json:"total" form:"total"`
+	Status    string `json:"status" form:"status"`
 }

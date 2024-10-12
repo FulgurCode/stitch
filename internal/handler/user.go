@@ -77,6 +77,7 @@ func OrderPost(c echo.Context) error {
 
 	order.ProductId = productId
 	order.Total = product.Price
+	order.Status = "ordered"
 
 	err = mysql.MakeOrder(order)
 	if err != nil {
