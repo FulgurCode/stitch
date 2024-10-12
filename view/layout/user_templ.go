@@ -41,7 +41,7 @@ func User() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><script src=\"/static/scripts/scroll_animation.js\" defer></script><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><a href=\"/products/search\" hx-boost=\"true\"><img src=\"/static/icons/search.svg\"></a><h1>LOGO</h1><a href=\"/products/cart\" hx-boost=\"true\"><img src=\"/static/icons/cart.svg\"></a></div><ul><li><a href=\"/\" hx-boost=\"true\">Home</a></li><li><a href=\"/products\" hx-boost=\"true\">All</a></li><li><a href=\"/collections\" hx-boost=\"true\">Collections</a></li><li><a href=\"/about\" hx-boost=\"true\">About us</a></li></ul></header><main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/template.css\"><script src=\"/static/scripts/scroll_animation.js\" defer></script><body><div class=\"overflow\"><header class=\"surface\"><div class=\"logo\"><a href=\"/products/search\" hx-boost=\"true\"><img src=\"/static/icons/search.svg\"></a><h1>STICTH</h1><a href=\"/products/cart\" hx-boost=\"true\"><img src=\"/static/icons/cart.svg\"></a></div><ul><li><a href=\"/\" hx-boost=\"true\">Home</a></li><li><a href=\"/products\" hx-boost=\"true\">All</a></li><li><a href=\"/collections\" hx-boost=\"true\">Collections</a></li><li><a href=\"/about\" hx-boost=\"true\">About us</a></li></ul></header><main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -49,7 +49,7 @@ func User() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"surface\"><div><div class=\"policies\"><h3>Policies</h3><ul><li><a href=\"mailto:mail@gmail.com\">Contact us</a></li></ul></div><div class=\"logo\"><h1>LOGO</h1></div><div class=\"contacts\"><h3>Contact us</h3><ul><li>+91 8353692784</li></ul></div></div></footer></div></body>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"surface\"><div><div class=\"policies\"><h3>Policies</h3><ul><li><a href=\"mailto:mail@gmail.com\">Contact us</a></li></ul></div><div class=\"logo\"><h1>STICTH</h1></div><div class=\"contacts\"><h3>Contact us</h3><ul><li>+91 8353692784</li></ul></div></div></footer></div></body>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
