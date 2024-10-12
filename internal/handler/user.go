@@ -2,7 +2,9 @@ package handler
 
 import (
 	"fmt"
+	"net/http"
 
+	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/pkg/mysql"
 	"github.com/FulgurCode/stitch/utils"
 	"github.com/FulgurCode/stitch/view/layout"
@@ -46,7 +48,7 @@ func Item(c echo.Context) error {
 }
 
 // Order page handler
-func Order(c echo.Context) error {
+func OrderGet(c echo.Context) error {
 	var productId = c.Param("productId")
 	var product, err = mysql.GetProductById(productId)
 	if err != nil {
@@ -55,6 +57,38 @@ func Order(c echo.Context) error {
 
 	var component = user.Order(product)
 	return utils.Render(c, component)
+}
+
+func OrderPost(c echo.Context) error {
+	var productId = c.Param("productId")
+	var order models.Order
+	var err = c.Bind(&order)
+
+	product, err := mysql.GetProductById(productId)
+	if err != nil {
+		fmt.Println(err)
+
+		if c.Request().Header.Get("HX-Request") == "true" {
+			c.Response().Header().Set("HX-Location", "/products")
+			return c.NoContent(http.StatusSeeOther)
+		}
+		c.Redirect(http.StatusSeeOther, "/products")
+	}
+
+	order.ProductId = productId
+	order.Total = product.Price
+
+	err = mysql.MakeOrder(order)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", fmt.Sprintf("/item/%s", productId))
+		return c.NoContent(http.StatusSeeOther)
+	}
+
+	return c.Redirect(http.StatusSeeOther, fmt.Sprintf("/item/%s", productId))
 }
 
 // About page handler

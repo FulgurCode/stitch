@@ -29,7 +29,7 @@ func setUpTables() {
 
 	createTable("CREATE TABLE IF NOT EXISTS stock(product_id uuid, s int, m int, l int, xl int, xxl int, xxxl int, total int, FOREIGN KEY(product_id) REFERENCES product(id));", "stock")
 
-	createTable("CREATE TABLE IF NOT EXISTS orders(id uuid, product_id uuid, name text, address text, house_name text, pin int, city text, phone int, payment text, total int, FOREIGN KEY(product_id) REFERENCES product(id));","order")
+	createTable("CREATE TABLE IF NOT EXISTS orders(id uuid, product_id uuid, name text, address text, house text, pin int, city text, phone VARCHAR(13), payment text, total int, FOREIGN KEY(product_id) REFERENCES product(id));","order")
 
 	// Get current number of admin users
 	result, err := Db.Query("SELECT COUNT(*) FROM admin;")
