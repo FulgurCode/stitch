@@ -105,6 +105,20 @@ header > ul {
     min-width: clamp(10px, 100%, 600px);
     justify-content: space-around;
 }
+header > .logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding-inline: var(--padding);
+
+    box-sizing: border-box;
+}
+header > .logo img, header > .logo a{
+    width: 2.5rem;
+    height: 2.5rem;
+}
 
 main{
     flex: 1 0 auto;
