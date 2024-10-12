@@ -15,6 +15,8 @@ func notFoundContainer() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder.WriteString(`display:flex;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`align-items:center;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`flex-direction:column;`)
+	templ_7745c5c3_CSSBuilder.WriteString(`padding:var(--padding);`)
+	templ_7745c5c3_CSSBuilder.WriteString(`text-align:center;`)
 	templ_7745c5c3_CSSID := templ.CSSID(`notFoundContainer`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
 		ID:    templ_7745c5c3_CSSID,
