@@ -148,6 +148,14 @@ func AddProductPost(c echo.Context) error {
 
 	product.Id = uuid.NewString()
 
+	form, _ := c.MultipartForm()
+
+	var file = form.File["main-image"][0]
+	utils.StoreFile(file, product.Id+"-main")
+
+	var files = form.File["images"]
+	utils.StoreFiles(files, product.Id)
+
 	var err = mysql.AddProduct(product)
 	if err != nil {
 		fmt.Println(err)
@@ -222,7 +230,7 @@ func AdminItem(c echo.Context) error {
 
 // Admin Orders Handler
 func AdminOrders(c echo.Context) error {
-	var orders,err = mysql.GetOrders()
+	var orders, err = mysql.GetOrders()
 	if err != nil {
 		fmt.Println(err.Error())
 	}

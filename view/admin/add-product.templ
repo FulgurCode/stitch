@@ -10,16 +10,18 @@ templ AdminAddProduct() {
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start;">Add Product</h1>
             <div class="item-container">
+                <form class="description-container" hx-post="/admin/product" hx-target="body" enctype="multipart/form-data">
                 <div class="image">
                     <img src="https://picsum.photos/60/100"/>
                     <img src="https://picsum.photos/60/110"/>
-                    <span onclick="document.getElementById('fileInput').click()">
-                        <input type="file" id="fileInput" accept="image/*" style="display: none">
-                        <span>+</span>
+                    <span >
+                        <label for="main-image">Main Image: </label>
+                        <input type="file" accept="image/*" name="main-image">
+                        <label for="images">More Images: </label>
+                        <input type="file" accept="image/*" name="images" multiple>
                     </span>
                 </div>
 
-                <form class="description-container" hx-post="/admin/product" hx-target="body">
                     <p class="no-line-height">Title:</p>
                     <input type="text" style="font-weight: 600; font-size: 1.5rem;" placeholder="Title" name="name" required/>
                     <span style="gap: 2px;">
