@@ -53,7 +53,7 @@ func Run(port string) {
 	app.GET("/admin/stock", utils.CheckLogin(handler.AdminStock))
 	app.POST("/admin/update-stock", utils.CheckLogin(handler.AdminUpdateStockPost))
 
-	app.GET("/admin/item", utils.CheckLogin(handler.AdminItem))
+	app.GET("/admin/item/:productId", utils.CheckLogin(handler.AdminItem))
 	app.GET("/admin/orders", utils.CheckLogin(handler.AdminOrders))
 	app.GET("/admin/settings", utils.CheckLogin(handler.AdminSettings))
 

@@ -57,7 +57,7 @@ func GetProductById(id string) (models.Product, error) {
 }
 
 func EditProduct(product models.Product) error {
-	var query = fmt.Sprintf("UPDATE product SET name = %s, category = %s, price = %d, description %s WHERE id = %s;", product.Name, product.Category, product.Price, product.Description, product.Id)
+	var query = fmt.Sprintf("UPDATE product SET name = '%s', category ='%s', price = %d, description = '%s' WHERE id = '%s';", product.Name, product.Category, product.Price, product.Description, product.Id)
 
 	var _, err = Db.Exec(query)
 	return err

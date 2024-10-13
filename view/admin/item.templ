@@ -1,15 +1,19 @@
 package admin
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
-templ AdminItem() {
+templ AdminItem(product models.Product) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/item.css"/>
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start;">Item</h1>
             <div class="item-container">
+                <form class="description-container" hx-put={fmt.Sprintf("/admin/product/%s",product.Id)} hx-target="body" enctype="multipart/form-data">
                 <p style="line-height: 0">Images:</p>
                 <div class="image">
                     <img src="https://picsum.photos/60/100"/>
@@ -22,12 +26,12 @@ templ AdminItem() {
 
                 <div class="description-container">
                     <p class="no-line-height">Title:</p>
-                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" value="Title" placeholder="Title" name="title"/>
+                    <input type="text" style="font-weight: 600; font-size: 1.5rem;" value={product.Name} name="name"/>
                     <span style="gap: 2px;">
                         <p class="no-line-height">Price:</p>
-                        <p style="margin: 0;"><input type="number" value="0.00" placeholder="price"/> &#8360;.</p>
+                        <p style="margin: 0;"><input type="number" name="price" value={fmt.Sprintf("%d",product.Price)} placeholder="price"/> &#8360;.</p>
                         <p class="no-line-height">Description:</p>
-                        <textarea name="description" placeholder="Description" id="auto-expand-textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</textarea>
+                        <textarea name="description" placeholder="Description" id="auto-expand-textarea" value={product.Description}>{product.Description}</textarea>
                         <p class="no-line-height">Include Size:</p>
                     </span>
                     <div class="size-group">
@@ -51,6 +55,7 @@ templ AdminItem() {
                     <button class="button-primary" style="margin-top: var(--padding-inner)">Save</button>
                 </div>
 
+              </form>
             </div>
         </div>
         <script>

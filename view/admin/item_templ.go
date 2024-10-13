@@ -9,10 +9,13 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"fmt"
+
+	"github.com/FulgurCode/stitch/models"
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
-func AdminItem() templ.Component {
+func AdminItem(product models.Product) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -67,7 +70,72 @@ func AdminItem() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1 style=\"align-self: start;\">Item</h1><div class=\"item-container\"><p style=\"line-height: 0\">Images:</p><div class=\"image\"><img src=\"https://picsum.photos/60/100\"> <img src=\"https://picsum.photos/60/110\"> <span onclick=\"document.getElementById(&#39;fileInput&#39;).click()\"><input type=\"file\" id=\"fileInput\" accept=\"image/*\" style=\"display: none\"> <span>+</span></span></div><div class=\"description-container\"><p class=\"no-line-height\">Title:</p><input type=\"text\" style=\"font-weight: 600; font-size: 1.5rem;\" value=\"Title\" placeholder=\"Title\" name=\"title\"> <span style=\"gap: 2px;\"><p class=\"no-line-height\">Price:</p><p style=\"margin: 0;\"><input type=\"number\" value=\"0.00\" placeholder=\"price\"> &#8360;.</p><p class=\"no-line-height\">Description:</p><textarea name=\"description\" placeholder=\"Description\" id=\"auto-expand-textarea\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae  libero rhoncus tellus venenatis aliquam quis nec dolor. Nulla aliquet  tempor nisl</textarea><p class=\"no-line-height\">Include Size:</p></span><div class=\"size-group\"><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"small-size\" name=\"size\" value=\"S\"> <label for=\"small-size\">S</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"medium-size\" name=\"size\" value=\"M\"> <label for=\"medium-size\">M</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"large-size\" name=\"size\" value=\"L\"> <label for=\"large-size\">L</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"extra-large-size\" name=\"size\" value=\"XL\"> <label for=\"extra-large-size\">XL</label></div></div><button class=\"button-primary\" style=\"margin-top: var(--padding-inner)\">Save</button></div></div></div><script>\n            document.addEventListener('DOMContentLoaded', () => {\n            const textarea = document.getElementById('auto-expand-textarea');\n\n            const adjustHeight = () => {\n                textarea.style.height = 'auto'; // Reset height to auto to shrink if needed\n                textarea.style.height = `${textarea.scrollHeight}px`; // Set height to the scrollHeight\n            };\n\n            textarea.addEventListener('input', adjustHeight);\n\n            // Initial adjustment to handle pre-filled content\n            adjustHeight();\n        });\n        </script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h1 style=\"align-self: start;\">Item</h1><div class=\"item-container\"><form class=\"description-container\" hx-put=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/admin/product/%s", product.Id))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 16, Col: 103}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" enctype=\"multipart/form-data\"><p style=\"line-height: 0\">Images:</p><div class=\"image\"><img src=\"https://picsum.photos/60/100\"> <img src=\"https://picsum.photos/60/110\"> <span onclick=\"document.getElementById(&#39;fileInput&#39;).click()\"><input type=\"file\" id=\"fileInput\" accept=\"image/*\" style=\"display: none\"> <span>+</span></span></div><div class=\"description-container\"><p class=\"no-line-height\">Title:</p><input type=\"text\" style=\"font-weight: 600; font-size: 1.5rem;\" value=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 29, Col: 103}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" name=\"name\"> <span style=\"gap: 2px;\"><p class=\"no-line-height\">Price:</p><p style=\"margin: 0;\"><input type=\"number\" name=\"price\" value=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var7 string
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 32, Col: 118}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" placeholder=\"price\"> &#8360;.</p><p class=\"no-line-height\">Description:</p><textarea name=\"description\" placeholder=\"Description\" id=\"auto-expand-textarea\" value=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var8 string
+			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 34, Col: 131}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var9 string
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 34, Col: 153}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</textarea><p class=\"no-line-height\">Include Size:</p></span><div class=\"size-group\"><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"small-size\" name=\"size\" value=\"S\"> <label for=\"small-size\">S</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"medium-size\" name=\"size\" value=\"M\"> <label for=\"medium-size\">M</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"large-size\" name=\"size\" value=\"L\"> <label for=\"large-size\">L</label></div><div class=\"checkbox-button\"><input type=\"checkbox\" id=\"extra-large-size\" name=\"size\" value=\"XL\"> <label for=\"extra-large-size\">XL</label></div></div><button class=\"button-primary\" style=\"margin-top: var(--padding-inner)\">Save</button></div></form></div></div><script>\n            document.addEventListener('DOMContentLoaded', () => {\n            const textarea = document.getElementById('auto-expand-textarea');\n\n            const adjustHeight = () => {\n                textarea.style.height = 'auto'; // Reset height to auto to shrink if needed\n                textarea.style.height = `${textarea.scrollHeight}px`; // Set height to the scrollHeight\n            };\n\n            textarea.addEventListener('input', adjustHeight);\n\n            // Initial adjustment to handle pre-filled content\n            adjustHeight();\n        });\n        </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

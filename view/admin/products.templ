@@ -1,6 +1,7 @@
 package admin
 
 import (
+    "fmt"
     "strconv"
 
     "github.com/FulgurCode/stitch/view/layout"
@@ -28,11 +29,7 @@ templ AdminProducts(products []models.Product) {
                     <tr><td colspan="5" style="text-align: center; font-style: italic;">Empty</td></tr>
                 } else {
                     for _, product := range products {
-                        @ProductsCard(product.Name,
-                            product.Price,
-                            product.Description,
-                            "https://picsum.photos/100/150",
-                        )
+                        @ProductsCard(product)
                     }
                 }
             </table>
@@ -82,15 +79,15 @@ templ AdminProducts(products []models.Product) {
     }
 }
 
-templ ProductsCard(name string, price int, description string, imageUrl string) {
+templ ProductsCard(product models.Product) {
     <tr>
-        <td ><span ><img src={imageUrl}/></span></td>
-        <td data-cell="Name:">{name}</td>
-        <td data-cell="Price:">{strconv.Itoa(price)}&nbsp;&#8360;</td>
-        <td data-cell="Description:" style="width: 100%"><p>{description}</p></td>
+        <td ><span ><img src="https://picsum.photos/100/150" /></span></td>
+        <td data-cell="Name:">{product.Name}</td>
+        <td data-cell="Price:">{strconv.Itoa(product.Price)}&nbsp;&#8360;</td>
+        <td data-cell="Description:" style="width: 100%"><p>{product.Description}</p></td>
         <td >
             <div >
-                <a href="/admin/item" hx-boost="true"><button class="button-primary">Edit</button></a>
+                <a href={templ.URL(fmt.Sprintf("/admin/item/%s", product.Id))} hx-boost="true"><button class="button-primary">Edit</button></a>
                 <button class="button-secondary">Delete</button>
             </div>
         </td>

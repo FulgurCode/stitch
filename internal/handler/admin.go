@@ -195,7 +195,9 @@ func EditProduct(c echo.Context) error {
 	if err != nil {
 		fmt.Println(err)
 
-		var component = admin.AdminItem()
+		var product, _ = mysql.GetProductById(productId)
+
+		var component = admin.AdminItem(product)
 		return utils.Render(c, component)
 	}
 
@@ -223,8 +225,14 @@ func AdminUpdateStockPost(c echo.Context) error {
 
 // Admin Item Handler
 func AdminItem(c echo.Context) error {
-	var component = admin.AdminItem()
+	var id = c.Param("productId")
 
+	var product, err = mysql.GetProductById(id)
+	if err != nil {
+		fmt.Print(err.Error())
+	}
+
+	var component = admin.AdminItem(product)
 	return utils.Render(c, component)
 }
 
