@@ -34,7 +34,8 @@ func GetProducts() ([]models.Product, error) {
 }
 
 func DeleteProduct(prodcutId string) error {
-	var query = fmt.Sprintf("DELETE FROM product WHERE product_id = %s;", prodcutId)
+	DeleteStock(prodcutId)
+	var query = fmt.Sprintf("DELETE FROM product WHERE id = '%s';", prodcutId)
 
 	var _, err = Db.Exec(query)
 

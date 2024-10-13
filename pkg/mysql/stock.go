@@ -15,6 +15,13 @@ func AddStock(stock models.Stock) error {
 	return err
 }
 
+func DeleteStock(productId string) error {
+	var query = fmt.Sprintf("DELETE FROM stock WHERE product_id = '%s';", productId)
+	var _, err = Db.Exec(query)
+
+	return err
+}
+
 func UpdateStock(stock models.Stock) error {
 	var query = fmt.Sprintf("UPDATE stock SET s = %d, m = %d, l = %d, xl = %d, xxl = %d, xxxl = %d, total = s + m + l + xl + xxl + xxxl WHERE product_id = '%s';", stock.S, stock.M, stock.L, stock.XL, stock.XXL, stock.XXXL, stock.ProductId)
 

@@ -136,8 +136,13 @@ func DeleteProduct(c echo.Context) error {
 		fmt.Print(err.Error())
 	}
 
-	var component = admin.AdminProducts([]models.Product{})
+	if c.Request().Header.Get("HX-Request") == "true" {
+		return c.NoContent(200)
+	}
 
+	var products, _ = mysql.GetProducts()
+
+	var component = admin.AdminProducts(products)
 	return utils.Render(c, component)
 }
 

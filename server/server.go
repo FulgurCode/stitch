@@ -47,7 +47,7 @@ func Run(port string) {
 	app.GET("/admin/products", utils.CheckLogin(handler.AdminProducts))
 	app.GET("/admin/add-product", utils.CheckLogin(handler.AddProductGet))
 	app.POST("/admin/product", utils.CheckLogin(handler.AddProductPost))
-	app.DELETE("/admin/product", utils.CheckLogin(handler.DeleteProduct))
+	app.DELETE("/admin/product/:productId", utils.CheckLogin(handler.DeleteProduct))
 	app.PUT("/admin/product/:productId", utils.CheckLogin(handler.EditProduct))
 
 	app.GET("/admin/stock", utils.CheckLogin(handler.AdminStock))

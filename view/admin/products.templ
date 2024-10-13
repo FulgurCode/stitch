@@ -88,7 +88,7 @@ templ ProductsCard(product models.Product) {
         <td >
             <div >
                 <a href={templ.URL(fmt.Sprintf("/admin/item/%s", product.Id))} hx-boost="true"><button class="button-primary">Edit</button></a>
-                <button class="button-secondary">Delete</button>
+                <button class="button-secondary" hx-delete={fmt.Sprintf("/admin/product/%s",product.Id)} hx-swap="outerHTML swap:1s" hx-target="closest tr" >Delete</button>
             </div>
         </td>
     </tr>

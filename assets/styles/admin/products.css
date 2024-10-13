@@ -99,3 +99,8 @@ tr:nth-child(even){
         background-color: #00000011;
     }
 }
+
+tr.htmx-swapping {
+  opacity: 0!important;
+  transition: opacity 1s ease-out!important;
+}
