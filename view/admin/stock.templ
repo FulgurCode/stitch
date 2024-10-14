@@ -13,15 +13,17 @@ templ AdminStock(stocks []models.Stock) {
         <link rel="stylesheet" href="/static/styles/admin/stock.css"/>
         <dialog>
             <h2 style="font-size: 1.2rem; line-height: 0; text-align: center">Product name</h2>
-            <form name="form">
-                <span><font>S:</font><input name="stock" type="number" min="0"/></span>
-                <span><font>M:</font><input name="stock" type="number" min="0"/></span>
-                <span><font>L:</font><input name="stock" type="number" min="0"/></span>
-                <span><font>XL:</font><input name="stock" type="number" min="0"/></span>
-
-                <span><font>Total:</font><input name="stock" type="text" min="0" disabled value="80"/></span>
+            <form name="stockData" id="stockData" hx-post="/admin/update-stock/" hx-target="body">
+                <span><font>S:</font><input name="S" type="number" min="0"/></span>
+                <span><font>M:</font><input name="M" type="number" min="0"/></span>
+                <span><font>L:</font><input name="L" type="number" min="0"/></span>
+                <span><font>XL:</font><input name="XL" type="number" min="0"/></span>
+                <span><font>XXL:</font><input name="XXL" type="number" min="0"/></span>
+                <span><font>XXXL:</font><input name="XXXL" type="number" min="0"/></span>
+                <input type="hidden" name="productId" id="productId">
+                <!-- <span><font>Total:</font><input name="total" type="text" min="0" disabled value="80"/></span> -->
             <div>
-                <button class="button-primary" onclick={closeDialogStock()}>Save</button>
+                <button class="button-primary" type="submit" >Save</button>
                 <button class="button-secondary" onclick={closeDialogStock()}>Cancel</button>
             </div>
             </form>
@@ -46,7 +48,7 @@ templ ProductsCardStock(stock models.Stock) {
                 <span>Price: &#8360;. {strconv.Itoa(stock.ProductPrice)}<br/></span>
             </div>
             <div id="buttons">
-                <button class="button-primary" onclick={showDialogStock("80")}>Edit Stock</button>
+                <button class="button-primary" onclick={showDialogStock(stock)}>Edit Stock</button>
                 <button class="button-secondary">View Product</button>
             </div>
             <div id="stock">
@@ -63,10 +65,17 @@ templ ProductsCardStock(stock models.Stock) {
     </div>
 }
 
-script showDialogStock(productStock string){
+script showDialogStock(stock models.Stock){
     dialog = document.querySelector("dialog");
     // form.stock.value = productStock;
     dialog.showModal();
+    stockData.S.value = stock.S
+    stockData.M.value = stock.M
+    stockData.L.value = stock.L
+    stockData.XL.value = stock.XL
+    stockData.XXL.value = stock.XXL
+    stockData.XXXL.value = stock.XXXL
+    stockData.productId.value = stock.productId
 }
 script closeDialogStock(){
     dialog = document.querySelector("dialog");
