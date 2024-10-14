@@ -19,7 +19,9 @@ func Home(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	var component = user.Home(products)
+	var settings = mysql.GetSettings()
+
+	var component = user.Home(products,settings)
 
 	return utils.Render(c, component)
 }

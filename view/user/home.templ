@@ -27,7 +27,7 @@ css Container() {
 
 }
 
-templ Home(products []models.Product) {
+templ Home(products []models.Product,settings map[string]string) {
     @layout.User() {
 		<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
@@ -35,13 +35,7 @@ templ Home(products []models.Product) {
         <div class={Quote(), "surface"}>
             <h1>UNLEASH YOUR INDIVIDUALITY WITH FASHION THAT’S HANDMADE, JUST FOR YOU.</h1>
             <a href="/products" hx-boost="true"><button class="button-secondary hidden-swipe" style="width: max-content;">Shop all</button></a>
-            <p style="max-width: 800px" class="hidden">
-                Discover the charm of our handcrafted clothing, 
-                where every piece tells a story. Made with love and attention to detail, 
-                our unique garments celebrate individuality and style. 
-                Embrace the beauty of sustainable fashion and elevate your wardrobe with designs that stand out. 
-                Shop now and wear your story!
-            </p>
+            <p style="max-width: 800px" class="hidden">{settings["main_description"]}</p>
         </div>
         <div class="product-container">
             for i := 0; i < len(products) && i < 9;i++ {
@@ -50,8 +44,8 @@ templ Home(products []models.Product) {
         </div>
         <a href="/products" hx-boost="true"><button class="button-primary hidden-swipe" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
         <div class="present-container">
-            @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "/comming-soon")
-            @presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet tempor nisl. Curabitur dignissimligula eget justo condimentum feugiat.  Proin vitae nulla gravida, hendrerit orci ut,  laoreet elit. Morbi quis sem odio. Maecenas commodo ligula quam, nec  iaculis augue mollis ac. Duis non ex a dui ", "/comming-soon")
+            @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", settings["hero_one_description"], "/comming-soon")
+            @presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", settings["hero_two_description"], "/comming-soon")
         </div>
         </div>
     }

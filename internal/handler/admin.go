@@ -273,3 +273,53 @@ func AdminSettings(c echo.Context) error {
 
 	return utils.Render(c, component)
 }
+
+func AdminHomeBanner(c echo.Context) error {
+	var file, err = c.FormFile("image")
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	utils.StoreFile(file, "home-banner")
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/settings")
+		return c.NoContent(200)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin/settings")
+}
+
+func AdminHeroOne(c echo.Context) error {
+	form, _ := c.MultipartForm()
+
+	var img = form.File["hero-one-banner"][0]
+	utils.StoreFile(img,"hero-one-banner")
+
+	var heroDescription = form.Value["hero-one-description"][0]
+	mysql.UpdateHeroOne(heroDescription)
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/settings")
+		return c.NoContent(200)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin/settings")
+}
+
+func AdminHeroTwo(c echo.Context) error {
+	form, _ := c.MultipartForm()
+
+	var img = form.File["hero-two-banner"][0]
+	utils.StoreFile(img,"hero-two-banner")
+
+	var heroDescription = form.Value["hero-two-description"][0]
+	mysql.UpdateHeroTwo(heroDescription)
+
+	if c.Request().Header.Get("HX-Request") == "true" {
+		c.Response().Header().Set("HX-Location", "/admin/settings")
+		return c.NoContent(200)
+	}
+
+	return c.Redirect(http.StatusSeeOther, "/admin/settings")
+}
