@@ -41,7 +41,7 @@ templ AdminStock(stocks []models.Stock) {
 
 templ ProductsCardStock(stock models.Stock) {
     <div class="products">
-        <img src="https://picsum.photos/101/150" style="width: 120px; max-width: none; flex: none;"/>
+        <img src={"/static/images/"+stock.ProductId+"-main"} style="width: 120px; max-width: none; flex: none;"/>
         <section>
             <div id="details">
                 <span>Name: {stock.ProductName}<br/></span>

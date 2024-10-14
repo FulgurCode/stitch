@@ -81,7 +81,7 @@ templ AdminProducts(products []models.Product) {
 
 templ ProductsCard(product models.Product) {
     <tr>
-        <td ><span ><img src="https://picsum.photos/100/150" /></span></td>
+        <td ><span ><img src={"/static/images/"+product.Id+"-main"} /></span></td>
         <td data-cell="Name:">{product.Name}</td>
         <td data-cell="Price:">{strconv.Itoa(product.Price)}&nbsp;&#8360;</td>
         <td data-cell="Description:" style="width: 100%"><p>{product.Description}</p></td>

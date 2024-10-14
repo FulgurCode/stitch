@@ -23,7 +23,7 @@ templ AdminOrders(orders []models.Order) {
 
 templ OrdersCard(order models.Order) {
     <div class="orders">
-        <img src="https://picsum.photos/100/150"/>
+        <img src={"/static/images/"+order.ProductId+"-main"}/>
         <div>
             Product name: {order.ProductName}<br/>
             Price: &#8360;. {fmt.Sprintf("%d",order.ProductPrice)}
