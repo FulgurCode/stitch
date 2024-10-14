@@ -38,7 +38,7 @@ templ OrdersCard(order models.Order) {
         </div>
         <div>
             <button class="button-primary">Mark as Shipped</button>
-            <button class="button-secondary">View Product</button>
+            <button class="button-secondary" hx-get={fmt.Sprintf("/admin/item/%s", order.ProductId)} hx-push-url={fmt.Sprintf("/admin/item/%s", order.ProductId)} hx-target="body" >View Product</button>
         </div>
     </div>
 }

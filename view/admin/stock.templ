@@ -49,7 +49,7 @@ templ ProductsCardStock(stock models.Stock) {
             </div>
             <div id="buttons">
                 <button class="button-primary" onclick={showDialogStock(stock)}>Edit Stock</button>
-                <button class="button-secondary">View Product</button>
+                <button class="button-secondary" hx-get={fmt.Sprintf("/admin/item/%s", stock.ProductId)} hx-push-url={fmt.Sprintf("/admin/item/%s", stock.ProductId)} hx-target="body" >View Product</button>
             </div>
             <div id="stock">
                 <b>S: {fmt.Sprintf("%d",stock.S)}</b>
