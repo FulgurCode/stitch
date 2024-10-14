@@ -83,16 +83,52 @@ func AdminItem(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" enctype=\"multipart/form-data\"><div class=\"image\"><p class=\"no-line-height\">Main Image:</p><section class=\"image-section\" id=\"mainImageSection\"><label for=\"fileInput_main\" class=\"upload-button\"><input type=\"file\" id=\"fileInput_main\" accept=\"image/*\" style=\"position:absolute; opacity: 0\" name=\"main-image\" required> <span>+</span></label></section><p class=\"no-line-height\">Additional Images (Max 9):</p><section class=\"image-section\" id=\"moreImagesSection\"><label for=\"fileInput_more\" class=\"upload-button\" id=\"moreImagesLabel\" name=\"\"><input type=\"file\" id=\"fileInput_more\" accept=\"image/*\" style=\"position:absolute; opacity: 0;\" name=\"images\" multiple required> <span>+</span></label></section><div id=\"imageCounter\">0 / 9 images</div></div><div class=\"description-container\"><p class=\"no-line-height\">Title:</p><input type=\"text\" style=\"font-weight: 600; font-size: 1.5rem;\" value=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" enctype=\"multipart/form-data\"><div class=\"image\"><p class=\"no-line-height\">Main Image:</p><section class=\"image-section\" id=\"mainImageSection\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var6 string
-			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-main")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 46, Col: 103}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 29, Col: 70}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Loading..\"> <label for=\"fileInput_main\" class=\"upload-button\"><input type=\"file\" id=\"fileInput_main\" accept=\"image/*\" style=\"position:absolute; opacity: 0\" name=\"main-image\"> <span>+</span></label></section><p class=\"no-line-height\">Additional Images (Max 9):</p><section class=\"image-section\" id=\"moreImagesSection\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for i := 1; i <= 9; i++ {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var7 string
+				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static/images/%s-%d", product.Id, i))
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 39, Col: 83}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Loading..\" onerror=\"this.style.display=&#39;none&#39;;\"> ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<label for=\"fileInput_more\" class=\"upload-button\" id=\"moreImagesLabel\" name=\"\"><input type=\"file\" id=\"fileInput_more\" accept=\"image/*\" style=\"position:absolute; opacity: 0;\" name=\"images\" multiple> <span>+</span></label></section><div id=\"imageCounter\">0 / 9 images</div></div><div class=\"description-container\"><p class=\"no-line-height\">Title:</p><input type=\"text\" style=\"font-weight: 600; font-size: 1.5rem;\" value=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var8 string
+			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 54, Col: 103}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -100,12 +136,12 @@ func AdminItem(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var7 string
-			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
+			var templ_7745c5c3_Var9 string
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 49, Col: 118}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 57, Col: 118}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -113,12 +149,12 @@ func AdminItem(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var8 string
-			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
+			var templ_7745c5c3_Var10 string
+			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 51, Col: 131}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 59, Col: 131}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -126,12 +162,12 @@ func AdminItem(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var9 string
-			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
+			var templ_7745c5c3_Var11 string
+			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 51, Col: 153}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/item.templ`, Line: 59, Col: 153}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

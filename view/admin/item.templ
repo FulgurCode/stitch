@@ -26,15 +26,23 @@ templ AdminItem(product models.Product) {
                 <div class="image">
                     <p class="no-line-height">Main Image:</p>
                     <section class="image-section" id="mainImageSection">
+                        <img src={"/static/images/"+product.Id+"-main"} alt="Loading..">
                         <label for="fileInput_main" class="upload-button">
-                            <input type="file" id="fileInput_main" accept="image/*" style="position:absolute; opacity: 0" name="main-image" required>
+                            <input type="file" id="fileInput_main" accept="image/*" style="position:absolute; opacity: 0" name="main-image">
                             <span>+</span>
                         </label>
                     </section>
                     <p class="no-line-height">Additional Images (Max 9):</p>
                     <section class="image-section" id="moreImagesSection">
+                        for i := 1; i <= 9; i++ {
+                            <img 
+                            src={fmt.Sprintf("/static/images/%s-%d", product.Id, i)} 
+                            alt="Loading.." 
+                            onerror="this.style.display='none';"
+                            >
+                        }
                         <label for="fileInput_more" class="upload-button" id="moreImagesLabel" name="">
-                            <input type="file" id="fileInput_more" accept="image/*" style="position:absolute; opacity: 0;" name="images" multiple required>
+                            <input type="file" id="fileInput_more" accept="image/*" style="position:absolute; opacity: 0;" name="images" multiple>
                             <span>+</span>
                         </label>
                     </section>
