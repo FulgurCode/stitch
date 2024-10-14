@@ -222,8 +222,12 @@ func AdminUpdateStockPost(c echo.Context) error {
 	if err != nil {
 		fmt.Println(err)
 	}
+	stocks, err := mysql.GetStocks()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 
-	var component = admin.AdminStock()
+	var component = admin.AdminStock(stocks)
 
 	return utils.Render(c, component)
 }
@@ -254,7 +258,11 @@ func AdminOrders(c echo.Context) error {
 
 // Admin Stock Handler
 func AdminStock(c echo.Context) error {
-	var component = admin.AdminStock()
+	var stocks, err = mysql.GetStocks()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	var component = admin.AdminStock(stocks)
 
 	return utils.Render(c, component)
 }

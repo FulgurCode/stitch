@@ -1,13 +1,14 @@
 package admin
 
 import (
+    "fmt"
     "strconv"
 
     "github.com/FulgurCode/stitch/view/layout"
-    // "github.com/FulgurCode/stitch/models"
+    "github.com/FulgurCode/stitch/models"
 )
 
-templ AdminStock() {
+templ AdminStock(stocks []models.Stock) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/stock.css"/>
         <dialog>
@@ -28,41 +29,35 @@ templ AdminStock() {
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start">Stock</h1>
             <div class="products-container" style="max-width: 700px;">
-                @ProductsCardStock("product.Name",
-                    2000,
-                    "product.Description",
-                    "https://picsum.photos/100/150",
-                )
-                @ProductsCardStock("product.Name",
-                    2000,
-                    "product.Description",
-                    "https://picsum.photos/101/150",
-                )
+                for _, stock := range stocks {
+                  @ProductsCardStock(stock)
+                }
             </div>
         </div>
     }
 }
 
-templ ProductsCardStock(name string, price int, description string, imageUrl string) {
+templ ProductsCardStock(stock models.Stock) {
     <div class="products">
-        <img src={imageUrl} style="width: 120px; max-width: none; flex: none;"/>
+        <img src="https://picsum.photos/101/150" style="width: 120px; max-width: none; flex: none;"/>
         <section>
             <div id="details">
-                <span>Name: {name}<br/></span>
-                <span>Price: &#8360;. {strconv.Itoa(price)}<br/></span>
+                <span>Name: {stock.ProductName}<br/></span>
+                <span>Price: &#8360;. {strconv.Itoa(stock.ProductPrice)}<br/></span>
             </div>
             <div id="buttons">
                 <button class="button-primary" onclick={showDialogStock("80")}>Edit Stock</button>
                 <button class="button-secondary">View Product</button>
             </div>
             <div id="stock">
-                <b>S: 80</b>
-                <b>M: 80</b>
-                <b>L: 80</b>
-                <b>X: 80</b>
-                <b style="margin-right: auto">XL: 80</b>
+                <b>S: {fmt.Sprintf("%d",stock.S)}</b>
+                <b>M: {fmt.Sprintf("%d",stock.M)}</b>
+                <b>L: {fmt.Sprintf("%d",stock.L)}</b>
+                <b>XL: {fmt.Sprintf("%d",stock.XL)}</b>
+                <b>XXL: {fmt.Sprintf("%d",stock.XXL)}</b>
+                <b>XXXL: {fmt.Sprintf("%d",stock.XXXL)}</b>
 
-                <b style="border-width: 2px">Total: 80</b>
+                <b style="border-width: 2px; margin-right: auto">Total: {fmt.Sprintf("%d",stock.Total)}</b>
             </div>
         </section>
     </div>

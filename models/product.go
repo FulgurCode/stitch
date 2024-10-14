@@ -9,13 +9,16 @@ type Product struct {
 }
 
 type Stock struct {
-	ProductId string `json:"productId" form:"productId"`
-	S         int    `json:"S" form:"S"`
-	M         int    `json:"M" form:"M"`
-	L         int    `json:"L" form:"L"`
-	XL        int    `json:"XL" form:"XL"`
-	XXL       int    `json:"XXL" form:"XXL"`
-	XXXL      int    `json:"XXXL" form:"XXXL"`
+	ProductId    string `json:"productId" form:"productId"`
+	ProductName  string `json:"productName" form:"productName"`
+	ProductPrice int    `json:"productPrice" form:"productPrice"`
+	S            int    `json:"S" form:"S"`
+	M            int    `json:"M" form:"M"`
+	L            int    `json:"L" form:"L"`
+	XL           int    `json:"XL" form:"XL"`
+	XXL          int    `json:"XXL" form:"XXL"`
+	XXXL         int    `json:"XXXL" form:"XXXL"`
+	Total        int    `json:"total" form:"total"`
 }
 
 type Order struct {

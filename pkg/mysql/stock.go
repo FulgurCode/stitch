@@ -29,3 +29,23 @@ func UpdateStock(stock models.Stock) error {
 
 	return err
 }
+
+func GetStocks() ([]models.Stock, error) {
+	var query = fmt.Sprintf("SELECT product_id,s,m,l,xl,xxl,xxxl,total,product.name,product.price FROM stock LEFT JOIN product ON stock.product_id = product.id;")
+
+	var stocks []models.Stock
+	var result, err = Db.Query(query)
+
+	if err != nil {
+		return stocks, err
+	}
+
+	for result.Next() {
+		var stock models.Stock
+		result.Scan(&stock.ProductId, &stock.S, &stock.M, &stock.L, &stock.XL, &stock.XXL, &stock.XXXL, &stock.Total, &stock.ProductName, &stock.ProductPrice)
+
+		stocks = append(stocks, stock)
+	}
+
+	return stocks, err
+}
