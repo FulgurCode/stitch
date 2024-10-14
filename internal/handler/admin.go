@@ -196,6 +196,18 @@ func EditProduct(c echo.Context) error {
 	c.Bind(&product)
 	product.Id = productId
 
+	form, _ := c.MultipartForm()
+
+	if len(form.File["main-image"]) > 0 {
+		var file = form.File["main-image"][0]
+
+		var err = utils.StoreFile(file, product.Id+"-main")
+		fmt.Println(err)
+	}
+
+var files = form.File["images"]
+utils.StoreFiles(files, product.Id)
+
 	var err = mysql.EditProduct(product)
 	if err != nil {
 		fmt.Println(err)
@@ -294,7 +306,7 @@ func AdminHeroOne(c echo.Context) error {
 	form, _ := c.MultipartForm()
 
 	var img = form.File["hero-one-banner"][0]
-	utils.StoreFile(img,"hero-one-banner")
+	utils.StoreFile(img, "hero-one-banner")
 
 	var heroDescription = form.Value["hero-one-description"][0]
 	mysql.UpdateHeroOne(heroDescription)
@@ -311,7 +323,7 @@ func AdminHeroTwo(c echo.Context) error {
 	form, _ := c.MultipartForm()
 
 	var img = form.File["hero-two-banner"][0]
-	utils.StoreFile(img,"hero-two-banner")
+	utils.StoreFile(img, "hero-two-banner")
 
 	var heroDescription = form.Value["hero-two-description"][0]
 	mysql.UpdateHeroTwo(heroDescription)
