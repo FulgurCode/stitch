@@ -33,7 +33,8 @@ templ OrdersCard(order models.Order) {
             Adress: {order.Address}<br/>
             Pin: {fmt.Sprintf("%d",order.Pin)}<br/>
             Phone no: {order.Phone}<br/>
-            Payment method: {order.Payment}
+            Payment method: {order.Payment}<br>
+            Status: {order.Status}
         </div>
         <div>
             <button class="button-primary">Mark as Shipped</button>
