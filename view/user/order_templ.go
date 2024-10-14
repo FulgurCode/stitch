@@ -96,7 +96,20 @@ func Order(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3></div></div><form><input type=\"text\" name=\"name\" placeholder=\"Name\"> <input type=\"text\" name=\"last-name\" placeholder=\"Last name\"> <textarea name=\"adress\" placeholder=\"Adress\"></textarea> <input type=\"text\" name=\"house-no\" placeholder=\"House no. or House name\"> <input type=\"text\" name=\"pin-code\" placeholder=\"Pin code\"> <input type=\"text\" name=\"city\" placeholder=\"City\"> <input type=\"tel\" name=\"number\" placeholder=\"Phone no.\"> <select name=\"delivery-method\" placeholder=\"Delivery method\"><option value=\"cash-on-delivery\">Cash on delivery</option> <option value=\"credit-card\">Credit card</option></select> <input type=\"submit\" value=\"Place Order\" class=\"button-primary\" style=\"margin-top: 2rem;\"></form></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3></div></div><form hx-post=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var7 string
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/order/%s", product.Id))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/order.templ`, Line: 24, Col: 66}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><input type=\"text\" name=\"name\" placeholder=\"Name\"> <textarea name=\"address\" placeholder=\"Adress\"></textarea> <input type=\"text\" name=\"house\" placeholder=\"House no. or House name\"> <input type=\"text\" name=\"pin\" placeholder=\"Pin code\"> <input type=\"text\" name=\"city\" placeholder=\"City\"> <input type=\"tel\" name=\"phone\" placeholder=\"Phone no.\"> <select name=\"payment\" placeholder=\"Delivery method\"><option value=\"cod\">Cash on delivery</option> <option value=\"online\">Credit card</option></select> <button type=\"submit\" class=\"button-primary\" style=\"margin-top: 2rem;\">Place Order</button></form></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

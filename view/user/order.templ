@@ -21,19 +21,18 @@ templ Order(product models.Product) {
                         <h3 class="price">&#8360;. {fmt.Sprintf("%d",product.Price)}</h3>
                     </div>
                 </div>
-                <form>
+                <form hx-post={fmt.Sprintf("/order/%s",product.Id)}>
                     <input type="text" name="name" placeholder="Name"/>
-                    <input type="text" name="last-name" placeholder="Last name"/>
-                    <textarea name="adress" placeholder="Adress"></textarea>
-                    <input type="text" name="house-no" placeholder="House no. or House name"/>
-                    <input type="text" name="pin-code" placeholder="Pin code"/>
+                    <textarea name="address" placeholder="Adress"></textarea>
+                    <input type="text" name="house" placeholder="House no. or House name"/>
+                    <input type="text" name="pin" placeholder="Pin code"/>
                     <input type="text" name="city" placeholder="City"/>
-                    <input type="tel" name="number" placeholder="Phone no."/>
-                    <select name="delivery-method" placeholder="Delivery method">
-                        <option value="cash-on-delivery">Cash on delivery</option>
-                        <option value="credit-card">Credit card</option>
+                    <input type="tel" name="phone" placeholder="Phone no."/>
+                    <select name="payment" placeholder="Delivery method">
+                        <option value="cod">Cash on delivery</option>
+                        <option value="online">Credit card</option>
                     </select>
-                    <input type="submit" value="Place Order" class="button-primary" style="margin-top: 2rem;"/>
+                    <button type="submit" class="button-primary" style="margin-top: 2rem;">Place Order</button>
                 </form>
             </div>
         </div>
