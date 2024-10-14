@@ -25,6 +25,17 @@
     object-fit: cover;
     flex-shrink: 0;
 }
+
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+  
 .item-container .image label{
     overflow: hidden;
     position: relative;
