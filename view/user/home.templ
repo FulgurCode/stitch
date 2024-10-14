@@ -60,7 +60,7 @@ templ Home(products []models.Product) {
 templ ProductCard(product models.Product) {
     <a href={templ.URL(fmt.Sprintf("/item/%s",product.Id))} hx-boost="true" style="color: inherit; text-decoration: none"  class="hidden">
         <div class="product-card">
-            <img src="https://www.refinery29.com/images/11663360.jpeg">
+            <img src={"/static/images/"+product.Id+"-main"}>
             <div>
                 <p class="name">{product.Name}</p>
                 <h3 class="price">&#8360;. {fmt.Sprintf("%d",product.Price)}</h3>
