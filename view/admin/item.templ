@@ -10,18 +10,35 @@ import (
 templ AdminItem(product models.Product) {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/item.css"/>
+        <script src="/static/scripts/image-input.js" defer></script>
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start;">Item</h1>
             <div class="item-container">
                 <form class="description-container" hx-put={fmt.Sprintf("/admin/product/%s",product.Id)} hx-target="body" enctype="multipart/form-data">
-                <p style="line-height: 0">Images:</p>
+                // <div class="image">
+                //     <img src="https://picsum.photos/60/100"/>
+                //     <img src="https://picsum.photos/60/110"/>
+                //     <span onclick="document.getElementById('fileInput').click()">
+                //         <input type="file" id="fileInput" accept="image/*" style="display: none">
+                //         <span>+</span>
+                //     </span>
+                // </div>
                 <div class="image">
-                    <img src="https://picsum.photos/60/100"/>
-                    <img src="https://picsum.photos/60/110"/>
-                    <span onclick="document.getElementById('fileInput').click()">
-                        <input type="file" id="fileInput" accept="image/*" style="display: none">
-                        <span>+</span>
-                    </span>
+                    <p class="no-line-height">Main Image:</p>
+                    <section class="image-section" id="mainImageSection">
+                        <label for="fileInput_main" class="upload-button">
+                            <input type="file" id="fileInput_main" accept="image/*" style="position:absolute; opacity: 0" name="main-image" required>
+                            <span>+</span>
+                        </label>
+                    </section>
+                    <p class="no-line-height">Additional Images (Max 9):</p>
+                    <section class="image-section" id="moreImagesSection">
+                        <label for="fileInput_more" class="upload-button" id="moreImagesLabel" name="">
+                            <input type="file" id="fileInput_more" accept="image/*" style="position:absolute; opacity: 0;" name="images" multiple required>
+                            <span>+</span>
+                        </label>
+                    </section>
+                    <div id="imageCounter">0 / 9 images</div>
                 </div>
 
                 <div class="description-container">
@@ -63,13 +80,12 @@ templ AdminItem(product models.Product) {
             const textarea = document.getElementById('auto-expand-textarea');
 
             const adjustHeight = () => {
-                textarea.style.height = 'auto'; // Reset height to auto to shrink if needed
-                textarea.style.height = `${textarea.scrollHeight}px`; // Set height to the scrollHeight
+                textarea.style.height = 'auto';
+                textarea.style.height = `${textarea.scrollHeight}px`;
             };
 
             textarea.addEventListener('input', adjustHeight);
 
-            // Initial adjustment to handle pre-filled content
             adjustHeight();
         });
         </script>

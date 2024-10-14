@@ -7,6 +7,7 @@ import (
 templ AdminAddProduct() {
     @layout.Admin() {
         <link rel="stylesheet" href="/static/styles/admin/item.css"/>
+        <script src="/static/scripts/image-input.js" defer></script>
         <div class={Container(), innerScroll()}>
             <h1 style="align-self: start;">Add Product</h1>
             <div class="item-container">
@@ -91,67 +92,6 @@ templ AdminAddProduct() {
             // Initial adjustment to handle pre-filled content
             adjustHeight();
         });
-
-        const MAX_ADDITIONAL_IMAGES = 9;
-
-        function handleFileSelect(event, sectionId) {
-            const files = event.target.files;
-            const section = document.getElementById(sectionId);
-            const uploadButton = section.querySelector('.upload-button');
-
-            if (sectionId === 'mainImageSection') {
-                // Remove existing preview for main image
-                const existingImg = section.querySelector('img');
-                if (existingImg) {
-                    section.removeChild(existingImg);
-                }
-                
-                if (files.length > 0) {
-                    const file = files[0];
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const newImg = document.createElement('img');
-                        newImg.src = e.target.result;
-                        newImg.alt = "Uploaded image";
-                        section.insertBefore(newImg, uploadButton);
-                    }
-                    reader.readAsDataURL(file);
-                }
-            } else if (sectionId === 'moreImagesSection') {
-                // Remove all existing previews
-                const existingImgs = section.querySelectorAll('img');
-                existingImgs.forEach(img => section.removeChild(img));
-                
-                const filesToAdd = Math.min(MAX_ADDITIONAL_IMAGES, files.length);
-                
-                for (let i = 0; i < filesToAdd; i++) {
-                    const file = files[i];
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const newImg = document.createElement('img');
-                        newImg.src = e.target.result;
-                        newImg.alt = "Uploaded image";
-                        section.insertBefore(newImg, uploadButton);
-                    }
-                    reader.readAsDataURL(file);
-                }
-                updateImageCounter(filesToAdd);
-            }
-        }
-
-        function updateImageCounter(count) {
-            const counter = document.getElementById('imageCounter');
-            counter.textContent = `${count} / ${MAX_ADDITIONAL_IMAGES} images`;
-        }
-
-        document.getElementById('fileInput_main').addEventListener('change', function(event) {
-            handleFileSelect(event, 'mainImageSection');
-        });
-
-        document.getElementById('fileInput_more').addEventListener('change', function(event) {
-            handleFileSelect(event, 'moreImagesSection');
-        });
-        
         </script>
     }
 }
