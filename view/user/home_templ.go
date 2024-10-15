@@ -149,11 +149,11 @@ func Home(products []models.Product, settings map[string]string) templ.Component
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", settings["hero_one_description"], "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", settings["hero_one_title"], settings["hero_one_description"], "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", settings["hero_two_description"], "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = presentCard("https://www.refinery29.com/images/11663360.jpeg", settings["hero_two_title"], settings["hero_two_description"], "/comming-soon").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

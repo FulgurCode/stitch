@@ -4,7 +4,7 @@ import (
     "github.com/FulgurCode/stitch/view/layout"
 )
 
-templ AdminSettings() {
+templ AdminSettings(settings map[string]string) {
         @layout.Admin() {
             <link rel="stylesheet" href="/static/styles/admin/settings.css"/>
             <div class={Container(), innerScroll()}>
@@ -18,7 +18,7 @@ templ AdminSettings() {
                         </span>
                     </div>
                     <div>
-                        @dialog("1", "https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Hola", "DKSJBSBDNSBDMNsbdsndbf asnb hsdhjf sdf sd fs df sg fsdfs sdfsdg fdgdfgd fgdfgdf gfdgdfg dfgdfgdfg dfgdfgd fgdfgdfg dfgdfgdfg dfgrtert ertwerts fdsdfsddf gdfgdfhfgh fghfghdgsfdg   ertbjsabkhbkjhvjv jv jkv ")
+                        @dialog("one", "https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", settings["hero_one_title"], settings["hero_one_description"])
                         <img src="https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85"/>
                         <span>
                             <p>Hero banner image (1)</p>
@@ -26,7 +26,7 @@ templ AdminSettings() {
                         </span>
                     </div>
                     <div>
-                        @dialog("2", "https://www.refinery29.com/images/11663360.jpeg", "Hola", "DKSJBSBDNSBDMNsbdsndbf asnb hbjsabkhbkjhvjv jv jkv ")
+                        @dialog("two", "https://www.refinery29.com/images/11663360.jpeg", settings["hero_two_title"], settings["hero_two_description"])
                         <img src="https://www.refinery29.com/images/11663360.jpeg"/>
                         <span>
                             <p>Hero banner image (2)</p>

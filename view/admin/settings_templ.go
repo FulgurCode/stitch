@@ -12,7 +12,7 @@ import (
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
-func AdminSettings() templ.Component {
+func AdminSettings(settings map[string]string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -71,7 +71,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = dialog("1", "https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Hola", "DKSJBSBDNSBDMNsbdsndbf asnb hsdhjf sdf sd fs df sg fsdfs sdfsdg fdgdfgd fgdfgdf gfdgdfg dfgdfgdfg dfgdfgd fgdfgdfg dfgdfgdfg dfgrtert ertwerts fdsdfsddf gdfgdfhfgh fghfghdgsfdg   ertbjsabkhbkjhvjv jv jkv ").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = dialog("one", "https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", settings["hero_one_title"], settings["hero_one_description"]).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -96,7 +96,7 @@ func AdminSettings() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = dialog("2", "https://www.refinery29.com/images/11663360.jpeg", "Hola", "DKSJBSBDNSBDMNsbdsndbf asnb hbjsabkhbkjhvjv jv jkv ").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = dialog("two", "https://www.refinery29.com/images/11663360.jpeg", settings["hero_two_title"], settings["hero_two_description"]).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

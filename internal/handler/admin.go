@@ -205,8 +205,8 @@ func EditProduct(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-var files = form.File["images"]
-utils.StoreFiles(files, product.Id)
+	var files = form.File["images"]
+	utils.StoreFiles(files, product.Id)
 
 	var err = mysql.EditProduct(product)
 	if err != nil {
@@ -281,7 +281,8 @@ func AdminStock(c echo.Context) error {
 
 // Admin Setting Handler
 func AdminSettings(c echo.Context) error {
-	var component = admin.AdminSettings()
+	var settings = mysql.GetSettings()
+	var component = admin.AdminSettings(settings)
 
 	return utils.Render(c, component)
 }
@@ -308,8 +309,9 @@ func AdminHeroOne(c echo.Context) error {
 	var img = form.File["hero-one-banner"][0]
 	utils.StoreFile(img, "hero-one-banner")
 
-	var heroDescription = form.Value["hero-one-description"][0]
-	mysql.UpdateHeroOne(heroDescription)
+	var heroDescription = form.Value["hero_one_description"][0]
+	var heroTitle = form.Value["hero_one_title"][0]
+	mysql.UpdateHeroOne(heroTitle, heroDescription)
 
 	if c.Request().Header.Get("HX-Request") == "true" {
 		c.Response().Header().Set("HX-Location", "/admin/settings")
@@ -322,11 +324,12 @@ func AdminHeroOne(c echo.Context) error {
 func AdminHeroTwo(c echo.Context) error {
 	form, _ := c.MultipartForm()
 
-	var img = form.File["hero-two-banner"][0]
-	utils.StoreFile(img, "hero-two-banner")
+	var img = form.File["hero_two_banner"][0]
+	utils.StoreFile(img, "hero_two_banner")
 
-	var heroDescription = form.Value["hero-two-description"][0]
-	mysql.UpdateHeroTwo(heroDescription)
+	var heroDescription = form.Value["hero_two_description"][0]
+	var heroTitle = form.Value["hero_two_title"][0]
+	mysql.UpdateHeroTwo(heroTitle, heroDescription)
 
 	if c.Request().Header.Get("HX-Request") == "true" {
 		c.Response().Header().Set("HX-Location", "/admin/settings")

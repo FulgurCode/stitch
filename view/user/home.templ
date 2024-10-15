@@ -44,8 +44,8 @@ templ Home(products []models.Product,settings map[string]string) {
         </div>
         <a href="/products" hx-boost="true"><button class="button-primary hidden-swipe" style="margin-bottom: 5rem; width: max-content;">View all ></button></a>
         <div class="present-container">
-            @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", "Lorem", settings["hero_one_description"], "/comming-soon")
-            @presentCard("https://www.refinery29.com/images/11663360.jpeg", "Lorem", settings["hero_two_description"], "/comming-soon")
+            @presentCard("https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", settings["hero_one_title"], settings["hero_one_description"], "/comming-soon")
+            @presentCard("https://www.refinery29.com/images/11663360.jpeg", settings["hero_two_title"], settings["hero_two_description"], "/comming-soon")
         </div>
         </div>
     }
