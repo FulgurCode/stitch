@@ -74,7 +74,7 @@ func Item(product models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = ImageCarousel().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = ImageCarousel(product).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -185,7 +185,7 @@ func clothingSizeDialog() templ.ComponentScript {
 	}
 }
 
-func ImageCarousel() templ.Component {
+func ImageCarousel(product models.Product) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -206,7 +206,150 @@ func ImageCarousel() templ.Component {
 			templ_7745c5c3_Var11 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style>\n        .carousel-container {\n            width: 100%;\n            max-width: 550px;\n            // margin: 0 auto;\n            position: relative;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n\n            margin-bottom: 4rem;\n        }\n        .main-image-container {\n            width: 100%;\n            padding-top: 133.33%; /* 3:4 aspect ratio */\n            position: relative;\n            overflow: hidden;\n        }\n        .main-image {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n        }\n        .preview-panel {\n            display: flex;\n            align-items: center;\n            width: 100%;\n            margin-top: 10px;\n        }\n        .preview-container {\n            display: flex;\n            justify-content: center;\n            overflow-x: auto;\n            flex-grow: 1;\n            scrollbar-width: none; /* Firefox */\n            -ms-overflow-style: none; /* IE and Edge */\n        }\n        .preview-container::-webkit-scrollbar {\n            display: none; /* Chrome, Safari, and Opera */\n        }\n        .preview-image {\n            width: 60px;\n            height: 80px;\n            object-fit: cover;\n            margin: 0 5px;\n            cursor: pointer;\n            opacity: 0.6;\n            transition: opacity 0.3s;\n            flex-shrink: 0;\n        }\n        .preview-image:hover, .preview-image.active {\n            opacity: 1;\n        }\n        .arrows {\n            background: none;\n            border: none;\n            font-size: 24px;\n            cursor: pointer;\n            padding: 0 10px;\n            color: var(--primary);\n        }\n        @media (max-width: 480px) {\n            .preview-image {\n                width: 45px;\n                height: 60px;\n            }\n        }\n    </style><div class=\"carousel-container\"><div class=\"main-image-container\"><img src=\"https://picsum.photos/300/400\" alt=\"Main Image\" class=\"main-image\" id=\"mainImage\"></div><div class=\"preview-panel\"><button class=\"arrows prev\" onclick=\"changeSlide(-1)\">&#10094;</button><div class=\"preview-container\"><img src=\"https://picsum.photos/300/400\" alt=\"Preview 1\" class=\"preview-image active\" onclick=\"setMainImage(0)\"> <img src=\"https://picsum.photos/301/400\" alt=\"Preview 2\" class=\"preview-image\" onclick=\"setMainImage(1)\"> <img src=\"https://picsum.photos/302/400\" alt=\"Preview 3\" class=\"preview-image\" onclick=\"setMainImage(2)\"> <img src=\"https://picsum.photos/303/400\" alt=\"Preview 4\" class=\"preview-image\" onclick=\"setMainImage(3)\"> <img src=\"https://picsum.photos/304/400\" alt=\"Preview 5\" class=\"preview-image\" onclick=\"setMainImage(4)\"></div><button class=\"arrows next\" onclick=\"changeSlide(1)\">&#10095;</button></div></div><script>\n        const images = [\n            \"https://picsum.photos/300/400\",\n            \"https://picsum.photos/301/400\",\n            \"https://picsum.photos/302/400\",\n            \"https://picsum.photos/303/400\",\n            \"https://picsum.photos/304/400\"\n        ];\n        let currentIndex = 0;\n\n        function setMainImage(index) {\n            currentIndex = index;\n            updateCarousel();\n        }\n\n        function changeSlide(direction) {\n            currentIndex = (currentIndex + direction + images.length) % images.length;\n            updateCarousel();\n        }\n\n        function updateCarousel() {\n            const mainImage = document.getElementById('mainImage');\n            mainImage.src = images[currentIndex];\n            const previews = document.querySelectorAll('.preview-image');\n            previews.forEach((preview, index) => {\n                preview.classList.toggle('active', index === currentIndex);\n            });\n        }\n    </script>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/user/components/carousel.css\"><div class=\"carousel-container\"><div class=\"main-image-container\"><img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var12 string
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-main")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 76, Col: 58}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Main Image\" class=\"main-image\" id=\"mainImage\"></div><div class=\"preview-panel\"><button class=\"arrows prev\">&#10094;</button><div class=\"preview-container\"><img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 string
+		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-main")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 81, Col: 62}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 1\" class=\"preview-image active\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-1")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 82, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 2\" class=\"preview-image\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var15 string
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-2")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 83, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 3\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-3")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 84, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 4\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var17 string
+		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-4")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 85, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 5\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var18 string
+		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-5")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 86, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 6\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var19 string
+		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-6")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 87, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 7\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var20 string
+		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-7")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 88, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 8\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var21 string
+		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-8")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 89, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 9\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"> <img src=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var22 string
+		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-9")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/Item.templ`, Line: 90, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"Preview 20\" class=\"preview-image\" onerror=\"this.style.display=&#39;none&#39;;\"></div><button class=\"arrows next\">&#10095;</button></div></div><script>\n        (() => {\n            const main = document.getElementById('mainImage');\n            const container = document.querySelector('.carousel-container');\n            let previews = [...document.querySelectorAll('.preview-image')];\n            let current = 0;\n\n            const update = (index) => {\n                const visible = previews.filter(img => img.style.display !== 'none');\n                if (!visible.length) return;\n                current = ((index % visible.length) + visible.length) % visible.length;\n                main.src = visible[current].src;\n                previews.forEach((p, i) => p.classList.toggle('active', p === visible[current]));\n            };\n\n            previews.forEach(img => img.addEventListener('error', () => {\n                img.style.display = 'none';\n                update(current);\n            }));\n\n            container.addEventListener('click', e => {\n                if (e.target.classList.contains('preview-image') && e.target.style.display !== 'none')\n                    update(previews.indexOf(e.target));\n                else if (e.target.classList.contains('arrows'))\n                    update(current + (e.target.classList.contains('next') ? 1 : -1));\n            });\n\n            update(0);\n        })();\n\n    </script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

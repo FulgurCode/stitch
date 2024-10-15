@@ -12,7 +12,7 @@ templ Item(product models.Product) {
         <link rel="stylesheet" href="/static/styles/user/item.css">
         <div class={Container()}>
 
-        @ImageCarousel()
+        @ImageCarousel(product)
         <div class="description-container">
             <span style="gap: 0">
                 <p class="no-line-height">Shop name</p>
@@ -69,121 +69,58 @@ script clothingSizeDialog() {
     dialog.showModal();
 }
 
-templ ImageCarousel() {
-    <style>
-        .carousel-container {
-            width: 100%;
-            max-width: 550px;
-            // margin: 0 auto;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            margin-bottom: 4rem;
-        }
-        .main-image-container {
-            width: 100%;
-            padding-top: 133.33%; /* 3:4 aspect ratio */
-            position: relative;
-            overflow: hidden;
-        }
-        .main-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .preview-panel {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-top: 10px;
-        }
-        .preview-container {
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            flex-grow: 1;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-        }
-        .preview-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, and Opera */
-        }
-        .preview-image {
-            width: 60px;
-            height: 80px;
-            object-fit: cover;
-            margin: 0 5px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-            flex-shrink: 0;
-        }
-        .preview-image:hover, .preview-image.active {
-            opacity: 1;
-        }
-        .arrows {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 0 10px;
-            color: var(--primary);
-        }
-        @media (max-width: 480px) {
-            .preview-image {
-                width: 45px;
-                height: 60px;
-            }
-        }
-    </style>
+templ ImageCarousel(product models.Product) {
+    <link rel="stylesheet" href="/static/styles/user/components/carousel.css">
     <div class="carousel-container">
         <div class="main-image-container">
-            <img src="https://picsum.photos/300/400" alt="Main Image" class="main-image" id="mainImage">
+            <img src={"/static/images/"+product.Id+"-main"} alt="Main Image" class="main-image" id="mainImage">
         </div>
         <div class="preview-panel">
-            <button class="arrows prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="arrows prev">&#10094;</button>
             <div class="preview-container">
-                <img src="https://picsum.photos/300/400" alt="Preview 1" class="preview-image active" onclick="setMainImage(0)">
-                <img src="https://picsum.photos/301/400" alt="Preview 2" class="preview-image" onclick="setMainImage(1)">
-                <img src="https://picsum.photos/302/400" alt="Preview 3" class="preview-image" onclick="setMainImage(2)">
-                <img src="https://picsum.photos/303/400" alt="Preview 4" class="preview-image" onclick="setMainImage(3)">
-                <img src="https://picsum.photos/304/400" alt="Preview 5" class="preview-image" onclick="setMainImage(4)">
+                <img src={"/static/images/"+product.Id+"-main"} alt="Preview 1" class="preview-image active">
+                <img src={"/static/images/"+product.Id+"-1"} alt="Preview 2" class="preview-image">
+                <img src={"/static/images/"+product.Id+"-2"} alt="Preview 3" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-3"} alt="Preview 4" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-4"} alt="Preview 5" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-5"} alt="Preview 6" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-6"} alt="Preview 7" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-7"} alt="Preview 8" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-8"} alt="Preview 9" class="preview-image" onerror="this.style.display='none';">
+                <img src={"/static/images/"+product.Id+"-9"} alt="Preview 20" class="preview-image" onerror="this.style.display='none';">
             </div>
-            <button class="arrows next" onclick="changeSlide(1)">&#10095;</button>
+            <button class="arrows next">&#10095;</button>
         </div>
     </div>
     <script>
-        const images = [
-            "https://picsum.photos/300/400",
-            "https://picsum.photos/301/400",
-            "https://picsum.photos/302/400",
-            "https://picsum.photos/303/400",
-            "https://picsum.photos/304/400"
-        ];
-        let currentIndex = 0;
+        (() => {
+            const main = document.getElementById('mainImage');
+            const container = document.querySelector('.carousel-container');
+            let previews = [...document.querySelectorAll('.preview-image')];
+            let current = 0;
 
-        function setMainImage(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
+            const update = (index) => {
+                const visible = previews.filter(img => img.style.display !== 'none');
+                if (!visible.length) return;
+                current = ((index % visible.length) + visible.length) % visible.length;
+                main.src = visible[current].src;
+                previews.forEach((p, i) => p.classList.toggle('active', p === visible[current]));
+            };
 
-        function changeSlide(direction) {
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            updateCarousel();
-        }
+            previews.forEach(img => img.addEventListener('error', () => {
+                img.style.display = 'none';
+                update(current);
+            }));
 
-        function updateCarousel() {
-            const mainImage = document.getElementById('mainImage');
-            mainImage.src = images[currentIndex];
-            const previews = document.querySelectorAll('.preview-image');
-            previews.forEach((preview, index) => {
-                preview.classList.toggle('active', index === currentIndex);
+            container.addEventListener('click', e => {
+                if (e.target.classList.contains('preview-image') && e.target.style.display !== 'none')
+                    update(previews.indexOf(e.target));
+                else if (e.target.classList.contains('arrows'))
+                    update(current + (e.target.classList.contains('next') ? 1 : -1));
             });
-        }
+
+            update(0);
+        })();
+
     </script>
 } 
