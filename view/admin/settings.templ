@@ -41,18 +41,34 @@ templ AdminSettings() {
 templ dialog(id string, imgUrl string, title string, description string) {
     <dialog id={id}>
         <button onclick={ closeDialogSettings(id) }></button>
-        <div>
+        <form>
             <div>
-                <img src={imgUrl}/>
-                <button class="button-primary">Change image</button>
+                <img src={imgUrl} id="previewImage"/>
+                // <button class="button-primary">Change image</button>
+                <label for="fileInput" class="button-primary file-input">Change image</label>
+                <input type="file" id="fileInput" style="display: none;" />
             </div>
             <span>
                 <input type="text" value={title} placeholder="Title"/>
                 <textarea name="description" placeholder="Description">{description}</textarea>
             </span>
-        </div>
+            <input type="submit" value="save" class="button-primary"/>
+        </form>
     </dialog>
     
+    <script>
+        // Listen for changes in the file input
+        document.getElementById('fileInput').addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 }
 
 script closeDialogSettings(id string) {
