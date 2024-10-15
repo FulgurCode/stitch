@@ -41,8 +41,8 @@ dialog {
     width: calc(100vw - 30px * 2);
     max-width: 700px;
 }
-dialog > div,
-dialog > div > span{
+dialog > form,
+dialog > form > span{
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -51,17 +51,17 @@ dialog > div > span{
     gap: 1rem;
 }
 
-dialog > div > div{
+dialog > form > div{
     max-width: min-content;
     display: flex;
-    /* padding-right: calc(var(--padding) * 1.7); */
     align-items: flex-end;
+    gap: 1rem;
 }
 dialog button {
     max-height: 4rem;
 }
 
-dialog > div > div > img{
+dialog > form > div > img{
     max-height: 100px;
     max-width: 100px;
     min-height: 100px;
@@ -126,4 +126,11 @@ dialog input[type="text"]{
     color: var(--text);
 
     padding-inline: var(--padding);
+}
+
+.file-input{
+    min-width: max-content;
+}
+.file-input:hover{
+    opacity: .6;
 }
