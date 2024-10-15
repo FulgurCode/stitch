@@ -202,7 +202,9 @@ func EditProduct(c echo.Context) error {
 		var file = form.File["main-image"][0]
 
 		var err = utils.StoreFile(file, product.Id+"-main")
-		fmt.Println(err)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 
 	var files = form.File["images"]
@@ -306,8 +308,9 @@ func AdminHomeBanner(c echo.Context) error {
 func AdminHeroOne(c echo.Context) error {
 	form, _ := c.MultipartForm()
 
-	var img = form.File["hero-one-banner"][0]
-	utils.StoreFile(img, "hero-one-banner")
+	if img := form.File["hero_one_banner"]; len(img) > 0 {
+		utils.StoreFile(img[0], "hero_one_banner")
+	}
 
 	var heroDescription = form.Value["hero_one_description"][0]
 	var heroTitle = form.Value["hero_one_title"][0]
@@ -324,8 +327,9 @@ func AdminHeroOne(c echo.Context) error {
 func AdminHeroTwo(c echo.Context) error {
 	form, _ := c.MultipartForm()
 
-	var img = form.File["hero_two_banner"][0]
-	utils.StoreFile(img, "hero_two_banner")
+	if img := form.File["hero_two_banner"]; len(img) > 0 {
+		utils.StoreFile(img[0], "hero_two_banner")
+	}
 
 	var heroDescription = form.Value["hero_two_description"][0]
 	var heroTitle = form.Value["hero_two_title"][0]

@@ -9,6 +9,8 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"fmt"
+
 	"github.com/FulgurCode/stitch/view/layout"
 )
 
@@ -79,7 +81,7 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("1"))
+			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("one"))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -87,7 +89,7 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var5 templ.ComponentScript = showDialogSettings("1")
+			var templ_7745c5c3_Var5 templ.ComponentScript = showDialogSettings("one")
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5.Call)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -104,7 +106,7 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("2"))
+			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("two"))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -112,7 +114,7 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var6 templ.ComponentScript = showDialogSettings("2")
+			var templ_7745c5c3_Var6 templ.ComponentScript = showDialogSettings("two")
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var6.Call)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -159,7 +161,7 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(id)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 42, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 44, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -182,42 +184,94 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"></button><form><div><img src=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"></button><form hx-post=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(imgUrl)
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/admin/hero-%s", id))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 46, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 46, Col: 55}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" id=\"previewImage\"><label for=\"fileInput\" class=\"button-primary file-input\">Change image</label> <input type=\"file\" id=\"fileInput\" style=\"display: none;\"></div><span><input type=\"text\" value=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" enctype=\"multipart/form-data\"><div><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(imgUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 52, Col: 47}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 48, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" placeholder=\"Title\"> <textarea name=\"description\" placeholder=\"Description\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" id=\"previewImage\"><label for=\"fileInput\" class=\"button-primary file-input\">Change image</label> <input type=\"file\" name=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var12 string
-		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("hero_%s_banner", id))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 53, Col: 83}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 51, Col: 73}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" id=\"fileInput\" style=\"display: none;\"></div><span><input type=\"text\" value=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 string
+		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 54, Col: 47}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" name=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("hero_%s_title", id))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 54, Col: 86}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" placeholder=\"Title\"> <textarea name=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var15 string
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("hero_%s_description", id))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 55, Col: 69}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" placeholder=\"Description\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(description)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/admin/settings.templ`, Line: 55, Col: 109}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,6 +1,8 @@
 package admin
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
 )
 
@@ -22,7 +24,7 @@ templ AdminSettings(settings map[string]string) {
                         <img src="https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85"/>
                         <span>
                             <p>Hero banner image (1)</p>
-                            <button class="button-primary" onclick={showDialogSettings("1")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("one")}>Edit</button>
                         </span>
                     </div>
                     <div>
@@ -30,7 +32,7 @@ templ AdminSettings(settings map[string]string) {
                         <img src="https://www.refinery29.com/images/11663360.jpeg"/>
                         <span>
                             <p>Hero banner image (2)</p>
-                            <button class="button-primary" onclick={showDialogSettings("2")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("two")}>Edit</button>
                         </span>
                     </div>
                 </div>
@@ -41,16 +43,16 @@ templ AdminSettings(settings map[string]string) {
 templ dialog(id string, imgUrl string, title string, description string) {
     <dialog id={id}>
         <button onclick={ closeDialogSettings(id) }></button>
-        <form>
+        <form hx-post={fmt.Sprintf("/admin/hero-%s",id)} hx-target="body" enctype="multipart/form-data">
             <div>
                 <img src={imgUrl} id="previewImage"/>
                 // <button class="button-primary">Change image</button>
                 <label for="fileInput" class="button-primary file-input">Change image</label>
-                <input type="file" id="fileInput" style="display: none;" />
+                <input type="file" name={fmt.Sprintf("hero_%s_banner",id)} id="fileInput" style="display: none;" />
             </div>
             <span>
-                <input type="text" value={title} placeholder="Title"/>
-                <textarea name="description" placeholder="Description">{description}</textarea>
+                <input type="text" value={title} name={fmt.Sprintf("hero_%s_title",id)} placeholder="Title"/>
+                <textarea name={fmt.Sprintf("hero_%s_description",id)} placeholder="Description">{description}</textarea>
             </span>
             <input type="submit" value="save" class="button-primary"/>
         </form>
