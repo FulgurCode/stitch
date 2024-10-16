@@ -223,7 +223,7 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" id=\"fileInput\" style=\"display: none;\"></div><span><input type=\"text\" value=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"fileInput\" id=\"fileInput\" style=\"display: none;\"></div><span><input type=\"text\" value=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -275,7 +275,7 @@ func dialog(id string, imgUrl string, title string, description string) templ.Co
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</textarea></span> <input type=\"submit\" value=\"save\" class=\"button-primary\"></form></dialog><script>\n        // Listen for changes in the file input\n        document.getElementById('fileInput').addEventListener('change', () => {\n            const file = fileInput.files[0];\n            if (file) {\n                const reader = new FileReader();\n                reader.onload = (e) => {\n                    document.getElementById('previewImage').src = e.target.result;\n                };\n                reader.readAsDataURL(file);\n            }\n        });\n    </script>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</textarea></span> <input type=\"submit\" value=\"save\" class=\"button-primary\"></form></dialog><script>\n        // Listen for changes in the file input\n        var classes = document.getElementsByClassName(\"fileInput\")\n        for (var i = 0;i < classes.length; i++ ) {\n            classes[i].addEventListener('change', () => {\n                const file = classes[i].files[0];\n                if (file) {\n                    const reader = new FileReader();\n                    reader.onload = (e) => {\n                        document.getElementById('previewImage').src = e.target.result;\n                    };\n                    reader.readAsDataURL(file);\n                }\n            });\n        }\n    </script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -48,7 +48,7 @@ templ dialog(id string, imgUrl string, title string, description string) {
                 <img src={imgUrl} id="previewImage"/>
                 // <button class="button-primary">Change image</button>
                 <label for="fileInput" class="button-primary file-input">Change image</label>
-                <input type="file" name={fmt.Sprintf("hero_%s_banner",id)} id="fileInput" style="display: none;" />
+                <input type="file" name={fmt.Sprintf("hero_%s_banner",id)} class="fileInput" id="fileInput" style="display: none;" />
             </div>
             <span>
                 <input type="text" value={title} name={fmt.Sprintf("hero_%s_title",id)} placeholder="Title"/>
@@ -60,16 +60,19 @@ templ dialog(id string, imgUrl string, title string, description string) {
     
     <script>
         // Listen for changes in the file input
-        document.getElementById('fileInput').addEventListener('change', () => {
-            const file = fileInput.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    document.getElementById('previewImage').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        var classes = document.getElementsByClassName("fileInput")
+        for (var i = 0;i < classes.length; i++ ) {
+            classes[i].addEventListener('change', () => {
+                const file = classes[i].files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        document.getElementById('previewImage').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
     </script>
 }
 
