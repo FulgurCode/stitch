@@ -96,8 +96,10 @@ func OrderPost(c echo.Context) error {
 
 // Search page handler
 func Search(c echo.Context) error {
-	var component = user.Search()
+	var query = c.QueryParam("search")
+	var products = mysql.SearchProduct(query)
 
+	var component = user.Search(products)
 	return utils.Render(c, component)
 }
 

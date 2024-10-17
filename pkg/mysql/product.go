@@ -63,3 +63,20 @@ func EditProduct(product models.Product) error {
 	var _, err = Db.Exec(query)
 	return err
 }
+
+func SearchProduct(search string) []models.Product {
+	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product WHERE name LIKE '%%%s%%' OR description LIKE '%%%s%%';", search, search)
+	var results, err = Db.Query(query)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var products []models.Product
+	for results.Next() {
+		var product models.Product
+		results.Scan(&product.Id, &product.Name, &product.Category, &product.Price, &product.Description)
+		products = append(products, product)
+	}
+
+	return products
+}

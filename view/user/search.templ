@@ -2,14 +2,15 @@ package user
 
 import (
     "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
 )
 
-templ Search() {
+templ Search(products []models.Product) {
     @layout.User() {
         <link rel="stylesheet" href="/static/styles/user/search.css">
         <div class={Container()}>
             <form>
-                <input type="text" placeholder="Search..." list="queries" name="query"/>
+                <input type="text" placeholder="Search..." list="queries" name="search"/>
                 <datalist id="queries"> // Insert all your queries from db here
                     <option value="PHP" />
                     <option value="C++" />
