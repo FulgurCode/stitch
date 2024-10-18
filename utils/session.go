@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"fmt"
+
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
@@ -54,4 +56,14 @@ func DeleteSession(c echo.Context, name string) {
 	if err = sess.Save(c.Request(), c.Response()); err != nil {
 		panic(err)
 	}
+}
+
+func GetSessionAll(c echo.Context, name string) map[interface{}]interface{} {
+	var sess, err= session.Get(name,c)
+	if err != nil {
+		fmt.Println(err.Error())
+		return map[interface{}]interface{}{}
+	}
+
+	return sess.Values
 }

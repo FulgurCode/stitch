@@ -105,8 +105,19 @@ func Search(c echo.Context) error {
 
 // Cart page handler
 func Cart(c echo.Context) error {
-	var component = user.Cart()
+	var m = utils.GetSessionAll(c, "cart")
+	var products []models.Product
+	for id := range m {
+		var product,err = mysql.GetProductById(id.(string))
+		if err != nil {
+			fmt.Println(err)
+			var component = user.Cart(products)
+			return utils.Render(c, component)
+		}
+		products = append(products, product)
+	}
 
+	var component = user.Cart(products)
 	return utils.Render(c, component)
 }
 
