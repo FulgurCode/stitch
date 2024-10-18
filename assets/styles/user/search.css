@@ -1,12 +1,19 @@
 form{
     margin-top: 3rem;
     display: flex;
+    flex-direction: row;
     gap: 0;
     width: calc(100% - var(--padding));
     max-width: 700px;
+    max-height: 4rem;
 }
 
 form > input[type="text"]{
     flex: 1;
     border: 1px solid var(--primary);
+}
+
+
+.surface form > input[type="text"], .surface form > input[type="submit"]{
+    border: 1px solid var(--text-surface-heading);
 }
