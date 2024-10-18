@@ -6,9 +6,36 @@ templ User() {
     <script src="/static/scripts/scroll_animation.js" defer/>
     <body>
         <div class="overflow">
-        <header class="surface">
+        <header class="surface" style="position: relative;">
             <div class="logo">
-                <a href="/products/search" hx-boost="true"><img src="/static/icons/search.svg"/></a>
+
+                <input type="checkbox" id="searchCheckbox"/>
+                <label for="searchCheckbox">
+                    <img src="/static/icons/search.svg" alt="Search"/>
+                </label>
+                
+                <div id="searchContainer">
+                    <link rel="stylesheet" href="/static/styles/user/search.css">
+                    <form>
+                        <input type="text" placeholder="Search..." list="queries" name="search"/>
+                        <datalist id="queries"> // Insert all your queries from db here
+                            <option value="PHP" />
+                            <option value="C++" />
+                            <option value="Java" />
+                            <option value="Ruby" />
+                            <option value="Python" />
+                            <option value="Go" />
+                            <option value="Perl" />
+                            <option value="Erlang" />
+                        </datalist>
+                        <input type="submit" class="button-primary" value="Search"/>
+                    </form>
+                    <label for="searchCheckbox">
+                        <img src="/static/icons/close.svg" alt="Close"/>
+                    </label>
+                </div>
+
+                // <a href="/products/search" hx-boost="true"><img src="/static/icons/search.svg"/></a>
                 <h1>STICTH</h1>
                 <a href="/products/cart" hx-boost="true"><img src="/static/icons/cart.svg"/></a>
             </div>
