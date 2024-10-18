@@ -35,6 +35,7 @@ func Run(port string) {
 	app.POST("/order/:productId", handler.OrderPost)
 	app.GET("/about", handler.About)
 	app.GET("/collections", handler.CommingSoon)
+	app.GET("add-to-cart/:productId", handler.AddToCart)
 
 	app.GET("/admin", utils.CheckLogin(handler.Admin))
 

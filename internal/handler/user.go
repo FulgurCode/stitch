@@ -21,7 +21,7 @@ func Home(c echo.Context) error {
 
 	var settings = mysql.GetSettings()
 
-	var component = user.Home(products,settings)
+	var component = user.Home(products, settings)
 
 	return utils.Render(c, component)
 }
@@ -129,4 +129,13 @@ func NotFound(c echo.Context) error {
 	var component = layout.NotFound()
 
 	return utils.Render(c, component)
+}
+
+func AddToCart(c echo.Context) error {
+	var id = c.Param("productId")
+	utils.CreateSession(c, "cart")
+
+	utils.AddSessionValue(c, "cart", id, "cart")
+
+	return c.NoContent(200)
 }
