@@ -11,9 +11,16 @@ templ Layout() {
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="/static/styles/template/components/toast.css">
+            <script src="/static/scripts/toast.js"></script>
             <script src="https://unpkg.com/htmx.org@2.0.2"></script>
             <script>const MAX_ADDITIONAL_IMAGES = 9;</script>
         </head>
+        <div id="toastContainer" class="toast-container"></div>
         {children...}
     </html>
+}
+
+script showToast(msg string, msgType string){
+    showToast(msg, msgType)
 }
