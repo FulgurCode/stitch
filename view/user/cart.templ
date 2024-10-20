@@ -1,21 +1,23 @@
 package user
 
 import (
+    "fmt"
+
     "github.com/FulgurCode/stitch/view/layout"
     "github.com/FulgurCode/stitch/models"
 )
 
 
-templ Cart(prodcuts []models.Product) {
+templ Cart(products []models.Product) {
     @layout.User() {
         <link rel="stylesheet" href="/static/styles/admin/orders.css"/>
         <style>.overflow{overflow-y: auto !important;}</style> <!-- rewriting admin roles-->
         <div class={Container()} style="padding: var(--padding); box-sizing: border-box; margin-top: 1rem">
             <span style="display: flex; flex-direction: column; gap: 1rem;">
                 <div class="orders-container">
-                    @CartCard(prodcuts)
-                    @CartCard(prodcuts)
-                    @CartCard(prodcuts)
+                    for _,product := range products {
+                      @CartCard(product)
+                    }
                 </div>
                 <button class="button-primary" style="align-self:last baseline;">Buy All</button>
             </span>
@@ -23,12 +25,12 @@ templ Cart(prodcuts []models.Product) {
     }
 }
 
-templ CartCard(prodcuts []models.Product) {
+templ CartCard(product models.Product) {
     <div class="orders">
-        <img src={"https://picsum.photos/200"}/>
+        <img src={fmt.Sprintf("/static/images/%s-main",product.Id)}/>
         <div>
-            Product name: {"test"}<br/>
-            Price: &#8360;. {"test"}
+            Product name: {product.Name}<br/>
+            Price: &#8360;. {fmt.Sprintf("%d",product.Price)}
         </div>
         <div>
             <button class="button-primary">View Product</button>
