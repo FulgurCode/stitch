@@ -46,7 +46,7 @@ func Cart(prodcuts []models.Product) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/orders.css\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link rel=\"stylesheet\" href=\"/static/styles/admin/orders.css\"><style>.overflow{overflow-y: auto !important;}</style> <!-- rewriting admin roles--> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -68,7 +68,7 @@ func Cart(prodcuts []models.Product) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">&nbsp; <span style=\"display: flex; flex-direction: column; gap: 1rem;\"><div class=\"orders-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" style=\"padding: var(--padding); box-sizing: border-box; margin-top: 1rem\"><span style=\"display: flex; flex-direction: column; gap: 1rem;\"><div class=\"orders-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
