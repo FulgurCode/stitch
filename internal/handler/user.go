@@ -78,8 +78,11 @@ func OrderPost(c echo.Context) error {
 	}
 
 	order.ProductId = productId
-	order.Total = product.Price
 	order.Status = "ordered"
+	if order.Quantity == 0 {
+		order.Quantity = 1
+	}
+	order.Total = product.Price * order.Quantity
 
 	err = mysql.MakeOrder(order)
 	if err != nil {
@@ -108,7 +111,7 @@ func Cart(c echo.Context) error {
 	var m = utils.GetSessionAll(c, "cart")
 	var products []models.Product
 	for id := range m {
-		var product,err = mysql.GetProductById(id.(string))
+		var product, err = mysql.GetProductById(id.(string))
 		if err != nil {
 			fmt.Println(err)
 			var component = user.Cart(products)
@@ -146,7 +149,8 @@ func AddToCart(c echo.Context) error {
 	var id = c.Param("productId")
 	utils.CreateSession(c, "cart")
 
-	utils.AddSessionValue(c, "cart", id, "cart")
+	var quantity = 1
+	utils.AddSessionValue(c, "cart", id, quantity)
 
 	return c.NoContent(200)
 }

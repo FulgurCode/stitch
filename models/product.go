@@ -33,6 +33,7 @@ type Order struct {
 	City         string `json:"city" form:"city"`
 	Phone        string `json:"phone" form:"phone"`
 	Payment      string `json:"payment" form:"payment"`
+	Quantity     int    `json:"quantity" from:"quantity"`
 	Total        int    `json:"total" form:"total"`
 	Status       string `json:"status" form:"status"`
 }
