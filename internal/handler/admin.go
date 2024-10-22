@@ -281,6 +281,28 @@ func AdminStock(c echo.Context) error {
 	return utils.Render(c, component)
 }
 
+// Admin Shipped Handler
+func AdminShipped(c echo.Context) error {
+	var orders, err = mysql.GetOrders()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	var component = admin.AdminShipped(orders)
+	return utils.Render(c, component)
+}
+
+// Admin Delivered Handler
+func AdminDelivered(c echo.Context) error {
+	var orders, err = mysql.GetOrders()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	var component = admin.AdminDelivered(orders)
+	return utils.Render(c, component)
+}
+
 // Admin Setting Handler
 func AdminSettings(c echo.Context) error {
 	var settings = mysql.GetSettings()
