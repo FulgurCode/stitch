@@ -59,11 +59,24 @@ func DeleteSession(c echo.Context, name string) {
 }
 
 func GetSessionAll(c echo.Context, name string) map[interface{}]interface{} {
-	var sess, err= session.Get(name,c)
+	var sess, err = session.Get(name, c)
 	if err != nil {
 		fmt.Println(err.Error())
 		return map[interface{}]interface{}{}
 	}
 
 	return sess.Values
+}
+
+func DeleteSessionValue(c echo.Context, name string, key string) {
+	var sess, err = session.Get(name, c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	delete(sess.Values, key)
+
+	if err = sess.Save(c.Request(), c.Response()); err != nil {
+		panic(err)
+	}
 }

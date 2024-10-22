@@ -154,3 +154,9 @@ func AddToCart(c echo.Context) error {
 
 	return c.NoContent(200)
 }
+
+func DeleteFromCart(c echo.Context) error {
+	var id = c.Param("productId")
+	utils.DeleteSessionValue(c, "cart", id)
+	return c.NoContent(200)
+}

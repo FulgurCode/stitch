@@ -26,7 +26,7 @@ templ Cart(products []models.Product) {
 }
 
 templ CartCard(product models.Product) {
-    <div class="orders">
+    <div class={fmt.Sprintf("orders %s",product.Id)}>
         <img src={fmt.Sprintf("/static/images/%s-main",product.Id)}/>
         <div>
             Product name: {product.Name}<br/>
@@ -34,7 +34,7 @@ templ CartCard(product models.Product) {
         </div>
         <div>
             <button class="button-primary">View Product</button>
-            <button class="button-secondary">Remove Product</button>
+            <button hx-delete={fmt.Sprintf("/delete-cart/%s",product.Id)} hx-swap="outerHTML" hx-target={fmt.Sprintf(".%s", product.Id)} class="button-secondary">Remove Product</button>
         </div>
     </div>
 }

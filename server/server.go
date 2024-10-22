@@ -36,6 +36,7 @@ func Run(port string) {
 	app.GET("/about", handler.About)
 	app.GET("/collections", handler.CommingSoon)
 	app.GET("add-to-cart/:productId", handler.AddToCart)
+	app.DELETE("delete-cart/:productId", handler.DeleteFromCart)
 
 	app.GET("/admin", utils.CheckLogin(handler.Admin))
 
