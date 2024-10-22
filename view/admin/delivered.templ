@@ -1,0 +1,44 @@
+package admin
+
+import (
+    "fmt"
+
+    "github.com/FulgurCode/stitch/view/layout"
+    "github.com/FulgurCode/stitch/models"
+)
+
+templ AdminDelivered(orders []models.Order) {
+    @layout.Admin() {
+        <link rel="stylesheet" href="/static/styles/admin/orders.css"/>
+        <div class={Container(), innerScroll()}>
+            <h1 style="align-self: start;">Delivered</h1>
+            <div class="orders-container">
+                for _,order := range orders {
+                    @DeliveredCard(order)
+                }
+            </div>
+        </div>
+    }
+}
+
+templ DeliveredCard(order models.Order) {
+    <div class="orders">
+        <img src={"/static/images/"+order.ProductId+"-main"}/>
+        <div>
+            Product name: {order.ProductName}<br/>
+            Price: &#8360;. {fmt.Sprintf("%d",order.ProductPrice)}
+        </div>
+        <div class="description">
+            Name: {order.Name}<br/>
+            Adress: {order.Address}<br/>
+            Pin: {fmt.Sprintf("%d",order.Pin)}<br/>
+            Phone no: {order.Phone}<br/>
+            Payment method: {order.Payment}<br>
+            Status: {order.Status}
+        </div>
+        <div>
+            <button class="button-primary">Delete</button>
+            <button class="button-secondary" hx-get={fmt.Sprintf("/admin/item/%s", order.ProductId)} hx-push-url={fmt.Sprintf("/admin/item/%s", order.ProductId)} hx-target="body" >View Product</button>
+        </div>
+    </div>
+}

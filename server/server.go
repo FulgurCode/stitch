@@ -56,6 +56,8 @@ func Run(port string) {
 
 	app.GET("/admin/item/:productId", utils.CheckLogin(handler.AdminItem))
 	app.GET("/admin/orders", utils.CheckLogin(handler.AdminOrders))
+	app.GET("/admin/shipped", utils.CheckLogin(handler.AdminShipped))
+	app.GET("/admin/delivered", utils.CheckLogin(handler.AdminDelivered))
 	app.GET("/admin/settings", utils.CheckLogin(handler.AdminSettings))
 
 	app.POST("/admin/home-banner", utils.CheckLogin(handler.AdminHomeBanner))
