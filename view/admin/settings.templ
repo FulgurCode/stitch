@@ -2,7 +2,7 @@ package admin
 
 import (
     "fmt"
-
+    "strings"
     "github.com/FulgurCode/stitch/view/layout"
 )
 
@@ -13,27 +13,27 @@ templ AdminSettings(settings map[string]string) {
                 <h1 style="align-self: start;">Settings</h1>
                 <div class="settings-container">
                     <div>
-                        @dialog("home", "https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg", settings["hero_one_title"], settings["hero_one_description"])
-                        <img src="https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg"/>
+                        @dialog("home-banner", "/static/images/home-banner", settings["hero_one_title"], settings["hero_one_description"])
+                        <img src="/static/images/home-banner"/>
                         <span>
                             <p>Homepage banner</p>
-                            <button class="button-primary" onclick={showDialogSettings("home")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("home-banner")}>Edit</button>
                         </span>
                     </div>
                     <div>
-                        @dialog("one", "https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85", settings["hero_one_title"], settings["hero_one_description"])
-                        <img src="https://www.refinery29.com/images/11660163.jpg?format=webp&width=720&height=900&quality=85"/>
+                        @dialog("hero-one", "/static/images/hero_one_banner", settings["hero_one_title"], settings["hero_one_description"])
+                        <img src="/static/images/hero_one_banner"/>
                         <span>
                             <p>Collection Section (1)</p>
-                            <button class="button-primary" onclick={showDialogSettings("one")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("hero-one")}>Edit</button>
                         </span>
                     </div>
                     <div>
-                        @dialog("two", "https://www.refinery29.com/images/11663360.jpeg", settings["hero_two_title"], settings["hero_two_description"])
-                        <img src="https://www.refinery29.com/images/11663360.jpeg"/>
+                        @dialog("hero-two", "/static/images/hero_two_banner", settings["hero_two_title"], settings["hero_two_description"])
+                        <img src="/static/images/hero_two_banner"/>
                         <span>
                             <p>Collection Section (2)</p>
-                            <button class="button-primary" onclick={showDialogSettings("two")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("hero-two")}>Edit</button>
                         </span>
                     </div>
                 </div>
@@ -42,47 +42,61 @@ templ AdminSettings(settings map[string]string) {
 }
 
 templ dialog(id string, imgUrl string, title string, description string) {
-    <dialog id={id}>
+    <dialog id={ fmt.Sprintf("%s-dialog", id) }>
         <button onclick={ closeDialogSettings(id) }></button>
-        <form hx-post={fmt.Sprintf("/admin/hero-%s",id)} hx-target="body" enctype="multipart/form-data">
+        <form 
+            hx-post={ fmt.Sprintf("/admin/%s", id) }
+            hx-target="body" 
+            enctype="multipart/form-data"
+        >
             <div>
-                <img src={imgUrl} id="previewImage"/>
-                // <button class="button-primary">Change image</button>
-                <label for="fileInput" class="button-primary file-input">Change image</label>
-                <input type="file" name={fmt.Sprintf("hero_%s_banner",id)} class="fileInput" id="fileInput" style="display: none;" />
+                <img src={ imgUrl } id={ fmt.Sprintf("previewImage-%s", id) }/>
+                <label for={ fmt.Sprintf("fileInput-%s", id) } class="button-primary file-input">Change image</label>
+                <input 
+                    type="file" 
+                    name={ fmt.Sprintf("%s_banner", strings.ReplaceAll(id, "-", "_")) }
+                    class="file-input" 
+                    id={ fmt.Sprintf("fileInput-%s", id) }
+                    onchange={ handleFilePreview(id) }
+                    style="display: none;"
+                />
             </div>
             <span>
-                <input type="text" value={title} name={fmt.Sprintf("hero_%s_title",id)} placeholder="Title"/>
-                <textarea name={fmt.Sprintf("hero_%s_description",id)} placeholder="Description">{description}</textarea>
+                <input 
+                    type="text" 
+                    value={ title }
+                    name={ fmt.Sprintf("%s_title", strings.ReplaceAll(id, "-", "_")) }
+                    placeholder="Title"
+                />
+                <textarea 
+                    name={ fmt.Sprintf("%s_description", strings.ReplaceAll(id, "-", "_")) }
+                    placeholder="Description"
+                >{ description }</textarea>
             </span>
             <input type="submit" value="save" class="button-primary"/>
         </form>
     </dialog>
-    
-    <script>
-        // Listen for changes in the file input
-        var classes = document.getElementsByClassName("fileInput")
-        for (var i = 0;i < classes.length; i++ ) {
-            classes[i].addEventListener('change', () => {
-                const file = classes[i].files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        document.getElementById('previewImage').src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-    </script>
+}
+
+script showDialogSettings(id string) {
+    const dialog = document.getElementById(`${id}-dialog`);
+    dialog.showModal();
 }
 
 script closeDialogSettings(id string) {
-	let dialog = document.getElementById(id);
+    const dialog = document.getElementById(`${id}-dialog`);
     dialog.close();
-    console.log("hello");
 }
-script showDialogSettings(id string) {
-    let dialog = document.getElementById(id);
-    dialog.showModal();
+script handleFilePreview(id string) {
+    const fileInput = document.getElementById(`fileInput-${id}`);
+    const previewImage = document.getElementById(`previewImage-${id}`);
+    
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 }
