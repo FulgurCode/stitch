@@ -73,15 +73,15 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = dialog("home-banner", "/static/images/home-banner", settings["hero_one_title"], settings["hero_one_description"]).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = dialog("home-main", "/static/images/home_main_banner", settings["main_title"], settings["main_description"]).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/static/images/home-banner\"> <span><p>Homepage banner</p>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/static/images/home_main_banner\"> <span><p>Homepage banner</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("home-banner"))
+			templ_7745c5c3_Err = templ.RenderScriptItems(ctx, templ_7745c5c3_Buffer, showDialogSettings("home-main"))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -89,7 +89,7 @@ func AdminSettings(settings map[string]string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var5 templ.ComponentScript = showDialogSettings("home-banner")
+			var templ_7745c5c3_Var5 templ.ComponentScript = showDialogSettings("home-main")
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5.Call)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err

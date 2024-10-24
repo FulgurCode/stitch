@@ -31,9 +31,9 @@ templ Home(products []models.Product,settings map[string]string) {
     @layout.User() {
 		<link rel="stylesheet" href="/static/styles/user/home.css">
         <div class={Container()}>
-        <img src="https://media.gq-magazine.co.uk/photos/5d1397ddeef9213b159ff014/1:1/w_1170,h_1170,c_limit/Four-shades-of-grey-HP-GQ-18Jan15-indigital_b_1.jpg"/>
+        <img src={"/static/images/home_main_banner"}/>
         <div class={Quote(), "surface"}>
-            <h1>UNLEASH YOUR INDIVIDUALITY WITH FASHION THAT’S HANDMADE, JUST FOR YOU.</h1>
+            <h1>{settings["main_title"]}</h1>
             <a href="/products" hx-boost="true"><button class="button-secondary hidden-swipe" style="width: max-content;">Shop all</button></a>
             <p style="max-width: 800px" class="hidden">{settings["main_description"]}</p>
         </div>

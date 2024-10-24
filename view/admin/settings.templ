@@ -13,11 +13,11 @@ templ AdminSettings(settings map[string]string) {
                 <h1 style="align-self: start;">Settings</h1>
                 <div class="settings-container">
                     <div>
-                        @dialog("home-banner", "/static/images/home-banner", settings["hero_one_title"], settings["hero_one_description"])
-                        <img src="/static/images/home-banner"/>
+                        @dialog("home-main", "/static/images/home_main_banner", settings["main_title"], settings["main_description"])
+                        <img src="/static/images/home_main_banner"/>
                         <span>
                             <p>Homepage banner</p>
-                            <button class="button-primary" onclick={showDialogSettings("home-banner")}>Edit</button>
+                            <button class="button-primary" onclick={showDialogSettings("home-main")}>Edit</button>
                         </span>
                     </div>
                     <div>

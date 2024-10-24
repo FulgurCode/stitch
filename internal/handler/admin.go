@@ -312,12 +312,15 @@ func AdminSettings(c echo.Context) error {
 }
 
 func AdminHomeBanner(c echo.Context) error {
-	var file, err = c.FormFile("image")
-	if err != nil {
-		fmt.Println(err.Error())
+	var form, _ = c.MultipartForm()
+
+	if img := form.File["home_main_banner"]; len(img) > 0 {
+		utils.StoreFile(img[0], "home_main_banner")
 	}
 
-	utils.StoreFile(file, "home-banner")
+	var homeDescription = form.Value["home_main_description"][0]
+	var homeTitle = form.Value["home_main_title"][0]
+	mysql.UpdateHome(homeTitle, homeDescription)
 
 	if c.Request().Header.Get("HX-Request") == "true" {
 		c.Response().Header().Set("HX-Location", "/admin/settings")
