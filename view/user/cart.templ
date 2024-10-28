@@ -26,7 +26,7 @@ templ Cart(products []models.Product) {
 }
 
 templ CartCard(product models.Product) {
-    <div class={fmt.Sprintf("orders %s",product.Id)}>
+    <div class={fmt.Sprintf("orders %s",product.Id)} style="min-width: unset;">
         <img src={fmt.Sprintf("/static/images/%s-main",product.Id)}/>
         <div>
             Product name: {product.Name}<br/>
