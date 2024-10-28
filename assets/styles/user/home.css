@@ -22,7 +22,7 @@ img{
     position: relative;
     margin: 20px;
     padding: var(--padding);
-    top: -80px;
+    top: -50px;
 
     display: flex;
     flex-direction: column;
@@ -31,6 +31,9 @@ img{
 .present-card > img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
+    aspect-ratio: 3/3.2;
+    z-index: 1;
 
     max-width: 500px;
 }
@@ -52,14 +55,14 @@ img{
         flex-direction: row-reverse;
     }
 }
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
     .present-card{
         max-width: 1000px;
     }
     .present-card:first-child{
-        transform: translate(-5%, 0);
+        transform: translate(-5px, 0);
     }
     .present-card:nth-child(2){
-        transform: translate(5%, 0);
+        transform: translate(5px, 0);
     }
-}
+} */
