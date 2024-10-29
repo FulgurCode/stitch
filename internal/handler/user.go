@@ -28,10 +28,8 @@ func Home(c echo.Context) error {
 
 // Product page handler
 func Products(c echo.Context) error {
-	var products, err = mysql.GetProducts()
-	if err != nil {
-		fmt.Println(err)
-	}
+	var query = c.QueryParam("search")
+	var products = mysql.SearchProduct(query)
 
 	var component = user.Products(products)
 	return utils.Render(c, component)
@@ -102,7 +100,7 @@ func Search(c echo.Context) error {
 	var query = c.QueryParam("search")
 	var products = mysql.SearchProduct(query)
 
-	var component = user.Search(products)
+	var component = user.Products(products)
 	return utils.Render(c, component)
 }
 
