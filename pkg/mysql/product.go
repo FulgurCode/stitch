@@ -65,7 +65,7 @@ func EditProduct(product models.Product) error {
 }
 
 func SearchProduct(search string) []models.Product {
-	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product WHERE name LIKE '%%%s%%' OR description LIKE '%%%s%%';", search, search)
+	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product WHERE name LIKE '%%%s%%' OR description LIKE '%%%s%%' OR category LIKE '%%%s%%';", search, search, search)
 	var results, err = Db.Query(query)
 	if err != nil {
 		fmt.Println(err)
