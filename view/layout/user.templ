@@ -16,17 +16,12 @@ templ User() {
                 
                 <div id="searchContainer">
                     <link rel="stylesheet" href="/static/styles/user/search.css">
-                    <form>
+                    <form hx-get="/products" hx-target="body" hx-push-url="true">
                         <input type="text" placeholder="Search..." list="queries" name="search"/>
                         <datalist id="queries"> // Insert all your queries from db here
-                            <option value="PHP" />
-                            <option value="C++" />
-                            <option value="Java" />
-                            <option value="Ruby" />
-                            <option value="Python" />
-                            <option value="Go" />
-                            <option value="Perl" />
-                            <option value="Erlang" />
+                            <option value="shirt" />
+                            <option value="t-shirt" />
+                            <option value="pants" />
                         </datalist>
                         <input type="submit" class="button-primary" value="Search"/>
                     </form>
