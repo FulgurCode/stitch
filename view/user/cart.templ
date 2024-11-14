@@ -10,8 +10,7 @@ import (
 
 templ Cart(products []models.Product) {
     @layout.User() {
-        <link rel="stylesheet" href="/static/styles/admin/orders.css"/>
-        <style>.overflow{overflow-y: auto !important;}</style> <!-- rewriting admin roles-->
+        <link rel="stylesheet" href="/static/styles/user/cart.css"/>
         <div class={Container()} style="padding: var(--padding); box-sizing: border-box; margin-top: 1rem">
             <span style="display: flex; flex-direction: column; gap: 1rem;">
                 <div class="orders-container">
@@ -26,7 +25,7 @@ templ Cart(products []models.Product) {
 }
 
 templ CartCard(product models.Product) {
-    <div class="orders" id={fmt.Sprintf("%s", product.Id)} style="min-width: unset;" data-product-id={product.Id}>
+    <div class="orders" id={fmt.Sprintf("%s", product.Id)} data-product-id={product.Id}>
         <img src={fmt.Sprintf("/static/images/%s-main",product.Id)}/>
         <div>
             Product name: {product.Name}<br/>

@@ -1,0 +1,42 @@
+.orders{
+    border-bottom: 1px solid var(--primary);
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+
+    gap: 5px 20px;
+    padding: var(--padding);
+
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.orders > img {
+    width: 7rem;
+    aspect-ratio: 1 !important;
+    object-fit: cover;
+    content-visibility: auto;
+}
+
+.orders div:last-child{
+    display: flex;
+    gap: 1rem;
+}
+.orders div:nth-child(3){
+    max-width: 700px;
+    
+}
+
+.orders div:nth-child(2){
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.orders-container{
+    border: 1px solid var(--primary);
+    border-bottom: none;
+    max-width: 1300px;
+}
