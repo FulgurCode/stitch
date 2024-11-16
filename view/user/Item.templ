@@ -46,7 +46,7 @@ templ Item(product models.Product) {
             </div>
             <span>
                 <button class="button-primary" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
-                <button hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" class="button-secondary">Add to Cart</button>
+                <button hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" hx-on::after-request="showToast('Product Added to your Cart', 'success')" class="button-secondary">Add to Cart</button>
             </span>
             <br>
         </div>
