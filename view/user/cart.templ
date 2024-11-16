@@ -45,6 +45,7 @@ templ CartCard(product models.Product) {
                 hx-delete={fmt.Sprintf("/delete-cart/%s",product.Id)} 
                 hx-swap="outerHTML" hx-target={fmt.Sprintf("[data-product-id='%s']", product.Id)} 
                 class="button-secondary"
+                hx-on::before-request="showToast('Product removed from the cart', 'success')"
                 >Remove Product</button>
         </div>
     </div>
