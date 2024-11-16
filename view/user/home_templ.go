@@ -107,7 +107,7 @@ func Home(products []models.Product, settings map[string]string) templ.Component
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/home_main_banner")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 34, Col: 51}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 33, Col: 51}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -142,7 +142,7 @@ func Home(products []models.Product, settings map[string]string) templ.Component
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(settings["main_title"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 36, Col: 39}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 35, Col: 39}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -155,7 +155,7 @@ func Home(products []models.Product, settings map[string]string) templ.Component
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(settings["main_description"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 38, Col: 84}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 37, Col: 84}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -234,7 +234,7 @@ func ProductCard(product models.Product) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + product.Id + "-main")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 57, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 56, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -247,7 +247,7 @@ func ProductCard(product models.Product) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 59, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 58, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -260,7 +260,7 @@ func ProductCard(product models.Product) templ.Component {
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.Price))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 60, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 59, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -302,7 +302,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(imageUrl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 68, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 67, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -315,7 +315,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 70, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 69, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -328,7 +328,7 @@ func presentCard(imageUrl string, title string, description string, productUrl s
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 71, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/user/home.templ`, Line: 70, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
