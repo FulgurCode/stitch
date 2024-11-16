@@ -251,7 +251,7 @@ func CartCard(product models.Product) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"button-secondary\">Remove Product</button></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"button-secondary\" hx-on::before-request=\"showToast(&#39;Product removed from the cart&#39;, &#39;success&#39;)\">Remove Product</button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
