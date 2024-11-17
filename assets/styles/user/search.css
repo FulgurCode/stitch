@@ -1,4 +1,4 @@
-form{
+.searchContainer > form{
     margin-top: 3rem;
     display: flex;
     flex-direction: row;
@@ -8,12 +8,12 @@ form{
     max-height: 4rem;
 }
 
-form > input[type="text"]{
+.searchContainer form > input[type="text"]{
     flex: 1;
     border: 1px solid var(--primary);
 }
 
 
-.surface form > input[type="text"], .surface form > input[type="submit"]{
+.surface .searchContainer >  form > input[type="text"], .surface .searchContainer > form > input[type="submit"]{
     border: 1px solid var(--text-surface-heading);
 }
