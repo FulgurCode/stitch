@@ -17,7 +17,7 @@
     box-sizing: border-box;
     border: none;
 }
-.login-container input{
+.login-container input[type="text"], .login-container input[type="password"]{
     text-indent: 10px;
     color: var(--text);
     font-family: inherit;
