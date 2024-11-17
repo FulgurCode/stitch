@@ -63,6 +63,9 @@ func OrderPost(c echo.Context) error {
 	var productId = c.Param("productId")
 	var order models.Order
 	var err = c.Bind(&order)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	product, err := mysql.GetProductById(productId)
 	if err != nil {

@@ -18,6 +18,8 @@ func Run(port string) {
 	// Remove trailing slash to avoid 404 errors
 	app.Pre(middleware.RemoveTrailingSlash())
 
+	app.Use(middleware.Recover())
+
 	// Creating session
 	var sessionSecret = os.Getenv("SESSION_SECRET")
 	app.Use(session.Middleware(sessions.NewCookieStore([]byte(sessionSecret))))
