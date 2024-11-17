@@ -1,8 +1,6 @@
 package mysql
 
 import (
-	"fmt"
-
 	"github.com/FulgurCode/stitch/models"
 )
 
@@ -10,7 +8,7 @@ import (
 func GetAdminUser(username string) (models.Admin, error) {
 	var admin models.Admin
 
-	var query = fmt.Sprintf("SELECT username,password from admin;")
+	var query = "SELECT username,password from admin;"
 	var result, err = Db.Query(query)
 	if err != nil {
 		return admin, err
@@ -25,9 +23,9 @@ func GetAdminUser(username string) (models.Admin, error) {
 
 // Update admin password
 func UpdateAdminPassword(admin models.Admin) error {
-	var query = fmt.Sprintf("UPDATE admin set password = '%s' WHERE username = '%s';", admin.Password, admin.Username)
+	var query = "UPDATE admin set password = ? WHERE username = ?;"
 
-	var _, err = Db.Exec(query)
+	var _, err = Db.Exec(query, admin.Password, admin.Username)
 
 	return err
 }

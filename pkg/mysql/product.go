@@ -7,16 +7,15 @@ import (
 )
 
 func AddProduct(product models.Product) error {
-	var query = fmt.Sprintf("INSERT INTO product(id,name,category,price,description) VALUES('%s','%s','%s',%d,'%s');", product.Id, product.Name, product.Category, product.Price, product.Description)
-
-	var _, err = Db.Exec(query)
+	var query = "INSERT INTO product(id,name,category,price,description) VALUES(?,?,?,?,?);"
+	var _, err = Db.Exec(query, product.Id, product.Name, product.Category, product.Price, product.Description)
 
 	return err
 }
 
 func GetProducts() ([]models.Product, error) {
 	var products []models.Product
-	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product;")
+	var query = "SELECT id,name,category,price,description FROM product;"
 
 	var result, err = Db.Query(query)
 	if err != nil {
@@ -35,9 +34,9 @@ func GetProducts() ([]models.Product, error) {
 
 func DeleteProduct(prodcutId string) error {
 	DeleteStock(prodcutId)
-	var query = fmt.Sprintf("DELETE FROM product WHERE id = '%s';", prodcutId)
+	var query = "DELETE FROM product WHERE id = ?;"
 
-	var _, err = Db.Exec(query)
+	var _, err = Db.Exec(query, prodcutId)
 
 	return err
 }
@@ -45,8 +44,8 @@ func DeleteProduct(prodcutId string) error {
 func GetProductById(id string) (models.Product, error) {
 	var product models.Product
 
-	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product WHERE id = '%s';", id)
-	var result, err = Db.Query(query)
+	var query = "SELECT id,name,category,price,description FROM product WHERE id = ?;"
+	var result, err = Db.Query(query, id)
 	if err != nil {
 		return product, err
 	}
@@ -58,15 +57,15 @@ func GetProductById(id string) (models.Product, error) {
 }
 
 func EditProduct(product models.Product) error {
-	var query = fmt.Sprintf("UPDATE product SET name = '%s', category ='%s', price = %d, description = '%s' WHERE id = '%s';", product.Name, product.Category, product.Price, product.Description, product.Id)
-
-	var _, err = Db.Exec(query)
+	var query = "UPDATE product SET name = ?, category = ?, price = ?, description = ? WHERE id = ?;"
+	var _, err = Db.Exec(query, product.Name, product.Category, product.Price, product.Description, product.Id)
 	return err
 }
 
 func SearchProduct(search string) []models.Product {
-	var query = fmt.Sprintf("SELECT id,name,category,price,description FROM product WHERE name LIKE '%%%s%%' OR description LIKE '%%%s%%' OR category LIKE '%%%s%%';", search, search, search)
-	var results, err = Db.Query(query)
+	var searchTerm = "%" + search + "%"
+	var query = "SELECT id,name,category,price,description FROM product WHERE name LIKE ? OR description LIKE ? OR category LIKE ?;"
+	var results, err = Db.Query(query, searchTerm, searchTerm, searchTerm)
 	if err != nil {
 		fmt.Println(err)
 	}
