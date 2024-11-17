@@ -39,3 +39,9 @@ func ChangeOrderStatus(id string, status string) error {
 	var _, err = Db.Exec(query)
 	return err
 }
+
+func DeleteOrder(id string) error {
+	var query = fmt.Sprintf("DELETE FROM orders WHERE id = '%s';", id)
+	var _, err = Db.Exec(query)
+	return err
+}

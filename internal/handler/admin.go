@@ -272,7 +272,7 @@ func AdminOrders(c echo.Context) error {
 
 func AdminChangeOrderStatus(c echo.Context) error {
 	var status = c.QueryParam("status")
-	var id = c.Param("id")
+	var id = c.Param("orderId")
 	var err = mysql.ChangeOrderStatus(id, status)
 	if err != nil {
 		fmt.Println(err)
@@ -313,6 +313,17 @@ func AdminDelivered(c echo.Context) error {
 
 	var component = admin.AdminDelivered(orders)
 	return utils.Render(c, component)
+}
+
+func DeleteOrder(c echo.Context) error {
+	var id = c.Param("orderId")
+	var err = mysql.DeleteOrder(id)
+	if err != nil {
+		fmt.Println(err)
+		return c.JSON(501, "Failed")
+	}
+
+	return c.NoContent(200)
 }
 
 // Admin Setting Handler

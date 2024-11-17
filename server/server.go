@@ -60,7 +60,8 @@ func Run(port string) {
 	app.GET("/admin/orders", utils.CheckLogin(handler.AdminOrders))
 	app.GET("/admin/shipped", utils.CheckLogin(handler.AdminShipped))
 	app.GET("/admin/delivered", utils.CheckLogin(handler.AdminDelivered))
-	app.GET("/admin/change-order-status/:id", utils.CheckLogin(handler.AdminChangeOrderStatus))
+	app.GET("/admin/change-order-status/:orderId", utils.CheckLogin(handler.AdminChangeOrderStatus))
+	app.DELETE("/admin/delete-order/:orderId", utils.CheckLogin(handler.DeleteOrder))
 	app.GET("/admin/settings", utils.CheckLogin(handler.AdminSettings))
 
 	app.POST("/admin/home-main", utils.CheckLogin(handler.AdminHomeBanner))
