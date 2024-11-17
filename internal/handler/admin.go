@@ -261,13 +261,25 @@ func AdminItem(c echo.Context) error {
 
 // Admin Orders Handler
 func AdminOrders(c echo.Context) error {
-	var orders, err = mysql.GetOrders()
+	var orders, err = mysql.GetOrdersWithStatus("ordered")
 	if err != nil {
 		fmt.Println(err.Error())
 	}
 
 	var component = admin.AdminOrders(orders)
 	return utils.Render(c, component)
+}
+
+func AdminChangeOrderStatus(c echo.Context) error {
+	var status = c.QueryParam("status")
+	var id = c.Param("id")
+	var err = mysql.ChangeOrderStatus(id, status)
+	if err != nil {
+		fmt.Println(err)
+		return c.JSON(501, "Failed")
+	}
+
+	return c.NoContent(200)
 }
 
 // Admin Stock Handler
@@ -283,7 +295,7 @@ func AdminStock(c echo.Context) error {
 
 // Admin Shipped Handler
 func AdminShipped(c echo.Context) error {
-	var orders, err = mysql.GetOrders()
+	var orders, err = mysql.GetOrdersWithStatus("shipped")
 	if err != nil {
 		fmt.Println(err.Error())
 	}
@@ -294,7 +306,7 @@ func AdminShipped(c echo.Context) error {
 
 // Admin Delivered Handler
 func AdminDelivered(c echo.Context) error {
-	var orders, err = mysql.GetOrders()
+	var orders, err = mysql.GetOrdersWithStatus("delivered")
 	if err != nil {
 		fmt.Println(err.Error())
 	}

@@ -14,8 +14,8 @@ func MakeOrder(order models.Order) error {
 	return err
 }
 
-func GetOrders() ([]models.Order, error) {
-	var query = fmt.Sprintf("SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id;")
+func GetOrdersWithStatus(status string) ([]models.Order, error) {
+	var query = fmt.Sprintf("SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id WHERE orders.status = '%s';", status)
 
 	var orders []models.Order
 	var result, err = Db.Query(query)
@@ -32,4 +32,10 @@ func GetOrders() ([]models.Order, error) {
 	}
 
 	return orders, err
+}
+
+func ChangeOrderStatus(id string, status string) error {
+	var query = fmt.Sprintf("UPDATE orders SET status = '%s' WHERE id = '%s';", status, id)
+	var _, err = Db.Exec(query)
+	return err
 }
