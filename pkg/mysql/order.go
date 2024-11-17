@@ -1,24 +1,21 @@
 package mysql
 
 import (
-	"fmt"
-
 	"github.com/FulgurCode/stitch/models"
 )
 
 func MakeOrder(order models.Order) error {
-	var query = fmt.Sprintf("INSERT INTO orders(id,product_id,name,address,house,pin,city,phone,payment,quantity,total,status) VALUES(uuid(),'%s','%s','%s','%s',%d,'%s','%s','%s',%d, %d,'%s');", order.ProductId, order.Name, order.Address, order.House, order.Pin, order.City, order.Phone, order.Payment, order.Quantity, order.Total, order.Status)
-
-	var _, err = Db.Exec(query)
+	var query = "INSERT INTO orders(id,product_id,name,address,house,pin,city,phone,payment,quantity,total,status) VALUES(uuid(),?,?,?,?,?,?,?,?,?,?,?);"
+	var _, err = Db.Exec(query, order.ProductId, order.Name, order.Address, order.House, order.Pin, order.City, order.Phone, order.Payment, order.Quantity, order.Total, order.Status)
 
 	return err
 }
 
 func GetOrdersWithStatus(status string) ([]models.Order, error) {
-	var query = fmt.Sprintf("SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id WHERE orders.status = '%s';", status)
+	var query = "SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id WHERE orders.status = ?;"
 
 	var orders []models.Order
-	var result, err = Db.Query(query)
+	var result, err = Db.Query(query, status)
 
 	if err != nil {
 		return orders, err
@@ -35,13 +32,13 @@ func GetOrdersWithStatus(status string) ([]models.Order, error) {
 }
 
 func ChangeOrderStatus(id string, status string) error {
-	var query = fmt.Sprintf("UPDATE orders SET status = '%s' WHERE id = '%s';", status, id)
-	var _, err = Db.Exec(query)
+	var query = "UPDATE orders SET status = ? WHERE id = ?;"
+	var _, err = Db.Exec(query, status, id)
 	return err
 }
 
 func DeleteOrder(id string) error {
-	var query = fmt.Sprintf("DELETE FROM orders WHERE id = '%s';", id)
-	var _, err = Db.Exec(query)
+	var query = "DELETE FROM orders WHERE id = ?;"
+	var _, err = Db.Exec(query, id)
 	return err
 }

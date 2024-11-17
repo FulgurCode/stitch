@@ -11,31 +11,31 @@ func DefaultSettings() {
 }
 
 func UpdateHome(title string, description string) error {
-	var query1 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'main_description';", description)
-	var query2 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'main_title';", title)
+	var query1 = "UPDATE settings SET value = ? WHERE setting = 'main_description';"
+	var query2 = "UPDATE settings SET value = ? WHERE setting = 'main_title';"
 
-	var _, err = Db.Exec(query1)
-	Db.Exec(query2)
+	var _, err = Db.Exec(query1, description)
+	Db.Exec(query2, title)
 
 	return err
 }
 
 func UpdateHeroOne(title string, description string) error {
-	var query1 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'hero_one_description';", description)
-	var query2 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'hero_one_title';", title)
+	var query1 = "UPDATE settings SET value = ? WHERE setting = 'hero_one_description';"
+	var query2 = "UPDATE settings SET value = ? WHERE setting = 'hero_one_title';"
 
-	var _, err = Db.Exec(query1)
-	_, err = Db.Exec(query2)
+	var _, err = Db.Exec(query1, description)
+	_, err = Db.Exec(query2, title)
 
 	return err
 }
 
 func UpdateHeroTwo(title string, description string) error {
-	var query1 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'hero_two_description';", description)
-	var query2 = fmt.Sprintf("UPDATE settings SET value = '%s' WHERE setting = 'hero_two_title';", title)
+	var query1 = "UPDATE settings SET value = ? WHERE setting = 'hero_two_description';"
+	var query2 = "UPDATE settings SET value = ? WHERE setting = 'hero_two_title';"
 
-	var _, err = Db.Exec(query1)
-	_, err = Db.Exec(query2)
+	var _, err = Db.Exec(query1, description)
+	_, err = Db.Exec(query2, title)
 
 	return err
 }
