@@ -3,6 +3,7 @@ package layout
 templ User() {
   @Layout() {
     <link rel="stylesheet" href="/static/styles/user/template.css" />
+    <link rel="stylesheet" href="/static/styles/user/search.css">
     <script src="/static/scripts/scroll_animation.js" defer/>
     <body>
         <div class="overflow">
@@ -14,8 +15,7 @@ templ User() {
                     <img src="/static/icons/search.svg" alt="Search"/>
                 </label>
                 
-                <div id="searchContainer">
-                    <link rel="stylesheet" href="/static/styles/user/search.css">
+                <div id="searchContainer" class="searchContainer">
                     <form hx-get="/products" hx-target="body" hx-push-url="true">
                         <input type="text" placeholder="Search..." list="queries" name="search"/>
                         <datalist id="queries"> // Insert all your queries from db here
