@@ -28,7 +28,10 @@
 
     width: 100%;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+/* 
+    min-height: 100%;
+    flex: 1 */
 }
 
 .product-card {
