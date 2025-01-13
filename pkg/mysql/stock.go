@@ -16,7 +16,7 @@ func AddStock(stock models.Stock) error {
 
 func DeleteStock(productId string) error {
 	var query = "DELETE FROM stock WHERE product_id = ?;"
-	var _, err = Db.Exec(query,productId)
+	var _, err = Db.Exec(query, productId)
 
 	return err
 }
@@ -46,4 +46,27 @@ func GetStocks() ([]models.Stock, error) {
 	}
 
 	return stocks, err
+}
+
+func GetStock(productId string) (map[string]int, error) {
+	var query = "SELECT s,m,l,xl,xxl,xxxl,total FROM stock WHERE product_id = ?;"
+
+	var stock = map[string]int{}
+	var result, err = Db.Query(query, productId)
+	if err != nil {
+		return stock,err
+	}
+
+	var s,_ = result.Columns()
+	result.Next()
+	var scans = make([]int, len(s))
+	result.Scan(&scans[0], &scans[1], &scans[2], &scans[3], &scans[4], &scans[5], &scans[6])
+
+	fmt.Println(s)
+
+	for i,v := range scans {
+		stock[s[i]] = v
+	}
+
+	return stock,err
 }

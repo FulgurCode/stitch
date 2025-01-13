@@ -86,3 +86,20 @@ dialog > img{
         box-sizing: border-box;
     }
 }
+
+.radio-button.out-of-stock {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.radio-button.out-of-stock label {
+    background-color: #f0f0f0;
+    color: #999;
+    border: 1px solid #ccc;
+}
+
+.radio-button input[type="radio"]:disabled + label {
+    background-color: #f0f0f0;
+    color: #999;
+    border: 1px solid #ccc;
+}

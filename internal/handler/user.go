@@ -43,7 +43,12 @@ func Item(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	var component = user.Item(product)
+	stock, err := mysql.GetStock(productId)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var component = user.Item(product, stock)
 	return utils.Render(c, component)
 }
 

@@ -7,7 +7,7 @@ import (
     "github.com/FulgurCode/stitch/models"
 )
 
-templ Item(product models.Product) {
+templ Item(product models.Product, stock map[string]int) {
     @layout.User() {
         <link rel="stylesheet" href="/static/styles/user/item.css">
         <div class={Container()}>
@@ -27,22 +27,72 @@ templ Item(product models.Product) {
                 </p>
             </span>
             <div class="size-group">
-                <div class="radio-button">
-                    <input type="radio" id="small-size" name="size" value="S">
-                    <label for="small-size">S</label>
-                </div>
-                <div class="radio-button">
-                    <input type="radio" id="medium-size" name="size" value="M">
-                    <label for="medium-size">M</label>
-                </div>
-                <div class="radio-button">
-                    <input type="radio" id="large-size" name="size" value="L">
-                    <label for="large-size">L</label>
-                </div>
-                <div class="radio-button">
-                    <input type="radio" id="extra-large-size" name="size" value="XL">
-                    <label for="extra-large-size">XL</label>
-                </div>
+                if stock["s"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="s" name="size" value="s" disabled>
+                        <label for="small-size">S</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="s" name="size" value="s">
+                        <label for="s">S</label>
+                    </div>
+                }
+                if stock["m"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="m" name="size" value="m" disabled>
+                        <label for="small-size">M</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="m" name="size" value="m">
+                        <label for="m">M</label>
+                    </div>
+                }
+                if stock["l"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="l" name="size" value="l" disabled>
+                        <label for="small-size">L</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="l" name="size" value="l">
+                        <label for="l">L</label>
+                    </div>
+                }
+                if stock["xl"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="xl" name="size" value="xl" disabled>
+                        <label for="small-size">XL</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="xl" name="size" value="xl">
+                        <label for="xl">XL</label>
+                    </div>
+                }
+                if stock["xxl"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="xxl" name="size" value="xxl" disabled>
+                        <label for="small-size">XXL</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="xxl" name="size" value="xxl">
+                        <label for="xxl">XXL</label>
+                    </div>
+                }
+                if stock["xxxl"] == 0 {
+                    <div class="radio-button out-of-stock">
+                        <input type="radio" id="xxxl" name="size" value="xxxl" disabled>
+                        <label for="small-size">XXXL</label>
+                    </div>
+                } else {
+                    <div class="radio-button">
+                        <input type="radio" id="xxxl" name="size" value="xxxl">
+                        <label for="xxxl">XXXL</label>
+                    </div>
+                }
             </div>
             <span>
                 <button class="button-primary" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
@@ -51,16 +101,6 @@ templ Item(product models.Product) {
             <br>
         </div>
         </div>
-        <dialog id="clothingSizeDialog">
-            <table>
-                <tr> <th>AREA</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th> </tr>
-                <tr> <td>A - Chest</td><td>45.0</td><td>48.0</td><td>51.0</td><td>54.0</td><td>57.0</td> </tr>
-                <tr> <td>A - Front length</td><td>63.0</td><td>64.5</td><td>66.0</td><td>67.5</td><td>69.0</td> </tr>
-                <tr> <td>A - Sleeve length</td><td>21.0</td><td>22.0</td><td>23.0</td><td>24.0</td><td>25.0</td> </tr>
-                <tr> <td>A - Back width</td><td>37.5</td><td>40.0</td><td>42.5</td><td>45.0</td><td>47.5</td> </tr>
-                <tr> <td>A - Arm width</td><td>45.0</td><td>48.0</td><td>51.0</td><td>54.0</td><td>57.0</td> </tr>
-            </table>
-        </dialog>
     }
 }
 
