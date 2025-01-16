@@ -5,14 +5,14 @@ import (
 )
 
 func MakeOrder(order models.Order) error {
-	var query = "INSERT INTO orders(id,product_id,name,address,house,pin,city,phone,payment,quantity,total,status) VALUES(uuid(),?,?,?,?,?,?,?,?,?,?,?);"
-	var _, err = Db.Exec(query, order.ProductId, order.Name, order.Address, order.House, order.Pin, order.City, order.Phone, order.Payment, order.Quantity, order.Total, order.Status)
+	var query = "INSERT INTO orders(id,product_id,name,address,house,pin,city,phone,size,payment,quantity,total,status) VALUES(uuid(),?,?,?,?,?,?,?,?,?,?,?,?);"
+	var _, err = Db.Exec(query, order.ProductId, order.Name, order.Address, order.House, order.Pin, order.City, order.Phone, order.Size, order.Payment, order.Quantity, order.Total, order.Status)
 
 	return err
 }
 
 func GetOrdersWithStatus(status string) ([]models.Order, error) {
-	var query = "SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id WHERE orders.status = ?;"
+	var query = "SELECT orders.id,product_id,orders.name,address,house,pin,city,phone,size,payment,quantity,total,status,product.name,product.price FROM orders LEFT JOIN product ON orders.product_id = product.id WHERE orders.status = ?;"
 
 	var orders []models.Order
 	var result, err = Db.Query(query, status)
@@ -23,7 +23,7 @@ func GetOrdersWithStatus(status string) ([]models.Order, error) {
 
 	for result.Next() {
 		var order models.Order
-		result.Scan(&order.Id, &order.ProductId, &order.Name, &order.Address, &order.House, &order.Pin, &order.City, &order.Phone, &order.Payment, &order.Quantity, &order.Total, &order.Status, &order.ProductName, &order.ProductPrice)
+		result.Scan(&order.Id, &order.ProductId, &order.Name, &order.Address, &order.House, &order.Pin, &order.City, &order.Phone, &order.Size, &order.Payment, &order.Quantity, &order.Total, &order.Status, &order.ProductName, &order.ProductPrice)
 
 		orders = append(orders, order)
 	}

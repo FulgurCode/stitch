@@ -6,6 +6,7 @@ type Product struct {
 	Category    string `json:"category" form:"category"`
 	Description string `json:"description" form:"description"`
 	Price       int    `json:"price" form:"price"`
+	Size        string `json:"size,omitempty" form:"size,omitempty"`
 }
 
 type Stock struct {
@@ -32,6 +33,7 @@ type Order struct {
 	Pin          int    `json:"pin" form:"pin"`
 	City         string `json:"city" form:"city"`
 	Phone        string `json:"phone" form:"phone"`
+	Size         string `json:"size" form:"size"`
 	Payment      string `json:"payment" form:"payment"`
 	Quantity     int    `json:"quantity" form:"quantity"`
 	Total        int    `json:"total" form:"total"`

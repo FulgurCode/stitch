@@ -2,6 +2,7 @@ package admin
 
 import (
     "fmt"
+    "strings"
 
     "github.com/FulgurCode/stitch/view/layout"
     "github.com/FulgurCode/stitch/models"
@@ -34,7 +35,8 @@ templ OrdersCard(order models.Order) {
             Pin: {fmt.Sprintf("%d",order.Pin)}<br/>
             Phone no: {order.Phone}<br/>
             Payment method: {order.Payment}<br>
-            Status: {order.Status}
+            Status: {order.Status}<br>
+            Size: {strings.ToUpper(order.Size)}
         </div>
         <div>
             <button class="button-primary" hx-get={fmt.Sprintf("/admin/change-order-status/%s?status=%s", order.Id, "shipped")} hx-swap="outerHTML" hx-target="closest .orders">Mark as Shipped</button>

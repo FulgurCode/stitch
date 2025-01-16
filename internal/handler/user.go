@@ -55,12 +55,14 @@ func Item(c echo.Context) error {
 // Order page handler
 func OrderGet(c echo.Context) error {
 	var productId = c.Param("productId")
+	var size = c.QueryParam("size")
+
 	var product, err = mysql.GetProductById(productId)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	var component = user.Order(product)
+	var component = user.Order(product, size)
 	return utils.Render(c, component)
 }
 
@@ -114,10 +116,11 @@ func Search(c echo.Context) error {
 
 // Cart page handler
 func Cart(c echo.Context) error {
-	var m = utils.GetSessionAll(c, "cart")
+	var cart = utils.GetSessionAll(c, "cart")
 	var products []models.Product
-	for id := range m {
+	for id, size := range cart {
 		var product, err = mysql.GetProductById(id.(string))
+		product.Size = size.(string)
 		if err != nil {
 			fmt.Println(err)
 			var component = user.Cart(products)
@@ -153,10 +156,10 @@ func NotFound(c echo.Context) error {
 
 func AddToCart(c echo.Context) error {
 	var id = c.Param("productId")
+	var size = c.QueryParam("size")
 	utils.CreateSession(c, "cart")
 
-	var quantity = 1
-	utils.AddSessionValue(c, "cart", id, quantity)
+	utils.AddSessionValue(c, "cart", id, size)
 
 	return c.NoContent(200)
 }

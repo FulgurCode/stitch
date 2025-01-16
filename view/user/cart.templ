@@ -2,6 +2,7 @@ package user
 
 import (
     "fmt"
+    "strings"
 
     "github.com/FulgurCode/stitch/view/layout"
     "github.com/FulgurCode/stitch/models"
@@ -38,6 +39,7 @@ templ CartCard(product models.Product) {
         <div>
             Product name: {product.Name}<br/>
             Price: &#8360;. {fmt.Sprintf("%d",product.Price)}
+            Size: {strings.ToUpper(product.Size)}
         </div>
         <div>
             <button class="button-primary" hx-get={fmt.Sprintf("/item/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/item/%s", product.Id)} >View Product</button>

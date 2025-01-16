@@ -26,6 +26,7 @@ templ Item(product models.Product, stock map[string]int) {
                     // <button>help</button>
                 </p>
             </span>
+            <form name="item-order">
             <div class="size-group">
                 if stock["s"] == 0 {
                     <div class="radio-button out-of-stock">
@@ -95,9 +96,10 @@ templ Item(product models.Product, stock map[string]int) {
                 }
             </div>
             <span>
-                <button class="button-primary" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
-                <button hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" hx-on::after-request="showToast('Product Added to your Cart', 'success')" class="button-secondary">Add to Cart</button>
+                <button class="button-primary" hx-include="closest form" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
+                <button hx-include="closest form" hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" hx-on::after-request="showToast('Product Added to your Cart', 'success')" class="button-secondary">Add to Cart</button>
             </span>
+            </form>
             <br>
         </div>
         </div>

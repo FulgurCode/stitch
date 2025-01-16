@@ -62,8 +62,6 @@ func GetStock(productId string) (map[string]int, error) {
 	var scans = make([]int, len(s))
 	result.Scan(&scans[0], &scans[1], &scans[2], &scans[3], &scans[4], &scans[5], &scans[6])
 
-	fmt.Println(s)
-
 	for i,v := range scans {
 		stock[s[i]] = v
 	}
