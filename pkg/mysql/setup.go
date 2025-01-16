@@ -29,7 +29,7 @@ func setUpTables() {
 
 	createTable("CREATE TABLE IF NOT EXISTS stock(product_id uuid, s int, m int, l int, xl int, xxl int, xxxl int, total int, FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE) ;", "stock")
 
-	createTable("CREATE TABLE IF NOT EXISTS orders(id uuid, product_id uuid, name text, address text, house text, pin int, city text, phone VARCHAR(13), payment text, total int, quantity int,status VARCHAR(10),FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE);", "order")
+	createTable("CREATE TABLE IF NOT EXISTS orders(id uuid, product_id uuid, name text, address text, house text, pin int, city text, phone VARCHAR(13), payment text,size VARCHAR(4), total int, quantity int,status VARCHAR(10),FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE);", "order")
 
 	createTable("CREATE TABLE IF NOT EXISTS settings(setting text,value text);", "settings")
 
