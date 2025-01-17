@@ -1,6 +1,7 @@
 .size-group {
     display: flex;
     gap: 1rem;
+    margin-block-end: 1rem;
 }
 
 .radio-button {
