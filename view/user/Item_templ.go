@@ -134,72 +134,72 @@ func Item(product models.Product, stock map[string]int) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\">Size: </p></span><form name=\"item-order\"><div class=\"size-group\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\">Size: </p></span><form name=\"item-order\" hx-on::validation:validate=\"!document.querySelector(&#39;input[name=size]:checked&#39;) &amp;&amp; document.querySelector(&#39;input[name=size]&#39;).reportValidity()\"><div class=\"size-group\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			if stock["s"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"s\" name=\"size\" value=\"s\" disabled> <label for=\"small-size\">S</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"s\" name=\"size\" value=\"s\" disabled required> <label for=\"small-size\">S</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<div class=\"radio-button\"><input type=\"radio\" id=\"s\" name=\"size\" value=\"s\"> <label for=\"s\">S</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<div class=\"radio-button\"><input type=\"radio\" id=\"s\" name=\"size\" value=\"s\" required> <label for=\"s\">S</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if stock["m"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"m\" name=\"size\" value=\"m\" disabled> <label for=\"small-size\">M</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"m\" name=\"size\" value=\"m\" disabled required> <label for=\"small-size\">M</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<div class=\"radio-button\"><input type=\"radio\" id=\"m\" name=\"size\" value=\"m\"> <label for=\"m\">M</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<div class=\"radio-button\"><input type=\"radio\" id=\"m\" name=\"size\" value=\"m\" required> <label for=\"m\">M</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if stock["l"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"l\" name=\"size\" value=\"l\" disabled> <label for=\"small-size\">L</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"l\" name=\"size\" value=\"l\" disabled required> <label for=\"small-size\">L</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<div class=\"radio-button\"><input type=\"radio\" id=\"l\" name=\"size\" value=\"l\"> <label for=\"l\">L</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<div class=\"radio-button\"><input type=\"radio\" id=\"l\" name=\"size\" value=\"l\" required> <label for=\"l\">L</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if stock["xl"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xl\" name=\"size\" value=\"xl\" disabled> <label for=\"small-size\">XL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xl\" name=\"size\" value=\"xl\" disabled required> <label for=\"small-size\">XL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<div class=\"radio-button\"><input type=\"radio\" id=\"xl\" name=\"size\" value=\"xl\"> <label for=\"xl\">XL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<div class=\"radio-button\"><input type=\"radio\" id=\"xl\" name=\"size\" value=\"xl\" required> <label for=\"xl\">XL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if stock["xxl"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xxl\" name=\"size\" value=\"xxl\" disabled> <label for=\"small-size\">XXL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xxl\" name=\"size\" value=\"xxl\" disabled required> <label for=\"small-size\">XXL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"radio-button\"><input type=\"radio\" id=\"xxl\" name=\"size\" value=\"xxl\"> <label for=\"xxl\">XXL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"radio-button\"><input type=\"radio\" id=\"xxl\" name=\"size\" value=\"xxl\" required> <label for=\"xxl\">XXL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			if stock["xxxl"] == 0 {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xxxl\" name=\"size\" value=\"xxxl\" disabled> <label for=\"small-size\">XXXL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<div class=\"radio-button out-of-stock\"><input type=\"radio\" id=\"xxxl\" name=\"size\" value=\"xxxl\" disabled required> <label for=\"small-size\">XXXL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"radio-button\"><input type=\"radio\" id=\"xxxl\" name=\"size\" value=\"xxxl\"> <label for=\"xxxl\">XXXL</label></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"radio-button\"><input type=\"radio\" id=\"xxxl\" name=\"size\" value=\"xxxl\" required> <label for=\"xxxl\">XXXL</label></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -230,7 +230,7 @@ func Item(product models.Product, stock map[string]int) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\">BUY</button> <button hx-include=\"closest form\" hx-get=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" hx-validate=\"true\">BUY</button> <button hx-include=\"closest form\" hx-get=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -243,7 +243,7 @@ func Item(product models.Product, stock map[string]int) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "\" hx-swap=\"none\" hx-on::after-request=\"showToast(&#39;Product Added to your Cart&#39;, &#39;success&#39;)\" class=\"button-secondary\">Add to Cart</button></span></form><br></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "\" hx-swap=\"none\" hx-on::after-request=\"showToast(&#39;Product Added to your Cart&#39;, &#39;success&#39;)\" class=\"button-secondary\" hx-validate=\"true\">Add to Cart</button></span></form><br></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

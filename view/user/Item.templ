@@ -26,78 +26,78 @@ templ Item(product models.Product, stock map[string]int) {
                     // <button>help</button>
                 </p>
             </span>
-            <form name="item-order">
+            <form name="item-order" hx-on::validation:validate="!document.querySelector('input[name=size]:checked') && document.querySelector('input[name=size]').reportValidity()">
                 <div class="size-group">
                     if stock["s"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="s" name="size" value="s" disabled>
+                            <input type="radio" id="s" name="size" value="s" disabled required>
                             <label for="small-size">S</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="s" name="size" value="s">
+                            <input type="radio" id="s" name="size" value="s" required>
                             <label for="s">S</label>
                         </div>
                     }
                     if stock["m"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="m" name="size" value="m" disabled>
+                            <input type="radio" id="m" name="size" value="m" disabled required>
                             <label for="small-size">M</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="m" name="size" value="m">
+                            <input type="radio" id="m" name="size" value="m" required>
                             <label for="m">M</label>
                         </div>
                     }
                     if stock["l"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="l" name="size" value="l" disabled>
+                            <input type="radio" id="l" name="size" value="l" disabled required>
                             <label for="small-size">L</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="l" name="size" value="l">
+                            <input type="radio" id="l" name="size" value="l" required>
                             <label for="l">L</label>
                         </div>
                     }
                     if stock["xl"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="xl" name="size" value="xl" disabled>
+                            <input type="radio" id="xl" name="size" value="xl" disabled required>
                             <label for="small-size">XL</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="xl" name="size" value="xl">
+                            <input type="radio" id="xl" name="size" value="xl" required>
                             <label for="xl">XL</label>
                         </div>
                     }
                     if stock["xxl"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="xxl" name="size" value="xxl" disabled>
+                            <input type="radio" id="xxl" name="size" value="xxl" disabled required>
                             <label for="small-size">XXL</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="xxl" name="size" value="xxl">
+                            <input type="radio" id="xxl" name="size" value="xxl" required>
                             <label for="xxl">XXL</label>
                         </div>
                     }
                     if stock["xxxl"] == 0 {
                         <div class="radio-button out-of-stock">
-                            <input type="radio" id="xxxl" name="size" value="xxxl" disabled>
+                            <input type="radio" id="xxxl" name="size" value="xxxl" disabled required>
                             <label for="small-size">XXXL</label>
                         </div>
                     } else {
                         <div class="radio-button">
-                            <input type="radio" id="xxxl" name="size" value="xxxl">
+                            <input type="radio" id="xxxl" name="size" value="xxxl" required>
                             <label for="xxxl">XXXL</label>
                         </div>
                     }
                 </div>
                 <span>
-                    <button class="button-primary" hx-include="closest form" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)}>BUY</button>
-                    <button hx-include="closest form" hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" hx-on::after-request="showToast('Product Added to your Cart', 'success')" class="button-secondary">Add to Cart</button>
+                    <button class="button-primary" hx-include="closest form" hx-get={fmt.Sprintf("/order/%s", product.Id)} hx-target="body" hx-push-url={fmt.Sprintf("/order/%s", product.Id)} hx-validate="true">BUY</button>
+                    <button hx-include="closest form" hx-get={fmt.Sprintf("/add-to-cart/%s", product.Id)} hx-swap="none" hx-on::after-request="showToast('Product Added to your Cart', 'success')" class="button-secondary" hx-validate="true">Add to Cart</button>
                 </span>
             </form>
             <br>
